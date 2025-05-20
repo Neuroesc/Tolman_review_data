@@ -52,7 +52,7 @@ function TOL_main
     config.fig_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\main figures\'; % where the main figures will be saved
     config.schematic_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\schematics\'; % where schematics can be found
     config.fast_figs = false; % save figures faster but at a lower quality
-    config.save_fig = 1; % 1 = save figures, 0 = do not save
+    config.save_fig = true; % 1 = save figures, 0 = do not save
 
     % parameters for plots
     params = struct;
@@ -89,7 +89,7 @@ function TOL_main
     plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig 7 Young et al. (1967)
     plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig 8 Harley (1979)
     plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig 9 Muir and Taube (2004)
-    plot_opts.plot_overall_stats    = 1; % TOL_fig_stats1       % Fig 10, overall stats
+    plot_opts.plot_overall_stats    = 0; % TOL_fig_stats1       % Fig 10, overall stats
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
