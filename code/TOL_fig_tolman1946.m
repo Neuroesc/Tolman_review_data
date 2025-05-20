@@ -1,20 +1,28 @@
 function TOL_fig_tolman1946(config,params,dat)
-% tfigpaper_kendler 
-% Kendler et al results for Duvelle and Grieves review
-% See comments for details about where the data were collected or defined
+% TOL_fig_tolman1946 
+% Figure 1
+% Tolman et al (1946) results figure for:
+% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% See TOL_data for details about where the data were collected or defined
 % 
-% SEE ALSO tfigpaper, tfigpaper_main_plot
+% SEE ALSO TOL_main, TOL_data, TOL_plotter
 
 % HISTORY
 %
 % version 1.0.0, Release 15/04/25 Initial release
+% version 1.1.0, Release 20/04/25 GitHub release
+%
+% NOTES
+% Panel a is loaded as an image file, .svg and .png provided in this repository
+% Panel b values taken from Tolman et al (1946) Fig 3, pp 19
+% Panel c citation counts from Scopus.com
 %
 % AUTHOR 
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves
+% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% Copyright 2025 Roddy Grieves & Eleonore Duvelle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% ARGUMENT CHECK
@@ -82,12 +90,13 @@ function TOL_fig_tolman1946(config,params,dat)
         scatter(light_positions,y,150,"yellow","filled",'s','MarkerEdgeColor','k','Clipping','off');        
         text(light_positions,y,lnames,'HorizontalAlignment','center','VerticalAlignment','middle','FontSize',8,'Rotation',0,'Clipping','off');
 
-%%%%%%%%%%%%%%%% Tolman et al (1946) Citations
+%%%%%%%%%%%%%%%% Tolman et al (1946) and other study Citations
+% citation counts from Scopus.com
     xnow = 50+ax.Position(3)+hbuff+30;
     ax = axes('Units','pixels','Position',[xnow ynow 170 130]);
         ah = add_panel_title('c',sprintf('Citations per article'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
-        y = [4284, 191, 16, 11, 4, 6, 0, 5, 3, 58, 29, 8];
+        y = [4284, 191, 16, 11, 4, 6, 0, 5, 3, 58, 29, 8]; % citation counts from Scopus.com
         x = 1:length(y);
         nmes = {'Tolman (1948)','Tolman et al. (1946)','Gentry et al. (1947)','Gentry et al. (1948)','Birch & Korn (1958)','Kendler & Gasser (1948)','Kendler & Mencher (1949)','Wilson & Wilson (2018)','Doner et al. (2023)','Harley (1979)','Muir & Taube (2004)','Ritchie (1948)'};
         [~,idx] = sort(y,'descend');

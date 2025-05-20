@@ -1,20 +1,27 @@
 function TOL_fig_gentry1948(config,params,dat)
-% tfigpaper_kendler 
-% Kendler et al results for Duvelle and Grieves review
-% See comments for details about where the data were collected or defined
+% TOL_fig_gentry1948 
+% Figure 4
+% Gentry et al (1948) results figure for:
+% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% See TOL_data for details about where the data were collected or defined
 % 
-% SEE ALSO tfigpaper, tfigpaper_main_plot
+% SEE ALSO TOL_main, TOL_data, TOL_plotter
 
 % HISTORY
 %
 % version 1.0.0, Release 15/04/25 Initial release
+% version 1.1.0, Release 20/04/25 GitHub release
+%
+% NOTES
+% Panel a is loaded as an image file, .svg and .png provided in this repository
+% Panel b values taken from Gentry et al (1948) Fig 4
 %
 % AUTHOR 
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves
+% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% Copyright 2025 Roddy Grieves & Eleonore Duvelle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% ARGUMENT CHECK

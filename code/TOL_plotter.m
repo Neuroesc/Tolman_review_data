@@ -1,20 +1,22 @@
 function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
 % TOL_plotter
-% Main code to plot figures for Duvelle and Grieves review
+% Main code to plot figures for:
+% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
 % See individual figure function comments for details about where the data were collected or defined
 % 
-% SEE ALSO TOL_main
+% SEE ALSO TOL_main, TOL_plotter
 
 % HISTORY
 %
 % version 1.0.0, Release 06/05/25 Initial release
+% version 1.1.0, Release 20/04/25 GitHub release
 %
 % AUTHOR 
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves
+% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% Copyright 2025 Roddy Grieves & Eleonore Duvelle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Chance line and shading
@@ -78,9 +80,6 @@ function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
     end
     p1 = patch(ax,x,y,'k','FaceColor',params.short_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;    
     px = [p1 p2];
-
-% %%%%%%%%%%%%%%%% Training route
-%     p4 = line(params.axnow,[params.training_route params.training_route],[params.axnow.YLim(1) 100],'Color',params.training_color,'LineStyle',params.training_style);
 
 %%%%%%%%%%%%%%%% Actual data
     hx = [];

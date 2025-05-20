@@ -1,6 +1,7 @@
 function dat = TOL_data
 % TOL_data
-% Store for the data from all Tolman sunburst replication experiments
+% Store for the data from all Tolman sunburst replication experiments for:
+% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
 % See individual sections for details about where the data were collected
 % 
 % SEE ALSO TOL_main
@@ -8,13 +9,14 @@ function dat = TOL_data
 % HISTORY
 %
 % version 1.0.0, Release 30/04/25 Initial release
+% version 1.1.0, Release 20/04/25 GitHub release
 %
 % AUTHOR 
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves
+% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% Copyright 2025 Roddy Grieves & Eleonore Duvelle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% DATA

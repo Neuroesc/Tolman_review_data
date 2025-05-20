@@ -1,349 +1,194 @@
 function TOL_main
-% tfigpaper
-% Main code to plot figures for Duvelle and Grieves review
-% See individual figure function comments for details about where the data were collected or defined
-% 
-% SEE ALSO tfigpaper_main_plot
+% TOL_main
+% Main code to plot figures for:
+% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% Data are stored and loaded using TOL_data
+%
+% SEE ALSO TOL_data, TOL_plotter
 
 % HISTORY
 %
 % version 1.0.0, Release 15/04/25 Initial release
+% version 1.1.0, Release 20/04/25 GitHub release
+%
+% NOTES
+%
+% (1) All main studies discussed in the review should be available alongside this
+% code within the same repository, if not, please contact the authors for copies
+% of any papers that are inaccessible.
+%
+% (2) Data were digitized using the WebPlotDigitizer available at https://automeris.io
+% Data were also available for some studies online:
+% Doner et al. (2023): http://humanspatialcognitionlab.org/open-source-data-supplemental-materials/
+% and Wilson and Wilson (2018): https://ndownloader.figstatic.com/files/13987709
+%
+% (3) All citations:
+% Tolman, E. C., Ritchie, B. F., & Kalish, D. (1946). Studies in spatial learning: Orientation and the short-cut. Journal of experimental psychology, 36, 13–24
+% Gentry, G., Brown, W. L., & Kaplan, S. J. (1947). An experimental analysis of the spatial location hypothesis in learning. Journal of Comparative and ….
+% Birch, H. G., & Korn, S. J. (1958). Place-learning, cognitive maps, and parsimony. The Journal of general psychology, 58(1), 17–35.
+% Ritchie, B. F. (1948). Studies in spatial learning; place orientation and direction orientation. Journal of experimental psychology, 38(6), 659–669.
+% Gentry, G., Brown, W. L., & Lee, H. (1948). Spatial location in the learning of a multiple-t maze. Journal of comparative and physiological psychology, 41(5), 312–318.
+% Wilson, S. P., & Wilson, P. N. (2018). Failure to demonstrate short-cutting in a replication and extension of Tolman et al.’s spatial learning experiment with humans. Plos One, 13(12), e0208794.
+% Doner, S., Zheng, J., McAvan, A. S., Starrett, M. J., Campbell, H., Sanders, D., & Ekstrom, A. (2023). Evidence for flexible navigation strategies during spatial learning involving path choices. Spatial Cognition & Computation, 23(3), 233–262.
+% Kendler, H. H., & Gasser, W. P. (1948). Variables in spatial learning; number of reinforcements during training. Journal of comparative and physiological psychology, 41(3), 178–187.
+% Kendler, H. H., & Mencher, H. C. (1949). Variables in spatial learning. II. Degree of motivation during training and test trials. Journal of comparative and physiological psychology, 42(6), 493–501.
+% Young, H. F., Greenberg, E. R., Paton, W., & Jane, J. A. (1967). A reinvestigation of cognitive maps. Psychonomic science, 9(11), 589–590.
+% Harley, C. W. (1979). Arm choices in a sunburst maze: effects of hippocampectomy in the rat. Physiology & Behavior, 23(2), 283–290.
+% Muir, G. M., & Taube, J. S. (2004). Head direction cell activity and behavior in a navigation task requiring a cognitive mapping strategy. Behavioural Brain Research, 153(1), 249–253.
 %
 % AUTHOR 
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves
+% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% Copyright 2025 Roddy Grieves & Eleonore Duvelle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
     close all;
-    dat = TOL_data;
+    dat = TOL_data; % collect data for all studies in a table
 
     % configuration settings
     config = struct;
-    config.fig_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\main figures\';
-    config.schematic_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\schematics\';    
-    config.fast_figs = false;
-    config.save_fig = 1;
+    config.fig_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\main figures\'; % where the main figures will be saved
+    config.schematic_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\schematics\'; % where schematics can be found
+    config.fast_figs = false; % save figures faster but at a lower quality
+    config.save_fig = 1; % 1 = save figures, 0 = do not save
 
     % parameters for plots
     params = struct;
-    params.cols = inferno(128);
-    params.short_color = params.cols(90,:);
-    params.choice_color = params.cols(1,:);
-    params.choice_marker = 'd'; % marker to use showing % choices      
-    params.adjacent_color = params.cols(60,:);
-    params.chance_color = [.5 .5 .5; .5 .5 .5];
-    params.chance_style = '--';
-    params.chance_shading = [0.5 0.25];
-    params.training_color = [0 0 0];
-    params.training_style = '--';
-    params.shading_alpha = 0.2;
-    params.linestyle = '-';
-    params.c1 = rgb('Black');
-    params.c2 = rgb('Crimson');
-    params.c3 = rgb('ForestGreen');
-    params.c4 = rgb('SlateBlue');
-    params.c5 = rgb('Fuchsia');
-    params.c6 = rgb('Navy');
-    params.m1 = 'o';
-    params.m2 = '^';
-    params.m3 = 's';
-    params.m4 = 'd';
-    params.m5 = 'p';
-    params.m6 = 'v';
-    params.style_offset = 0;
+    params.cols = inferno(128); % general color scheme
+    params.short_color = params.cols(90,:); % shortcut path color in plots
+    params.choice_color = params.cols(1,:); % choice color in plots (c1-c6 is used below instead)
+    params.choice_marker = 'd'; % marker to use showing % choices (m1-m6 is used below instead)  
+    params.linestyle = '-'; % linestyle when plotting choice %   
+    params.adjacent_color = params.cols(60,:); % adjacent path color in plots
+    params.chance_color = [.5 .5 .5; .5 .5 .5]; % chance line color
+    params.shading_alpha = 0.2; % transparency of adjacent/shortcut shaded areas
+    params.c1 = rgb('Black'); % color 1
+    params.c2 = rgb('Crimson'); % color 2
+    params.c3 = rgb('ForestGreen'); % color 3
+    params.c4 = rgb('SlateBlue'); % color 4
+    params.c5 = rgb('Fuchsia'); % color 5
+    params.c6 = rgb('Navy'); % color 6
+    params.m1 = 'o'; % marker 1
+    params.m2 = '^'; % marker 2
+    params.m3 = 's'; % marker 3
+    params.m4 = 'd'; % marker 4
+    params.m5 = 'p'; % marker 5
+    params.m6 = 'v'; % marker 6
+    params.style_offset = 0; % used to offset color/style used
 
     % plotting options
-    plot_opts.plot_tolman1946 = 0; % Fig 1 Tolman et al. (1946) 
-    plot_opts.plot_gentry1947 = 0; % Fig 2 Gentry et al. (1947) & Birch and Korn (1958)
-    plot_opts.plot_ritchie1948 = 0; % Fig 3 Ritchie (1948)
-    plot_opts.plot_gentry1948 = 0; % Fig 4 Gentry et al. (1948) 
-    plot_opts.plot_wilson2018 = 0; % Fig 5 Wilson and Wilson (2018) & Doner et al. (2023)
-    plot_opts.plot_kendler1947 = 0; % Fig 6 Kendler et al. (1947; 1948)
-    plot_opts.plot_young1967 = 0; % Fig 7 Young et al. (1967)
-    plot_opts.plot_harley1979 = 0; % Fig 8 Harley (1979)
-    plot_opts.plot_muir2004 = 0; % Fig 9 Muir and Taube (2004)
-    plot_opts.plot_overall_stats = 1; % Fig 10
-
+    % 1 = make plot, 0 = skip
+    plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
+    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig 2 Gentry et al. (1947) & Birch and Korn (1958)
+    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig 3 Ritchie (1948)
+    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig 4 Gentry et al. (1948) 
+    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig 5 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig 6 Kendler et al. (1947; 1948)
+    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig 7 Young et al. (1967)
+    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig 8 Harley (1979)
+    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig 9 Muir and Taube (2004)
+    plot_opts.plot_overall_stats    = 1; % TOL_fig_stats1       % Fig 10, overall stats
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
+% Tolman, E. C., Ritchie, B. F., & Kalish, D. (1946). Studies in spatial learning: Orientation and the short-cut. Journal of experimental psychology, 36, 13–24
+% Figure showing results from the main Tolman et al. (1946) study, maze
+% schematic from png file, final choice graph, bar chart showing the citations
+% per publication
     if plot_opts.plot_tolman1946
         config.fig_name = 'Fig 1.png';
         TOL_fig_tolman1946(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Gentry et al. (1947) & Birch and Korn (1958)
+% Gentry, G., Brown, W. L., & Kaplan, S. J. (1947). An experimental analysis of the spatial location hypothesis in learning. Journal of Comparative and ….
+% Birch, H. G., & Korn, S. J. (1958). Place-learning, cognitive maps, and parsimony. The Journal of general psychology, 58(1), 17–35.
+% Figure showing results from Gentry et al. (1947) & Birch and Korn (1958),
+% maze schematic from png file, Gentry experiment 1 first choice graph, summary
+% of experiments, Birch and Korn test 1 and test 2 first and final choices
     if plot_opts.plot_gentry1947
         config.fig_name = 'Fig 2.png';
         TOL_fig_gentry1947(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Ritchie (1948)
+% Ritchie, B. F. (1948). Studies in spatial learning; place orientation and direction orientation. Journal of experimental psychology, 38(6), 659–669.
+% Figure showing results from the Ritchie (1948) study, maze
+% schematic from png file, final choice graph, total entries graph
     if plot_opts.plot_ritchie1948
         config.fig_name = 'Fig 3.png';
         TOL_fig_ritchie1948(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Gentry et al. (1948) 
+% Gentry, G., Brown, W. L., & Lee, H. (1948). Spatial location in the learning of a multiple-t maze. Journal of comparative and physiological psychology, 41(5), 312–318.
+% Figure showing results from the Gentry et al. (1948) study, maze
+% schematic from png file, final choice graph
     if plot_opts.plot_gentry1948
         config.fig_name = 'Fig 4.png';
         TOL_fig_gentry1948(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Wilson and Wilson (2018) & Doner et al. (2023)
+% Wilson, S. P., & Wilson, P. N. (2018). Failure to demonstrate short-cutting in a replication and extension of Tolman et al.’s spatial learning experiment with humans. Plos One, 13(12), e0208794.
+% Doner, S., Zheng, J., McAvan, A. S., Starrett, M. J., Campbell, H., Sanders, D., & Ekstrom, A. (2023). Evidence for flexible navigation strategies during spatial learning involving path choices. Spatial Cognition & Computation, 23(3), 233–262.
+% Figure showing results from the Wilson and Wilson (2018) & Doner et al. (2023)
+% human studies, schematic from png file, Wilson and Wilson final choice graph,
+% Doner et al. Experiment 1-3 final choice graphs
     if plot_opts.plot_wilson2018
         config.fig_name = 'Fig 5.png';
         TOL_fig_wilson2018(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Kendler et al. (1947; 1948)
+% Kendler, H. H., & Gasser, W. P. (1948). Variables in spatial learning; number of reinforcements during training. Journal of comparative and physiological psychology, 41(3), 178–187.
+% Kendler, H. H., & Mencher, H. C. (1949). Variables in spatial learning. II. Degree of motivation during training and test trials. Journal of comparative and physiological psychology, 42(6), 493–501.
+% Figure showing results from the Kendler et al. (1947; 1948) and Chamberlain
+% (1947) studies, maze schematic from png file, Kendler and Gasser final choice
+% graph, additional test trials final choice graph, same for Kendler and Mencher
     if plot_opts.plot_kendler1947
         config.fig_name = 'Fig 6.png';
         TOL_fig_kendler1947(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Young et al. (1967)
+% Young, H. F., Greenberg, E. R., Paton, W., & Jane, J. A. (1967). A reinvestigation of cognitive maps. Psychonomic science, 9(11), 589–590.
+% Figure showing results from the Young et al. (1967) study, maze
+% schematic from png file, final choice graph for groups 1/2/4, 3 and 5/6
     if plot_opts.plot_young1967
         config.fig_name = 'Fig 7.png';
         TOL_fig_young1967(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Harley (1979)
+% Harley, C. W. (1979). Arm choices in a sunburst maze: effects of hippocampectomy in the rat. Physiology & Behavior, 23(2), 283–290.
+% Figure showing results from the Harley (1979) study, maze
+% schematic from png file, final choice graph for acquisition and retention
+% groups
     if plot_opts.plot_harley1979
         config.fig_name = 'Fig 8.png';
         TOL_fig_harley1979(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Muir and Taube (2004)
+% Muir, G. M., & Taube, J. S. (2004). Head direction cell activity and behavior in a navigation task requiring a cognitive mapping strategy. Behavioural Brain Research, 153(1), 249–253.
+% Figure showing results from the Muir and Taube (2004) study, maze
+% schematic from png file, final choice graph for maze configuration II, summary
+% graph for all maze configurations
+% See function for information sent by Gary Muir about the configuration
+% identification
     if plot_opts.plot_muir2004
         config.fig_name = 'Fig 9.png';
         TOL_fig_muir2004(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Overall stats
+% All studies summarised based on shortcut/adjacent/light/other path choices,
+% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
+% across studies, bar chart showing most common findings
     if plot_opts.plot_overall_stats
         config.fig_name = 'Fig 10.png';
         TOL_fig_stats1(config,params,dat);
     end
-
-
-
-
-
-
-
-
-% 
-return
-% 
-% idx = find(ismember(dat.experiment,'Gentry_et_al_1947') & ismember(dat.group,'h1') & ismember(dat.test,'final_choice'));
-% 
-% m_s = dat.short(idx(1),:); % shortcut
-% m_a = dat.training(idx(1),:); % training start
-% m_of = 1; % outer towards food
-% m_oa = 18; % outer away from food
-% m_l = 5; % light
-% mus = [m_s; m_a; m_of; m_oa; m_l];
-% sigma = 1;
-% 
-% gm = gmdistribution(mus',repmat(sigma,size(mus,1),size(mus,1)));
-% 
-% 
-% d = dat.pchoice(idx);
-% 
-% 
-
-
-
-
-
-
-v1 = [0 24+36+18+18]; % north
-v2 = [-18 0]; % west
-v3 = [60 0]; % east
-vs = [v1;v2;v3];
-[th,ra] = cart2pol(vs(:,1),vs(:,2));
-vs = normalize(vs,2,'norm');
-w = ra ./ sum(ra,"all");
-vs = vs .* w(:);
-
-% iti = 1000;
-% d = NaN(iti,2);
-% for ii = 1:iti
-%     % rindx = randi(size(th,1),1);
-%     nv = randi(size(vs,1),1);
-%     rindx = randsample(1:length(th),nv,true,w);
-%     temp_vect = sum(vs(rindx,:),1);
-%     [t_temp,r_temp] = cart2pol(temp_vect(:,1),temp_vect(:,2));
-%     d(ii) = rad2deg( t_temp );
-% 
-%     % keyboard
-% end
-% 
-% xi = linspace(0,180,19);
-% x = movmean(xi,2,'Endpoints','discard');
-% h = histcounts(d(:,1),xi,'Normalization','count');
-% 
-% figure
-% tiledlayout('flow')
-% nexttile
-% bar(x,h,0.9,'k');
-% 
-% nexttile
-% bar(x,imgaussfilt(h,1.5),0.9,'k');
-
-
-
-xi = linspace(0,180,19);
-xi = [0:10:80 100:10:180];
-m = rad2deg(th);
-% s = ra./sum(ra,"all").*100;
-s = (1-vs).*10;
-y1 = normpdf(xi,m(1),s(1));
-y2 = normpdf(xi,m(2),s(2));
-y3 = normpdf(xi,m(3),s(3));
-y1 = y1 ./ sum(y1,"all");
-y2 = y2 ./ sum(y2,"all");
-y3 = y3 ./ sum(y3,"all");
-
-
-w = ( ra ./ sum(ra,"all") );
-d = y1 .* w(1) + y2 .* w(2) + y3 .* w(3);
-% d = y1 .* ra(1) .* y2 .* ra(2)  y3 .* ra(3);
-
-
-figure
-tiledlayout('flow')
-nexttile
-bar(xi,y1,0.9,'r'); hold on;
-bar(xi,y2,0.9,'g');
-bar(xi,y3,0.9,'b');
-
-nexttile
-bar(xi,d,0.9,'k');
-
-
-
-
-
-% keyboard
-
-return
-choice_nums = NaN(size(dat,1),4);
-for ii = 1:size(dat,1)
-    if any(ismember(dat.experiment{ii},{'Harley_1979'}))
-        continue
-    end
-    if isempty(dat.pchoice{ii})
-        c = dat.mean{ii};
-    else
-        c = dat.pchoice{ii};
-    end
-    s_idx = [];
-    if ~any(isnan(dat.short(ii,:)))
-        s_idx = dat.short(ii,:);
-        choice_nums(ii,1) = c(s_idx);
-    end
-    a_idx = [];
-    if ~any(isnan(dat.adjacent(ii,:)))
-        a_idx = dat.adjacent(ii,:);
-        choice_nums(ii,2) = mean(c(a_idx),"all",'omitmissing');
-    end
-    o_idx = [];
-    if ~any(isnan(dat.outer(ii,:)))
-        o_idx = dat.outer(ii,:);
-        choice_nums(ii,3) = mean(c(o_idx),"all",'omitmissing');
-    end
-    idx = true(size(c));
-    idx([s_idx a_idx o_idx]) = false;    
-    v = c(idx);
-    % choice_nums(ii,4:(4+length(v)-1)) = v;
-    choice_nums(ii,4) = mean(v,"all",'omitmissing');
-
-    choice_nums(ii,:) = choice_nums(ii,:) - dat.chance(ii);
-end
-% choice_nums(all(isnan(choice_nums),2),:) = [];
-
-
-figure
-tiledlayout('flow');
-nexttile([2 1])
-imagesc(choice_nums)
-colormap(cmocean('balance'))
-colorbar
-caxis([-25 30])
-
-nexttile([1 1])
-plot(choice_nums')
-
-nexttile([1 1])
-
-
-figure
-[C,IA,IC] = unique(dat.experiment);
-
-c = inferno(max(IC,[],"all",'omitmissing'));
-scatter(choice_nums(:,1),choice_nums(:,2),120,c(IC,:),'filled','o','MarkerFaceAlpha',0.5); hold on;
-text(choice_nums(ismember(dat.experiment,'Tolman_et_al_1946'),1),choice_nums(ismember(dat.experiment,'Tolman_et_al_1946'),2),'T','HorizontalAlignment','center','VerticalAlignment','middle')
-text(choice_nums(ismember(dat.experiment,'wilson_2018'),1),choice_nums(ismember(dat.experiment,'wilson_2018'),2),'w','HorizontalAlignment','center','VerticalAlignment','middle')
-text(choice_nums(ismember(dat.experiment,'doner_et_al_2023'),1),choice_nums(ismember(dat.experiment,'doner_et_al_2023'),2),'d','HorizontalAlignment','center','VerticalAlignment','middle')
-text(choice_nums(ismember(dat.experiment,'Harley_1979'),1),choice_nums(ismember(dat.experiment,'Harley_1979'),2),'h','HorizontalAlignment','center','VerticalAlignment','middle')
-
-% keyboard
-axis square
-a = axis;
-line([-100 100],[-100 100],'Color',[.5 .5 .5],'LineStyle','--');
-axis(a);
-% colormap('viridis')
-
-
-
-
-
-
-
-% rng(1); % For reproducibility
-% X = choice_nums(:,[1 2]);
-% [idx,C] = kmeans(X,2);
-% x1 = min(X(:,1)):0.01:max(X(:,1));
-% x2 = min(X(:,2)):0.01:max(X(:,2));
-% [x1G,x2G] = meshgrid(x1,x2);
-% XGrid = [x1G(:),x2G(:)]; % Defines a fine grid on the plot
-% 
-% idx2Region = kmeans(XGrid,2,'MaxIter',100,'Start',C);
-% 
-% figure;
-% gscatter(XGrid(:,1),XGrid(:,2),idx2Region,...
-%     [0,0.75,0.75;0.75,0,0.75;0.75,0.75,0],'..');
-% hold on;
-% plot(X(:,1),X(:,2),'k*','MarkerSize',5);
-% title 'Fisher''s Iris Data';
-% xlabel 'Petal Lengths (cm)';
-% ylabel 'Petal Widths (cm)'; 
-% legend('Region 1','Region 2','Region 3','Data','Location','SouthEast');
-% hold off;
-
-
-return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
