@@ -1,5 +1,5 @@
 Group number,Participant age,"GROUP: 1=Light-Light, 2=Ambient, 3=Light-Shifted","Gender M=1, F=2",Chosen path number in the test,Pointing error/accuracy (degrees): absolute difference between the actual direction to the goal location and the participant's estimate of that direction,Blind ratings of plan view drawn by participants 
-1,20,1,1,6,6.634349875,missing vlaue
+1,20,1,1,6,6.634349875,NaN
 2,20,1,2,14,37.21152507,1
 3,20,1,1,5,11.23765577,4
 4,20,1,1,1,10.22407384,4
@@ -18,8 +18,8 @@ Group number,Participant age,"GROUP: 1=Light-Light, 2=Ambient, 3=Light-Shifted",
 17,21,1,1,1,10.44403526,4
 18,20,1,2,10,32.62350026,2
 19,21,1,1,8,33.451685,5
-20,19,1,2,1,168.0439574,4
-1,20,2,1,9,15.72150506,missing value
+20,19,1,2,1,NaN,4
+1,20,2,1,9,15.72150506,NaN
 2,20,2,2,7,38.75813358,5
 3,20,2,1,1,69.43659797,3
 4,21,2,1,18,3.098723487,5

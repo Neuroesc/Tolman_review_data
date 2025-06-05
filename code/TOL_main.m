@@ -49,6 +49,7 @@ function TOL_main
 
     % configuration settings
     config = struct;
+    config.dat_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\data\'; % where the data files are/will be saved
     config.fig_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\main figures\'; % where the main figures will be saved
     config.schematic_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\schematics\'; % where schematics can be found
     config.fast_figs = false; % save figures faster but at a lower quality
@@ -89,7 +90,8 @@ function TOL_main
     plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig 7 Young et al. (1967)
     plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig 8 Harley (1979)
     plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig 9 Muir and Taube (2004)
-    plot_opts.plot_overall_stats    = 0; % TOL_fig_stats1       % Fig 10, overall stats
+    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 10, Tolman's results stand out
+    plot_opts.plot_overall_stats2   = 1; % TOL_fig_stats2       % Fig 11, What does the task measure?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
@@ -184,11 +186,20 @@ function TOL_main
         TOL_fig_muir2004(config,params,dat);
     end
 
-%%%%%%%%%%%%%%%% Overall stats
+%%%%%%%%%%%%%%%% Overall stats 1
 % All studies summarised based on shortcut/adjacent/light/other path choices,
 % studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
 % across studies, bar chart showing most common findings
-    if plot_opts.plot_overall_stats
+    if plot_opts.plot_overall_stats1
         config.fig_name = 'Fig 10.png';
         TOL_fig_stats1(config,params,dat);
+    end
+
+%%%%%%%%%%%%%%%% Overall stats 2
+% All studies summarised based on shortcut/adjacent/light/other path choices,
+% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
+% across studies, bar chart showing most common findings
+    if plot_opts.plot_overall_stats2
+        config.fig_name = 'Fig 11.png';
+        TOL_fig_stats2(config,params,dat);
     end
