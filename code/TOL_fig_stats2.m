@@ -37,7 +37,7 @@ function TOL_fig_stats1(config,params,dat)
     xnow = 50;
     ynow = 650;
     ax1 = axes('Units','pixels','Position',[xnow ynow 110 150]);
-        ah = add_panel_title('a',sprintf(''),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('a',sprintf('Tolman et al. (1946)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
         
         % Tolman et al. (1946) pp 19
         % Finally, of the 19 rats which chose path No. 6, 10 were Tryon  'brights' and nine were Tryon 'dulls.
@@ -64,7 +64,7 @@ function TOL_fig_stats1(config,params,dat)
 %%%%%%%%%%%%%%%% Rodents vs primates
     xnow = xnow+ax1.Position(3)+hbuff;
     ax2 = axes('Units','pixels','Position',[xnow ynow 110 150]);
-        ah = add_panel_title('b',sprintf(''),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('b',sprintf('Young et al. (1967)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         idx = [find( ismember(dat.experiment,'Young_et_al_1967') & ismember(dat.group,'group_5') )...
             find( ismember(dat.experiment,'Young_et_al_1967') & ismember(dat.group,'group_6') )];
@@ -139,7 +139,7 @@ function TOL_fig_stats1(config,params,dat)
 
     xnow = 200;
     ax3 = axes('Units','pixels','Position',[ax2.Position(1)-49.5 ynow 50 150]);
-        ah = add_panel_title('c',sprintf(''),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Wilson and Wilson (2018)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         % p1 = stem(1:3,d(:,2),"filled",'Color','r');
         p2 = bar(1:3,d(:,2),0.7,'r');
@@ -159,13 +159,76 @@ function TOL_fig_stats1(config,params,dat)
         ax3.YTickLabel{1} = '';
         text(0.4,-0.1,sprintf('Pointing\naccuracy'),'Units','normalized','FontSize',8,'HorizontalAlignment','center','VerticalAlignment','top')
 
+%%%%%%%%%%%%%%%% Doner et al. (2023) SBSOD scores
+% Across both studies, participants in Experiments 1 and 2 had a mean SBSOD score of 
+% 3.7 (SD = 1.0). We then filtered the responses to take a closer look at the SBSOD 
+% responses from the participants in the ambient lighting condition, who had no influence 
+% of a beacon. There was a total of 80 ambient participants. 6/80 or 8% of participants 
+% (2 males, 4 females) total chose the ‘Place response’ hallway (#6) and had an average 
+% SBSOD score of 3.2 (SD = 1.6). 27/80 (6 males, 19 females, 1 gender queer/gender 
+% nonconforming, 1 transmale) participants had a “kinesthetic response’” hallway 
+% choice (Hallways 9 or 10) with an average SBSOD score of 3.7 (SD = 1.0). An independent 
+% samples T-Test on the SBSOD scores for all ambient condition participants who executed 
+% a “place” or “kinesthetic response” strategy indicated no significant difference in 
+% the means t(31) = −1.0, p = .33. Note that due to our small sample size, we could not 
+% further divide by gender for the T-Test analysis.
+    xnow = 50;
+    ynow = ynow-230;
+    ax3 = axes('Units','pixels','Position',[xnow ynow 110 150]);
+        ah = add_panel_title('d',sprintf('Doner et al. (2023)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
+        x = 1:2;
+        y = [3.2 3.7];
+        s = [1.6 1.0];
 
+        errorbar(x(1),y(1),s(1),'Color',rgb('Black'),'LineStyle','none','Marker','.','MarkerSize',30); hold on;
+        errorbar(x(2),y(2),s(2),'Color',rgb('Purple'),'LineStyle','none','Marker','.','MarkerSize',30); hold on;
 
+        ax3.XTick = 1:2;
+        ax3.XTickLabel = {'Place','Response'};
+        ylabel('SBSOD score')
+        box off;
+        ax3.XLim = [0.5 2.5];
+        ax3.YLim(1) = 0;
+        text(0.1,1,sprintf('t(%d) = %.1f, {\\itp} = %s',31,-1,strrep(num2str(0.33,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
 
+%%%%%%%%%%%%%%%% Muir and Taube
+    xnow = xnow+ax3.Position(3)+hbuff+10;
+    ynow = ynow;
+    ax3 = axes('Units','pixels','Position',[xnow ynow 150 150]);
+        ah = add_panel_title('e',sprintf('Muir and Taube (2004)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
-keyboard
-return
+        arm_angs = [0 24 48 72 108 132 156 180];
+        goal_arm = [1 1 4 7 4 7 4 7 7 4 7 4 1 4 7 4];
+        choice_1_arm = [8 8 8 4 3 6 8 6 6 2 4 6 1 1 1 1];
+        num_errors = [4 4 4 7 6 1 3 NaN NaN 2 25 8 0 NaN NaN 2];
+        pfd_shift_maze = [-0.93 -6.02 -6.79 4.18 -8.39 14.89 -9.04 12.98 -6.87 0.98 21.24 3.03 4.36 -3.29 NaN -5.04];
+        pfd_shift_full = [-5.45 12.51 5.81 -11.05 -10.32 -3.71 2.59 11.36 1.46 1.66 5.24 -6.04 9.22 3.44 3.31 -8.75];
+
+        x = abs( arm_angs(choice_1_arm) - arm_angs(goal_arm) );
+        y = abs( pfd_shift_maze );
+        x = x(:);
+        y = y(:);
+
+        alp = 0.5;
+        s = scatter(x,y,50,rgb('Black'),"filled",'MarkerFaceAlpha',alp,'MarkerEdgeColor','none'); hold on;
+        r = refline;
+        set(r,'Color','r')
+
+        % ax3.XTick = 1:2;
+        % ax3.XTickLabel = {'Place','Response'};
+        ylabel(sprintf('HD drift |(%c)|',176))
+        xlabel(sprintf('Path error |(%c)|',176))
+        grid on;
+        % box off;
+        % ax3.XLim = [0.5 2.5];
+        ax3.YLim = [0 50];
+        line(ax3.XLim,[0 0],'Color',[.5 .5 .5],'LineStyle','-')
+
+        nindx = ~isnan(x(:)) & ~isnan(y(:));
+        [r,p] = corr(x(nindx),y(nindx),"Type","Pearson","Rows",'pairwise');
+        text(0.1,1,sprintf('r = %.1f, {\\itp} = %s',r,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
+
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 
