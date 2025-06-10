@@ -32,7 +32,7 @@ function TOL_fig_stats1(config,params,dat)
     hbuff = 50;
     vbuff = 220;
     fsiz = 6;
-
+    
 %%%%%%%%%%%%%%%% Brights vs Dulls
     xnow = 50;
     ynow = 650;
