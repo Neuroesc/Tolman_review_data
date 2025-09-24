@@ -1,7 +1,7 @@
 function TOL_main
 % TOL_main
 % Main code to plot figures for:
-% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
 % Data are stored and loaded using TOL_data
 %
 % SEE ALSO TOL_data, TOL_plotter
@@ -103,9 +103,7 @@ function TOL_main
     plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S3 Ritchie (1948)
     plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S6 Kendler et al. (1947; 1948)
     plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S4 Gentry et al. (1948) 
-    plot_opts.plot_muir2004         = 1; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
-
-
+    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 

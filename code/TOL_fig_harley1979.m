@@ -2,7 +2,7 @@ function TOL_fig_harley1979(config,params,dat)
 % TOL_fig_harley1979
 % Figure 8
 % Young et al (1967) results figure for:
-% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
 % See TOL_data for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
