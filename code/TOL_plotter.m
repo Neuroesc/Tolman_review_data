@@ -1,7 +1,7 @@
 function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
 % TOL_plotter
 % Main code to plot figures for:
-% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
 % See individual figure function comments for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_plotter
