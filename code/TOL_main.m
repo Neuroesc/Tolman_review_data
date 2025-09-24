@@ -63,6 +63,9 @@ function TOL_main
     params.choice_marker = 'd'; % marker to use showing % choices (m1-m6 is used below instead)  
     params.linestyle = '-'; % linestyle when plotting choice %   
     params.adjacent_color = params.cols(60,:); % adjacent path color in plots
+    params.light_color = rgb('SlateBlue');
+    params.outer_color = rgb('SeaGreen');
+    
     params.chance_color = [.5 .5 .5; .5 .5 .5]; % chance line color
     params.shading_alpha = 0.2; % transparency of adjacent/shortcut shaded areas
     params.c1 = rgb('Black'); % color 1
@@ -79,19 +82,30 @@ function TOL_main
     params.m6 = 'v'; % marker 6
     params.style_offset = 0; % used to offset color/style used
 
+    % params.short_color = rgb('Blue'); % shortcut path color in plots
+    % params.adjacent_color = rgb('Gold'); % adjacent path color in plots
+    % params.shading_alpha = 0.4; % transparency of adjacent/shortcut shaded areas
+
     % plotting options
     % 1 = make plot, 0 = skip
+
+    % main figures
     plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
-    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig 2 Gentry et al. (1947) & Birch and Korn (1958)
-    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig 3 Ritchie (1948)
-    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig 4 Gentry et al. (1948) 
-    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig 5 Wilson and Wilson (2018) & Doner et al. (2023)
-    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig 6 Kendler et al. (1947; 1948)
-    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig 7 Young et al. (1967)
-    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig 8 Harley (1979)
-    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig 9 Muir and Taube (2004)
-    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 10, Tolman's results stand out
-    plot_opts.plot_overall_stats2   = 1; % TOL_fig_stats2       % Fig 11, What does the task measure?
+                                                                % Fig 2 in Inkscape
+    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
+    plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
+
+    % supplementary figures
+    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
+    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S8 Harley (1979)
+    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S5 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S7 Young et al. (1967)
+    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S3 Ritchie (1948)
+    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S6 Kendler et al. (1947; 1948)
+    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S4 Gentry et al. (1948) 
+    plot_opts.plot_muir2004         = 1; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
@@ -104,6 +118,26 @@ function TOL_main
         TOL_fig_tolman1946(config,params,dat);
     end
 
+%%%%%%%%%%%%%%%% Overall stats 1
+% All studies summarised based on shortcut/adjacent/light/other path choices,
+% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
+% across studies, bar chart showing most common findings
+    if plot_opts.plot_overall_stats1
+        config.fig_name = 'Fig 3.png';
+        TOL_fig_stats1(config,params,dat);
+    end
+
+%%%%%%%%%%%%%%%% Overall stats 2
+% All studies summarised based on shortcut/adjacent/light/other path choices,
+% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
+% across studies, bar chart showing most common findings
+    if plot_opts.plot_overall_stats2
+        config.fig_name = 'Fig 4.png';
+        TOL_fig_stats2(config,params,dat);
+    end
+
+
+
 %%%%%%%%%%%%%%%% Gentry et al. (1947) & Birch and Korn (1958)
 % Gentry, G., Brown, W. L., & Kaplan, S. J. (1947). An experimental analysis of the spatial location hypothesis in learning. Journal of Comparative and ….
 % Birch, H. G., & Korn, S. J. (1958). Place-learning, cognitive maps, and parsimony. The Journal of general psychology, 58(1), 17–35.
@@ -111,7 +145,7 @@ function TOL_main
 % maze schematic from png file, Gentry experiment 1 first choice graph, summary
 % of experiments, Birch and Korn test 1 and test 2 first and final choices
     if plot_opts.plot_gentry1947
-        config.fig_name = 'Fig 2.png';
+        config.fig_name = 'Fig S1.png';
         TOL_fig_gentry1947(config,params,dat);
     end
 
@@ -120,7 +154,7 @@ function TOL_main
 % Figure showing results from the Ritchie (1948) study, maze
 % schematic from png file, final choice graph, total entries graph
     if plot_opts.plot_ritchie1948
-        config.fig_name = 'Fig 3.png';
+        config.fig_name = 'Fig S5.png';
         TOL_fig_ritchie1948(config,params,dat);
     end
 
@@ -129,7 +163,7 @@ function TOL_main
 % Figure showing results from the Gentry et al. (1948) study, maze
 % schematic from png file, final choice graph
     if plot_opts.plot_gentry1948
-        config.fig_name = 'Fig 4.png';
+        config.fig_name = 'Fig S7.png';
         TOL_fig_gentry1948(config,params,dat);
     end
 
@@ -140,7 +174,7 @@ function TOL_main
 % human studies, schematic from png file, Wilson and Wilson final choice graph,
 % Doner et al. Experiment 1-3 final choice graphs
     if plot_opts.plot_wilson2018
-        config.fig_name = 'Fig 5.png';
+        config.fig_name = 'Fig S3.png';
         TOL_fig_wilson2018(config,params,dat);
     end
 
@@ -151,7 +185,7 @@ function TOL_main
 % (1947) studies, maze schematic from png file, Kendler and Gasser final choice
 % graph, additional test trials final choice graph, same for Kendler and Mencher
     if plot_opts.plot_kendler1947
-        config.fig_name = 'Fig 6.png';
+        config.fig_name = 'Fig S6.png';
         TOL_fig_kendler1947(config,params,dat);
     end
 
@@ -160,7 +194,7 @@ function TOL_main
 % Figure showing results from the Young et al. (1967) study, maze
 % schematic from png file, final choice graph for groups 1/2/4, 3 and 5/6
     if plot_opts.plot_young1967
-        config.fig_name = 'Fig 7.png';
+        config.fig_name = 'Fig S4.png';
         TOL_fig_young1967(config,params,dat);
     end
 
@@ -170,7 +204,7 @@ function TOL_main
 % schematic from png file, final choice graph for acquisition and retention
 % groups
     if plot_opts.plot_harley1979
-        config.fig_name = 'Fig 8.png';
+        config.fig_name = 'Fig S2.png';
         TOL_fig_harley1979(config,params,dat);
     end
 
@@ -182,24 +216,6 @@ function TOL_main
 % See function for information sent by Gary Muir about the configuration
 % identification
     if plot_opts.plot_muir2004
-        config.fig_name = 'Fig 9.png';
+        config.fig_name = 'Fig S8.png';
         TOL_fig_muir2004(config,params,dat);
-    end
-
-%%%%%%%%%%%%%%%% Overall stats 1
-% All studies summarised based on shortcut/adjacent/light/other path choices,
-% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
-% across studies, bar chart showing most common findings
-    if plot_opts.plot_overall_stats1
-        config.fig_name = 'Fig 10.png';
-        TOL_fig_stats1(config,params,dat);
-    end
-
-%%%%%%%%%%%%%%%% Overall stats 2
-% All studies summarised based on shortcut/adjacent/light/other path choices,
-% studies plotted as a function of shortcut vs adjacent likelihood, shortcut use
-% across studies, bar chart showing most common findings
-    if plot_opts.plot_overall_stats2
-        config.fig_name = 'Fig 11.png';
-        TOL_fig_stats2(config,params,dat);
     end

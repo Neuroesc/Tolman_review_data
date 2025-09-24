@@ -40,10 +40,22 @@ function TOL_fig_tolman1946(config,params,dat)
     fsiz = 6;
 
 %%%%%%%%%%%%%%%% Maze schematic 
+    xnow = 10;
+    ynow = 650;
+    ax1 = axes('Units','pixels','Position',[xnow ynow 600 180]);
+        ah = add_panel_title('a',sprintf(''),'yoffset',-20,'xoffset',30,'width',400,'fontsize',fs);
+        ah = add_panel_title('b',sprintf('Tolman et al. (1946) procedure'),'yoffset',-20,'xoffset',330,'width',400,'fontsize',fs);
+        fname = [config.schematic_dir 'shortcut.png'];
+        im = imread(fname,"png");
+        image(im);
+        axis off;
+        daspect([1 1 1])
+
+%%%%%%%%%%%%%%%% Maze schematic 
     xnow = 30;
-    ynow = 580;
+    ynow = ynow-270;
     ax1 = axes('Units','pixels','Position',[xnow ynow 560 250]);
-        ah = add_panel_title('a',sprintf('Tolman et al. (1946) maze configurations'),'yoffset',-20,'xoffset',20,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Tolman et al. (1946) maze configurations'),'yoffset',-40,'xoffset',20,'width',400,'fontsize',fs);
         fname = [config.schematic_dir 'Tolman et al 1946.png'];
         im = imread(fname,"png");
         image(im);
@@ -57,9 +69,9 @@ function TOL_fig_tolman1946(config,params,dat)
 % Fifty-six female rats, approximately three months old, Tryon stock
 % Values taken from Fig 3, pp 19
     xnow = 50;
-    ynow = ynow-190;
+    ynow = ynow-170;
     ax = axes('Units','pixels','Position',[xnow ynow 300 130]);
-        ah = add_panel_title('b',sprintf('Tolman et al. (1946)\nFirst choices in test'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('d',sprintf('Tolman et al. (1946) results'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         % get index of data we want to plot in this axis
         idx = find( ismember(dat.experiment,'Tolman_et_al_1946') );
@@ -94,7 +106,7 @@ function TOL_fig_tolman1946(config,params,dat)
 % citation counts from Scopus.com
     xnow = 50+ax.Position(3)+hbuff+30;
     ax = axes('Units','pixels','Position',[xnow ynow 170 130]);
-        ah = add_panel_title('c',sprintf('Citations per article'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('e',sprintf('Citations per article'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         y = [4284, 191, 16, 11, 4, 6, 0, 5, 3, 58, 29, 8]; % citation counts from Scopus.com
         x = 1:length(y);
@@ -122,6 +134,7 @@ function TOL_fig_tolman1946(config,params,dat)
         ax.XTickLabel = '';
         box off
 
+        % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

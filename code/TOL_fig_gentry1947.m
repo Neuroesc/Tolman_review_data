@@ -80,7 +80,7 @@ function TOL_fig_gentry1947(config,params,dat)
 % experiments 2-5 summarised
     xnow = 50+ax2.Position(3)+hbuff+110;
     ax3 = axes('Units','pixels','Position',[xnow ynow 140 120]);
-        ah = add_panel_title('c',sprintf('Gentry et al. (1947)\nExperiements I-V'),'yoffset',0,'xoffset',-40,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Gentry et al. (1947)\nExperiments I-V'),'yoffset',0,'xoffset',-40,'width',400,'fontsize',fs);
 
         gs = {'h1','h2','more_training','cd_removed','de_longer','no_training_cd_present','no_training_cd_removed'};
         d = [];
@@ -109,7 +109,9 @@ function TOL_fig_gentry1947(config,params,dat)
         box off
         ax3.XLim = [0.5 length(gs)+0.5];
 
-        % [~,lh] = legendflex(px,{'Shortcut','Adjacent'},'anchor',{'e','e'},'ncol',1,'box','off','buffer',[20 10],'xscale',.5,'fontsize',9,'ref',ax3,'padding',[20 1 1]); 
+        p1 = plot(NaN,NaN,'Color',params.short_color,'Marker','o','MarkerSize',8,'LineStyle','none','MarkerFaceColor',params.short_color);
+        p2 = plot(NaN,NaN,'Color',params.adjacent_color,'Marker','o','MarkerSize',8,'LineStyle','none','MarkerFaceColor',params.adjacent_color);
+        [~,lh] = legendflex([p1 p2],{'Shortcut','Adjacent'},'anchor',{'e','e'},'ncol',1,'box','off','buffer',[5 -10],'xscale',.5,'fontsize',9,'ref',ax3,'padding',[20 1 1]); 
 
 %%%%%%%%%%%%%%%% Birch and Korn (1958) Graph showing first test trial responses
 % Final choices

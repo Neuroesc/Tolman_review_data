@@ -23,9 +23,15 @@ function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
     if isempty(dat.mean{idx(1)}) % we want to plot percentage chosen not count
         n = sum(dat.choice{idx(1)},"all","omitmissing");
         c = sum(~isnan(dat.choice{idx(1)}));
+        if ismember(dat.species{idx(1)},'human')
+            ytext = '% participants';
+        else
+            ytext = '% animals';            
+        end
     else
         n = round(sum(dat.mean{idx(1)},"all","omitmissing"));
         c = sum(~isnan(dat.mean{idx(1)}));
+        ytext = '% choices';
     end
     o = (1:c)';
     iti = 1000;
@@ -46,9 +52,9 @@ function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
     v1 = 1.650.*s;
     v2 = 2.326.*s;
     hold on;
-    l1 = line([-100 100],[m m],'Color',params.chance_color(1,:),'LineStyle','-');  
-    l2 = line([-100 100],[m+v1 m+v1],'Color',params.chance_color(1,:),'LineStyle','--');
-    l3 = line([-100 100],[m+v2 m+v2],'Color',params.chance_color(1,:),'LineStyle',':');
+    l1 = line([-100 100],[m m],'Color',params.chance_color(1,:),'LineStyle','-','LineWidth',2);  
+    l2 = line([-100 100],[m+v1 m+v1],'Color',params.chance_color(1,:),'LineStyle','--','LineWidth',1.5);
+    l3 = line([-100 100],[m+v2 m+v2],'Color',params.chance_color(1,:),'LineStyle',':','LineWidth',1);
     lx = [l1 l2 l3];
 
     % p3 = patch(ax,[-100 -100 100 100],[0 m+v1 m+v1 0],'k','FaceColor',params.chance_color(1,:),'FaceAlpha',params.chance_shading(1),'EdgeColor','none');
@@ -105,7 +111,7 @@ function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
     ax.XLim = [min(dat.paths{idx(1)})-0.5 max(dat.paths{idx(1)})+0.5];
     ax.XTick = dat.paths{idx(1)};
     xlabel('Path choices')
-    ylabel('% choices')
+    ylabel(ytext)
     
 % %%%%%%%%%%%%%%%% Legend
 %     if any(l)

@@ -101,7 +101,7 @@ function TOL_fig_muir2004(config,params,dat)
         end
         ax3.XTick = 1:length(gs);
         ax3.XTickLabel = {'Maze I','Maze II','Maze III'};
-        ax3.YLabel.String = '% rats';
+        ax3.YLabel.String = '% animals';
 
         m = c(1);
         s = c(2);

@@ -1,4 +1,4 @@
-function TOL_fig_stats1(config,params,dat)
+function TOL_fig_stats2(config,params,dat)
 % TOL_fig_stats1
 % Figure 10
 % Overall stats results figure for:
@@ -173,7 +173,7 @@ function TOL_fig_stats1(config,params,dat)
 % the means t(31) = −1.0, p = .33. Note that due to our small sample size, we could not 
 % further divide by gender for the T-Test analysis.
     xnow = 50;
-    ynow = ynow-230;
+    ynow = ynow-240;
     ax3 = axes('Units','pixels','Position',[xnow ynow 110 150]);
         ah = add_panel_title('d',sprintf('Doner et al. (2023)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
@@ -190,13 +190,101 @@ function TOL_fig_stats1(config,params,dat)
         box off;
         ax3.XLim = [0.5 2.5];
         ax3.YLim(1) = 0;
-        text(0.1,1,sprintf('t(%d) = %.1f, {\\itp} = %s',31,-1,strrep(num2str(0.33,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
+        text(0,1,sprintf('t(%d) = %.1f, {\\itp} = %s',31,-1,strrep(num2str(0.33,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
+
+%%%%%%%%%%%%%%%% Harley
+    xnow = xnow+ax3.Position(3)+hbuff+20;
+    ynow = ynow;
+    ax3 = axes('Units','pixels','Position',[xnow ynow 100 150]);
+        ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+
+        idx1 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'control'}) & ismember(dat.test,{'test1'});
+        idx2 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'hippocampal'}) & ismember(dat.test,{'test1'});
+        idx3 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'cortical'}) & ismember(dat.test,{'test1'});
+        
+        s_idx = dat.short(find(idx1,1),:);
+        
+        d1 = cell2mat(dat.choice(idx1,:));
+        d2 = cell2mat(dat.choice(idx2,:));
+        d3 = cell2mat(dat.choice(idx3,:));
+        
+        p1s = sum(d1(:,s_idx),'all') ./ sum(d1,"all") .* 100;
+        p2s = sum(d2(:,s_idx),'all') ./ sum(d2,"all") .* 100;
+        p3s = sum(d3(:,s_idx),'all') ./ sum(d3,"all") .* 100;
+        % [p1 p2 p3]
+        % [sum(d1,"all") sum(d2,"all") sum(d3,"all")]
+        
+        % a_idx = dat.adjacent(find(idx1,1),1);
+        % p1a = sum(d1(:,a_idx),'all') ./ sum(d1,"all") .* 100;
+        % p2a = sum(d2(:,a_idx),'all') ./ sum(d2,"all") .* 100;
+        % p3a = sum(d3(:,a_idx),'all') ./ sum(d3,"all") .* 100;
+        % 
+        % v1 = (p1s-p1a) ./ (p1s+p1a);
+        % v2 = (p2s-p2a) ./ (p2s+p2a);
+        % v3 = (p3s-p3a) ./ (p3s+p3a);
+
+        b = bar(1:3,[p1s p2s p3s],0.9,'k');
+        b.FaceColor = 'flat';
+        cols = [rgb('Black');rgb('Purple');rgb('Black')];
+        b.CData = cols;
+
+        ax3.XTickLabel = {'Sham','Hippocampal','Cortical'};
+        ylabel('Shortcut use (%)')
+        box off;
+        ax3.XLim = [0.5 3.5];
+
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
+        text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
+        text(0.5,1,'Lesion pre-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
+
+    ax3r = axes('Units','pixels','Position',[xnow+ax3.Position(3)+hbuff ax3.Position(2:4)]);
+        % ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+
+        idx1 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'retention_control'}) & ismember(dat.test,{'postop1'});
+        idx2 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'retention_hippocampus'}) & ismember(dat.test,{'postop1'});
+        idx3 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'retention_cortical'}) & ismember(dat.test,{'postop1'});
+        
+        s_idx = dat.short(find(idx1,1),:);
+        
+        d1 = cell2mat(dat.choice(idx1,:));
+        d2 = cell2mat(dat.choice(idx2,:));
+        d3 = cell2mat(dat.choice(idx3,:));
+        
+        p1s = sum(d1(:,s_idx),'all') ./ sum(d1,"all") .* 100;
+        p2s = sum(d2(:,s_idx),'all') ./ sum(d2,"all") .* 100;
+        p3s = sum(d3(:,s_idx),'all') ./ sum(d3,"all") .* 100;
+        % [p1 p2 p3]
+        % [sum(d1,"all") sum(d2,"all") sum(d3,"all")]
+        
+        % a_idx = dat.adjacent(find(idx1,1),1);
+        % p1a = sum(d1(:,a_idx),'all') ./ sum(d1,"all") .* 100;
+        % p2a = sum(d2(:,a_idx),'all') ./ sum(d2,"all") .* 100;
+        % p3a = sum(d3(:,a_idx),'all') ./ sum(d3,"all") .* 100;
+        % 
+        % v1 = (p1s-p1a) ./ (p1s+p1a);
+        % v2 = (p2s-p2a) ./ (p2s+p2a);
+        % v3 = (p3s-p3a) ./ (p3s+p3a);
+
+        b = bar(1:3,[p1s p2s p3s],0.9,'k');
+        b.FaceColor = 'flat';
+        cols = [rgb('Black');rgb('Purple');rgb('Black')];
+        b.CData = cols;
+
+        ax3r.XTickLabel = {'Sham','Hippocampal','Cortical'};
+        ylabel('Shortcut use (%)')
+        box off;
+        ax3r.XLim = [0.5 3.5];
+        ax3r.YLim = ax3.YLim;
+
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
+        text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
+        text(0.5,1,'Lesion post-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
 
 %%%%%%%%%%%%%%%% Muir and Taube
-    xnow = xnow+ax3.Position(3)+hbuff+10;
-    ynow = ynow;
-    ax3 = axes('Units','pixels','Position',[xnow ynow 150 150]);
-        ah = add_panel_title('e',sprintf('Muir and Taube (2004)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+    xnow = 50;
+    ynow = ynow-250;
+    ax4 = axes('Units','pixels','Position',[xnow ynow 130 150]);
+        ah = add_panel_title('f',sprintf('Muir and Taube (2004)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         arm_angs = [0 24 48 72 108 132 156 180];
         goal_arm = [1 1 4 7 4 7 4 7 7 4 7 4 1 4 7 4];
@@ -222,13 +310,119 @@ function TOL_fig_stats1(config,params,dat)
         grid on;
         % box off;
         % ax3.XLim = [0.5 2.5];
-        ax3.YLim = [0 50];
-        line(ax3.XLim,[0 0],'Color',[.5 .5 .5],'LineStyle','-')
+        ax4.YLim = [0 50];
+        line(ax4.XLim,[0 0],'Color',[.5 .5 .5],'LineStyle','-')
 
         nindx = ~isnan(x(:)) & ~isnan(y(:));
         [r,p] = corr(x(nindx),y(nindx),"Type","Pearson","Rows",'pairwise');
         text(0.1,1,sprintf('r = %.1f, {\\itp} = %s',r,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
 
+%%%%%%%%%%%%%%%% Brights vs Dulls
+    xnow = xnow+ax4.Position(3)+hbuff+10;
+    ax5 = axes('Units','pixels','Position',[xnow ynow 110 150]);
+        ah = add_panel_title('g',sprintf('Effect of distal cues'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+
+        idx = [find( ismember(dat.experiment,'doner_et_al_2023') & ismember(dat.group,'stable_light') )...
+            find( ismember(dat.experiment,'doner_et_al_2023') & ismember(dat.group,'stable_light_distal') )...
+                        find( ismember(dat.experiment,'Young_et_al_1967') & ismember(dat.group,'group_1') )...
+            find( ismember(dat.experiment,'Gentry_et_al_1947') & ismember(dat.group,'h1') )];
+
+        max_or_median = 2; % 1 = max, 2 = mean
+
+        choice_nums = NaN(length(idx),5);        
+        for ii = 1:length(idx)
+            if isempty(dat.pchoice{idx(ii)})
+                c = dat.mean{idx(ii)};
+            else
+                c = dat.pchoice{idx(ii)};
+            end
+            s_idx = [];
+            if ~any(isnan(dat.short(idx(ii),:)))
+                s_idx = dat.short(idx(ii),:);
+                if max_or_median==2
+                    choice_nums(ii,1) = mean(c(s_idx),"all",'omitmissing');
+                elseif max_or_median==1 
+                    choice_nums(ii,1) = max(c(s_idx),[],"all",'omitmissing');  
+                end
+                choice_nums(ii,3) = choice_nums(ii,1)';
+                choice_nums(ii,1) = ( choice_nums(ii,1) - dat.chance_dist(idx(ii),1) ) ./ dat.chance_dist(idx(ii),2);
+                choice_nums(ii,4) = dat.chance_dist(idx(ii),1);
+                choice_nums(ii,5) = dat.chance_dist(idx(ii),2);
+
+            end
+            choice_nums(ii,2) = dat.nchoices(idx(ii));
+        end
+
+        x = 1:2;
+        y = choice_nums(:,1);
+
+        b = bar(x,y(1:2),0.9,'k');
+        b.FaceColor = 'flat';
+        cols = [rgb('Black');rgb('Purple')];
+        b.CData = cols;
+
+        ax5.XTickLabel = {'(-)Distal','(+)Distal'};
+        ylabel(sprintf('Shortcut use (z)'))
+        box off;
+        ax5.XLim = [0.5 2.5];
+        ax5.YLim = [-2 3];
+        line(ax5.XLim,[0 0],'Color','k')
+        xlabel('Humans');
+
+        % significance 1
+        obs2 = choice_nums(1,3);
+        obs1 = choice_nums(2,3);
+        mu2 = choice_nums(1,4);
+        mu1 = choice_nums(2,4);
+        sigma2 = choice_nums(1,5);
+        sigma1 = choice_nums(2,5);
+        
+        muD = mu1 - mu2;
+        varD = sigma1^2 + sigma2^2;
+        se = sqrt(varD);
+        z = ( (obs1 - obs2) - muD ) / se;
+        p = 2*(1 - normcdf(abs(z)));
+        text(0.5,1,sprintf('z = %.1f, {\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8,'Units','normalized')
+        % text(1.5,y(1),sprintf('Doner et al. (2023)'),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8)
+
+    ax6 = axes('Units','pixels','Position',ax5.Position+[ax5.Position(3)+10 0 0 0]);
+        x = 1:2;
+        y = choice_nums(:,1);
+
+        b = bar(x,y(3:4),0.9,'k');
+        b.FaceColor = 'flat';
+        cols = [rgb('Black');rgb('Purple')];
+        b.CData = cols;
+
+        ax6.XTickLabel = {'(-)Distal','(+)Distal'};
+        ylabel(sprintf('Shortcut use (z)'))
+        box off;
+        ax6.XLim = ax5.XLim;
+        ax6.YLim = ax5.YLim;
+        ax6.YColor = 'none';
+        line(ax6.XLim,[0 0],'Color','k')
+        xlabel('Rodents');
+
+        % significance 2
+        obs2 = choice_nums(3,3);
+        obs1 = choice_nums(4,3);
+        mu2 = choice_nums(3,4);
+        mu1 = choice_nums(4,4);
+        sigma2 = choice_nums(3,5);
+        sigma1 = choice_nums(4,5);
+        
+        muD = mu1 - mu2;
+        varD = sigma1^2 + sigma2^2;
+        se = sqrt(varD);
+        z = ( (obs1 - obs2) - muD ) / se;
+        p = 2*(1 - normcdf(abs(z)));
+        text(0.5,1,sprintf('z = %.1f, {\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8,'Units','normalized')
+
+        % text(0.5,y(3),sprintf('Young et al. (1967)'),'VerticalAlignment','bottom','HorizontalAlignment','left','FontSize',8)
+        % text(2.5,y(4),sprintf('Gentry et al. (1947)'),'VerticalAlignment','top','HorizontalAlignment','right','FontSize',8)
+
+% keyboard
+        % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

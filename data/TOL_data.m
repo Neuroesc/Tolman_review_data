@@ -49,6 +49,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = NaN; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1946; % year of publication
 
 %%%%%%%%%%%%%%%% Kendler and Gasser (1947)
     % Group 0, that did not receive reward/training
@@ -75,6 +76,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -101,6 +103,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % Group 5, that received 5 training trials
     % 12 male albino rats of the Wistar strain  
@@ -126,6 +129,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -152,6 +156,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % Group 20, that received 20 training trials
     % 12 male albino rats of the Wistar strain  
@@ -177,6 +182,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -203,6 +209,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % Group 100, that received 100 training trials
     % 12 male albino rats of the Wistar strain  
@@ -228,6 +235,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -254,6 +262,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
 %%%%%%%%%%%%%%%% Kendler and Menchen (1948)
     % Group 6-6
@@ -284,6 +293,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -310,6 +320,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % Group 6-21
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -339,6 +350,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -365,6 +377,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % Group 21-6
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -394,6 +407,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -420,6 +434,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % Group 21-21
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -449,6 +464,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -475,6 +491,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
 %%%%%%%%%%%%%%%% Chamberlain (1947)
     % Group 6-21
@@ -505,6 +522,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % Group 21-21
     % 9 male albino rats of the Wistar strain  
@@ -518,6 +536,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
 %%%%%%%%%%%%%%%% Young, Greenberg, Paton and Jane (1967)
     % Group 1
@@ -547,6 +566,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
     % Group 2
     % 5 normal albino rats, 
@@ -575,6 +595,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
     % Group 3
     % 5 normal albino  rats
@@ -603,6 +624,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
     % Group 4
     % 4-four  blind albino rats
@@ -631,6 +653,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
     % Group 5
     % 9 normal albino rats
@@ -659,6 +682,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
     % Group 6
     % 5 squirrel monkeys (Saimiri sciureus)
@@ -687,6 +711,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1967; % year of publication
 
 %%%%%%%%%%%%%%%% Harley (1979) 
     %% Acquisition group
@@ -715,6 +740,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -724,6 +750,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 9 8 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % Hippocampal rats
     % Sunburst test 1
@@ -750,6 +777,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -759,6 +787,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[2 2 1 2 4 2]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % Cortical rats
     % Sunburst test 1
@@ -785,6 +814,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -794,6 +824,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 5 8 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     %% Retention group
     % Control rats
@@ -821,6 +852,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 1
     idx = size(dat,1)+1;
@@ -830,6 +862,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 5 6 1 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 2
     idx = size(dat,1)+1;
@@ -839,6 +872,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 8 5 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 3
     idx = size(dat,1)+1;
@@ -848,6 +882,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 7 4 1 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % Hippocampal rats
     % Preop sunburst test
@@ -874,6 +909,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 1
     idx = size(dat,1)+1;
@@ -883,6 +919,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 3 6 1 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 2
     idx = size(dat,1)+1;
@@ -892,6 +929,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 1 7 2 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % postop test 3
     idx = size(dat,1)+1;
@@ -901,6 +939,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 8 2 0 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
     % Cortical rats
     % Preop sunburst test
@@ -927,6 +966,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
 
 % postop test 1
     idx = size(dat,1)+1;
@@ -936,6 +976,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 0 6 2 2 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
 % postop test 2
     idx = size(dat,1)+1;
@@ -945,6 +986,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 2 3 5 0 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
 % postop test 3
     idx = size(dat,1)+1;
@@ -954,6 +996,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 1 5 4 1 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1979; % year of publication
 
 %%%%%%%%%%%%%%%% Birch and Korn (1958)
     % Experiment 1, light at right group
@@ -981,6 +1024,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all") max(dat.paths{idx},[],"all")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -990,6 +1034,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 0 0 0 1 0 1 0 1 3 1 2 0 1 0 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % final choices
     idx = size(dat,1)+1;
@@ -999,6 +1044,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 0 0 0 0 0 0 0 0 2 2 1 0 0 1 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1011,6 +1057,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1020,6 +1067,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 0 0 0 1 0 1 0 1 4 1 0 1 0 1 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % final choices
     idx = size(dat,1)+1;
@@ -1029,6 +1077,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 1 1 0 1 1 0 0 1 1 0 0 0 0 1 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % Experiment 1, light at left group
     % 12 rats, Female, Sherman strain albino rats
@@ -1055,6 +1104,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1064,6 +1114,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[2 0 0 0 0 1 0 0 3 3 0 0 0 1 0 0 1 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % final choices
     idx = size(dat,1)+1;
@@ -1073,6 +1124,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 0 0 1 1 0 1 0 0 0 0 1 0 0 1 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1085,6 +1137,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1094,7 +1147,8 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 0 0 1 0 0 0 1 5 1 0 0 0 0 1 1 2]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
-    
+    dat.year(idx,:) = 1958; % year of publication
+
     % final choices
     idx = size(dat,1)+1;
     dat(idx,:) = dat(idx-1,:);
@@ -1103,6 +1157,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 6]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % Experiment 1, light at both sides group
     % 12 rats, Female, Sherman strain albino rats
@@ -1129,6 +1184,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 14]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1138,6 +1194,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[1 0 0 0 0 0 0 0 1 3 2 0 2 0 0 0 2 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % final choices
     idx = size(dat,1)+1;
@@ -1147,6 +1204,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 0 0 0 1 0 0 0 4 0 0 0 0 0 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1159,6 +1217,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
+    dat.year(idx,:) = 1958; % year of publication
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1168,6 +1227,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 0 0 1 0 0 0 2 7 0 0 0 1 0 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
     % final choices
     idx = size(dat,1)+1;
@@ -1177,6 +1237,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {[0 0 1 0 0 0 1 0 0 1 0 0 1 1 0 0 0 0]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1958; % year of publication
 
 %%%%%%%%%%%%%%%% Ritchie (1948)
     % F1 or light at right group
@@ -1204,6 +1265,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [8 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % all entries
     % values from Fig 9, pp 666
@@ -1214,6 +1276,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {fliplr([29 26 22 25 34 38 31 26 27 37])}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1948; % year of publication
 
     % F2 or light at left group
     % 27 pigmented male rats approximately three months old
@@ -1241,6 +1304,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
     % all entries
     % values from Fig 10, pp 666
@@ -1251,6 +1315,7 @@ function dat = TOL_data
     dat.choice(idx,:) = {fliplr([20 20 14 16 28 19 17 10 8 16])}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.year(idx,:) = 1948; % year of publication
 
 %%%%%%%%%%%%%%%% Gentry, Brown and Kaplan (1947)
     % H1 or light at right group (Group A)
@@ -1272,12 +1337,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % H2 or light at left group (Group C)
     % 22 rats approximately 120 days old and had had  no previous maze experience
@@ -1298,12 +1364,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % 9 days of training group
     % 22 rats approximately 120 days old and had had  no previous maze experience
@@ -1324,12 +1391,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % training alley CD removed during test
     % 27 rats approximately 120 days old and had had  no previous maze experience
@@ -1350,12 +1418,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % increase length of alley DE during training
     % 18 rats approximately 120 days old and had had  no previous maze experience
@@ -1377,12 +1446,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % experiment 5, no training, group A, alley CD in place during test
     % 60 rats approximately 120 days old and had had  no previous maze experience
@@ -1404,12 +1474,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
     % experiment 5, no training, group B, alley CD removed during test
     % 43 rats approximately 120 days old and had had  no previous maze experience
@@ -1431,12 +1502,13 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 5; % which path was the shortcut route
+    dat.short(idx,:) = 6; % which path was the shortcut route
     dat.training(idx,:) = 9.5; % which path corresponds to the training route (likely between two values)    
     dat.chance(idx,:) = 1/18*100; % chance level for this experiment
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1947; % year of publication
 
 %%%%%%%%%%%%%%%% Gentry, Brown and Lee (1948)
     % 80 animals were used in the present study
@@ -1466,6 +1538,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [8 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1948; % year of publication
 
 %%%%%%%%%%%%%%%% Wilson and Wilson (2018)
     % light-light group, stable light during testing and training
@@ -1494,6 +1567,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all") max(dat.paths{idx},[],"all")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2018; % year of publication
 
     % ambient-light group, no directional light during testing and training
     % 20 humans (ten males and ten females in each condition)
@@ -1521,6 +1595,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2018; % year of publication
 
     % shifted-light group, light moved 90 degrees between testing and training
     % 20 humans (ten males and ten females in each condition)
@@ -1548,6 +1623,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2018; % year of publication
 
 %%%%%%%%%%%%%%%% Doner, Zheng, McAvan, Starrett, Campbell, Sanders and Ekstrom (2023)
     %% Experiment 1
@@ -1578,6 +1654,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % ambient light group, ambient light during testing and training
     % 43  Participants
@@ -1605,6 +1682,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light big move group, light moved to opposite side for the test
     % 38  Participants
@@ -1633,6 +1711,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 40  Participants
@@ -1661,6 +1740,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 40  Participants
@@ -1689,6 +1769,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [6 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     %% Experiment 2
     % visible light big move group, distal cues, light moved 90 degrees for the test
@@ -1719,6 +1800,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light, stable group, distal cues, stable light during testing and training
     % 43 participants
@@ -1738,7 +1820,7 @@ function dat = TOL_data
     dat.pigment(idx) = NaN; % pigmented rats = 1, albino = 0, otherwise = NaN
     dat.strain(idx) = {''}; % strain of rats, otherwise = NaN    
     dat.paths(idx,:) = {1:18}; % the paths as they are numbered in the paper
-    dat.choice(idx,:) = {[3 0 0 0 10 7 2 4 7 7 4 1 1 0 1 0 0 6]}; % frequency choice of each path
+    dat.choice(idx,:) = {[2 0 0 0 13 6 3 2 4 7 0 0 0 0 1 3 2 1]}; % frequency choice of each path
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.adjacent(idx,:) = [9 10]; % which paths were adjacent to the training route
@@ -1748,6 +1830,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % ambient light group, ambient light during testing and training
     % 40 participants
@@ -1777,6 +1860,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 45 participants
@@ -1806,6 +1890,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     %% Experiment 3
     % visible light, stable group, treadmill VR, stable light during testing and training
@@ -1836,6 +1921,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % ambient light group, ambient light during testing and training
     % 18  participants 
@@ -1865,6 +1951,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light big move group, distal cues, light moved 90 degrees for the test
     % 18  participants 
@@ -1894,6 +1981,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 18  participants 
@@ -1923,6 +2011,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [6 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
     % visible light small move CCW, light moved 10 degrees to the left or CCW for the test
     % 18  participants 
@@ -1952,6 +2041,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2023; % year of publication
 
 %%%%%%%%%%%%%%%% Muir and Taube
     % Email from Gary Muir 29/04/2025
@@ -1990,6 +2080,7 @@ function dat = TOL_data
     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 2004; % year of publication
 
     % Maze configuration B or 2 or II
     % values from Table 1, pp 250
@@ -2002,6 +2093,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.short(idx,:) = 6; % which path was the shortcut route
+    dat.year(idx,:) = 2004; % year of publication
 
     % Maze configuration C or 3 or III
     % values from Table 1, pp 250
@@ -2014,6 +2106,7 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.short(idx,:) = 1; % which path was the shortcut route
+    dat.year(idx,:) = 2004; % year of publication
 
 %% add display name column
     dat.display_experiment = dat.experiment;
@@ -2030,6 +2123,42 @@ function dat = TOL_data
     dat.display_experiment( ismember(dat.experiment,'Harley_1979') ) = {'Harley (1979)'};
     dat.display_experiment( ismember(dat.experiment,'Chamberlain_1947') ) = {'Chamberlain (1947)'};
     dat.display_experiment( ismember(dat.experiment,'Muir_and_Taube_2004') ) = {'Muir and Taube (2004)'};
+
+%% add chance shuffle info
+    for jj = 1:size(dat,1)
+        idx = jj;
+        if isfield(dat,'chance_dist') && ~all(isnan(dat.chance_dist(jj,:)))
+            continue
+        end
+
+        if isempty(dat.mean{idx}) % we want to plot percentage chosen not count
+            n = sum(dat.choice{idx},"all","omitmissing");
+            c = sum(~isnan(dat.choice{idx}));
+        else
+            n = round(sum(dat.mean{idx},"all","omitmissing"));
+            c = sum(~isnan(dat.mean{idx}));
+        end
+        o = (1:c)';
+        iti = 1000;
+        rindx = NaN(iti,c);
+        for ii = 1:iti
+            rn = randi(c,n,1);
+            cn = o(rn);
+            rindx(ii,:) = accumarray(cn,ones(size(cn)),size(o),@sum);
+        end
+        if isempty(dat.mean{idx(1)}) % we will plot percentage chosen not count
+            pindx = rindx ./ n .* 100;
+        else
+            pindx = rindx;        
+        end
+
+        m = mean(pindx,"all",'omitmissing');
+        s = std(pindx,[],"all",'omitmissing');
+        v1 = 1.650.*s;
+        v2 = 2.326.*s;
+
+        dat.chance_dist(jj,1:4) = [m s v1 v2];
+    end
 
 %% end
     warning('on','MATLAB:table:RowsAddedExistingVars');

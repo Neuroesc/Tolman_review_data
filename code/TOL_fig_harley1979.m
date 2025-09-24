@@ -61,7 +61,7 @@ function TOL_fig_harley1979(config,params,dat)
         v = linspace(y(1),y(2),vs);
         for vv = 1:length(v)-1
             p3 = patch(gca,[x(1),x(1),x(2),x(2)],[v(vv),v(vv+1),v(vv+1),v(vv)],'k','FaceColor',params.adjacent_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;            
-            if isEven(vv)
+            if rem(vv,2)==0
                 p3.FaceColor = params.short_color;
             end
         end
@@ -69,9 +69,9 @@ function TOL_fig_harley1979(config,params,dat)
         p3 = patch(gca,[x(1),x(1),x(2),x(2)],[0,100,100,0],'k','FaceColor',params.adjacent_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;            
 
         % get index of data we want to plot in this axis
-        idx = [find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'control') & ismember(dat.test,'test1') )...
-            find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'hippocampal') & ismember(dat.test,'test1') )...
-            find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'cortical') & ismember(dat.test,'test1') )];
+        idx = [find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'control') & ismember(dat.test,{'test1'}) )...
+            find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'hippocampal') & ismember(dat.test,{'test1'}) )...
+            find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'cortical') & ismember(dat.test,{'test1'}) )];
 
         % use TOL_plotter to plot the data, chance level, shaded regions etc
         ax = gca;
@@ -82,7 +82,7 @@ function TOL_fig_harley1979(config,params,dat)
         ax.YLim = [0 80];
         px(1).FaceColor = 'none';
         px(2).FaceColor = 'none';
-
+% keyboard
 %%%%%%%%%%%%%%%% Harley 1979
     xnow = 50+ax2.Position(3)+hbuff+10;
     ax3 = axes('Units','pixels','Position',[xnow ynow 250 130]);
@@ -94,7 +94,7 @@ function TOL_fig_harley1979(config,params,dat)
         v = linspace(y(1),y(2),vs);
         for vv = 1:length(v)-1
             p3 = patch(gca,[x(1),x(1),x(2),x(2)],[v(vv),v(vv+1),v(vv+1),v(vv)],'k','FaceColor',params.adjacent_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;            
-            if isEven(vv)
+            if rem(vv,2)==0
                 p3.FaceColor = params.short_color;
             end
         end
