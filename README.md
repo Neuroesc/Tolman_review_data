@@ -1,22 +1,26 @@
 # Tolman_review_data
 Data and analysis code for:  
->Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
+>Duvelle and Grieves (2025) Rethinking Tolman’s Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
 
 ## Code
 All code is in Matlab format and was prepared using Matlab 2024a.
 - TOL_main: main analysis code, see this for comments and explanation of the below codes
 - TOL_plotter: code for generating the histogram plots used throughout the article based on the main data table
-- TOL_fig_tolman1946: Fig 1 Tolman et al. (1946)
-- TOL_fig_gentry1947: Fig 2 Gentry et al. (1947) & Birch and Korn (1958)
-- TOL_fig_ritchie1948: Fig 3 Ritchie (1948)
-- TOL_fig_gentry1948: Fig 4 Gentry et al. (1948)
-- TOL_fig_wilson2018: Fig 5 Wilson and Wilson (2018) & Doner et al. (2023)
-- TOL_fig_kendler1947: Fig 6 Kendler et al. (1947; 1948)
-- TOL_fig_young1967: Fig 7 Young et al. (1967)
-- TOL_fig_harley1979: Fig 8 Harley (1979)
-- TOL_fig_muir2004: Fig 9 Muir and Taube (2004)
-- TOL_fig_stats1: Fig 10, Tolman's results stand out
-- TOL_fig_stats2: Fig 11, What does the sun-burst task measure?
+  
+- TOL_fig_tolman1946: Fig 1, shortcutting, Tolman et al.'s (1946) procedure and results, citations
+- TOL_fig_stats1: Fig 3, different possible responses, comparisons across all replications
+- TOL_fig_stats2: Fig 4, many results suggest that subjects do not use a map to solve the task
+> [!NOTE]
+> Fig 2 was generated in Inkscape and the .svg file for this is also provided
+
+- TOL_fig_gentry1947: Fig S1 Gentry et al. (1947) & Birch and Korn (1958)
+- TOL_fig_harley1979: Fig S2 Harley (1979)
+- TOL_fig_wilson2018: Fig S3 Wilson and Wilson (2018) & Doner et al. (2023)
+- TOL_fig_young1967: Fig S4 Young et al. (1967)
+- TOL_fig_ritchie1948: Fig S5 Ritchie (1948)
+- TOL_fig_kendler1947: Fig S6 Kendler et al. (1947; 1948)
+- TOL_fig_gentry1948: Fig S7 Gentry et al. (1948)
+- TOL_fig_muir2004: Fig S8 Muir and Taube (2004)
 
 ## Data
 Data files.
