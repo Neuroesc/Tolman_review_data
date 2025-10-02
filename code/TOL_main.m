@@ -103,7 +103,7 @@ function TOL_main
     plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S3 Ritchie (1948)
     plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S6 Kendler et al. (1947; 1948)
     plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S4 Gentry et al. (1948) 
-    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
+    plot_opts.plot_muir2004         = 1; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
