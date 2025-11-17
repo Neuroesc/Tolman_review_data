@@ -27,7 +27,7 @@ function TOL_fig_stats1(config,params,dat)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
     % Create figure
-    fig_now = figure('Units','pixels','Position',[50 50 210.*3 297.*3],'visible','on');
+    fig_now = figure('Units','pixels','Position',[50 50 210.*4 297.*3],'visible','on');
     set(gcf,'InvertHardCopy','off'); % gives the figure a grey background but means it will save white lines as white    
     set(gcf,'color','w'); % makes the background colour white
     fs = [14 10];
@@ -140,7 +140,7 @@ function TOL_fig_stats1(config,params,dat)
     xnow = 170;
     ynow = ynow-380;
     ax1 = axes('Units','pixels','Position',[xnow ynow 120 320]);
-        ah = add_panel_title('b',sprintf('Results summary'),'yoffset',15,'xoffset',-90,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Results summary'),'yoffset',15,'xoffset',-90,'width',400,'fontsize',fs);
         
         % plot data
         imagesc(choice_z,'AlphaData',~isnan(choice_z));
@@ -376,10 +376,10 @@ function TOL_fig_stats1(config,params,dat)
 %         ax.TickLength = [0 0];
 
 %%%%%%%%%%%%%%%% Shortcut vs adjacent likelihood scatter
-    xnow = xnow+ax1b.Position(3)+hbuff+120;
+    xnow = xnow+ax1b.Position(3)+hbuff+130;
     ynow = ynow+180;
-    ax2 = axes('Units','pixels','Position',[xnow ynow 200 150]);
-        ah = add_panel_title('c',sprintf('Shortcut vs adjacent preference'),'yoffset',0,'xoffset',10,'width',400,'fontsize',fs);
+    ax2 = axes('Units','pixels','Position',[xnow ynow 180 150]);
+        ah = add_panel_title('d',sprintf('Shortcut vs adjacent preference'),'yoffset',0,'xoffset',10,'width',400,'fontsize',fs);
 
         c = inferno(max(col_idx,[],"all",'omitmissing'));
         % scatter(choice_z(:,1),choice_z(:,2),100,c(i,:),'filled','o','MarkerFaceAlpha',0.5,'MarkerEdgeColor',[.3 .3 .3]); hold on;
@@ -389,7 +389,7 @@ function TOL_fig_stats1(config,params,dat)
         end
 
         % axis settings        
-        axis square
+        % axis square
         line([-100 100],[-100 100],'Color',[.5 .5 .5],'LineStyle','--');
         ax2.XLim = ax2b.CLim;
         ax2.YLim = ax2b.CLim;
@@ -473,7 +473,7 @@ function TOL_fig_stats1(config,params,dat)
         end
 
         % use legendflex to add legend
-        [~,lh] = legendflex(px,{'90%','95%','99%'},'anchor',{'e','e'},'ncol',1,'box','off','buffer',[20 70],'xscale',.5,'fontsize',9,'ref',ax2,'padding',[20 1 1]); 
+        [~,lh] = legendflex(px,{'90%','95%','99%'},'anchor',{'e','e'},'ncol',3,'box','off','buffer',[10 85],'xscale',.5,'fontsize',9,'ref',ax2,'padding',[20 1 1]); 
         lh(4).Color = cols(1,:);
         lh(6).Color = cols(2,:);
         lh(8).Color = cols(3,:);
@@ -481,97 +481,14 @@ function TOL_fig_stats1(config,params,dat)
 %%%%%%%%%%%%%%%% Shortcut proportion of use
     % xnow = xnow;
     ynow = ynow-210;
-    ax2 = axes('Units','pixels','Position',[xnow+20 ynow 180 120]);
-        ah = add_panel_title('d',sprintf('Shortcut preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
-
-        y = ( choice_nums(:,1) - choice_nums(:,6) ) ./ choice_nums(:,7);
-        x = 1:size(choice_nums,1);
-
-        b = bar(x,y,0.8,'k','EdgeColor','none');
-        b.FaceColor = 'flat';
-        for kk = 1:size(b.CData,1)
-            b.CData(kk,:) = c(col_idx(kk),:);
-        end
-
-        % axis settings
-        box off
-        ax2.YLim = ax2b.CLim+[0 1];
-
-        xlabel('Experiment')
-        ylabel('Shortcut (z)')
-        ax2.YTick = unique([min(ax2.YLim) ax2.YTick]);
-        line(ax2.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
-        ax2.XLim = [min(x)-1 max(x)+1];
-        ax2.XTick = unique([1 ax2.XTick(ax2.XTick>0) max(x)]);
-
-        idx1 = find(ismember(eidx,'Tolman et al. (1946)'),1,'first');
-        text(idx1,ax2.YLim(2),sprintf('Tolman et al. (1946)'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx1 idx1],[y(idx1) ax2.YLim(2)],'Color','k');
-
-        idx2 = find(ismember(eidx,'Young et al. (1967)'));
-        idx2 = idx2(4);
-        text(idx2,ax2.YLim(2)-4,sprintf('Young et al. (1967)\nBlind rats'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx2 idx2],[y(idx2) ax2.YLim(2)-4],'Color','k');
-
-        idx4 = find(ismember(eidx,'Harley (1979)'));
-        idx4 = idx4(1);
-        text(idx4,ax2.YLim(2)-3,sprintf('Harley (1979)\nSham rats'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx4 idx4],[y(idx4) ax2.YLim(2)-3],'Color','k');
-
-        idx3 = find(ismember(eidx,'Doner et al. (2023)')); 
-        idx3 = idx3(4);
-        text(idx3,ax2.YLim(2),sprintf('Doner et al. (2023)\nHumans, stable light'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx3 idx3],[y(idx3) ax2.YLim(2)],'Color','k');
-
-
-%%%%%%%%%%%%%%%% Main effect
-    xnow = 70;
-    ynow = ynow-200;
-    ax2c = axes('Units','pixels','Position',[xnow ynow 150 120]);
-        ah = add_panel_title('e',sprintf('Experiment results'),'yoffset',-10,'xoffset',0,'width',400,'fontsize',fs);
-
-        choice_z_thresh = choice_z;
-        choice_z_thresh(choice_z_thresh < 1.96) = NaN;
-        [m,mifo] = max(choice_z_thresh,[],2,'omitmissing');
-        mifo(isnan(m)) = 6;
-
-        coef = [sum(mifo(:)==1),sum(mifo(:)==2),sum(mifo(:)==3),sum(mifo(:)==4),sum(mifo(:)==5),sum(mifo(:)==6)];
-        x = 1:length(coef);
-        y = coef;
-
-        l = {'Shortcut','Adjacent','Outer','Cued','Other','No Pref.'};
-        [~,i] = sort(y,'descend');
-        y = y(i);
-        l = l(i);
-
-        b = bar(x,y,0.9,'k');
-        b.FaceColor = 'flat';
-        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('White')];
-        b.CData = cols(i,:);
-
-        % additional axis settings
-        ax = gca;
-        ax.XLim = [0.5 6.5];
-        ax.XTickLabel = l;
-        ylabel('Experiments')
-        box off
-
-        yp = y ./ sum(y,'all','omitmissing') .* 100;
-        for ii = 1:length(yp)
-            text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
-        end
-
-%%%%%%%%%%%%%%%% Adjacent path preference
-    xnow = ax2c.Position(1)+ax2c.Position(3)+50;
-    ynow = ynow;
-    ax3c = axes('Units','pixels','Position',[xnow ynow 100 120]);
+    ax2 = axes('Units','pixels','Position',[xnow ynow 180 120]);
         ah = add_panel_title('f',sprintf('Adjacent preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         adj_nums = NaN(size(dat,1),2);        
         adj_z = NaN(size(dat,1),2);
         out_nums = NaN(size(dat,1),2);        
         out_z = NaN(size(dat,1),2);
-        eidx = dat.display_experiment;
+        % eidx = dat.display_experiment;
         for ii = 1:size(dat,1)
             % if any(ismember(dat.experiment{ii},{'Harley_1979'}))
             %     continue
@@ -619,8 +536,8 @@ function TOL_fig_stats1(config,params,dat)
         % std(choice_z_sig,[],1,'omitmissing')
         % [h,p,ci,stats] = ttest(choice_z_sig(:,1),choice_z_sig(:,2),'Tail','both')
         
-        [eh,ph,ds,gs] = datadotplot(ax3c,adj_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
-        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax3c.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+        [eh,ph,ds,gs] = datadotplot(ax2,adj_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
+        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
 
         for jj = 1:length(ph)
             ph{jj}.MarkerFaceColor = [.5 .5 .5];
@@ -644,10 +561,97 @@ function TOL_fig_stats1(config,params,dat)
             text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
+%%%%%%%%%%%%%%%% Main effect
+    xnow = 600;
+    ynow = 720;
+    ax2c = axes('Units','pixels','Position',[xnow ynow 180 120]);
+        ah = add_panel_title('b',sprintf('Experiment results'),'yoffset',-10,'xoffset',0,'width',400,'fontsize',fs);
+
+        choice_z_thresh = choice_z;
+        choice_z_thresh(choice_z_thresh < 1.96) = NaN;
+        [m,mifo] = max(choice_z_thresh,[],2,'omitmissing');
+        mifo(isnan(m)) = 6;
+
+        coef = [sum(mifo(:)==1),sum(mifo(:)==2),sum(mifo(:)==3),sum(mifo(:)==4),sum(mifo(:)==5),sum(mifo(:)==6)];
+        x = 1:length(coef);
+        y = coef;
+
+        l = {'Shortcut','Adjacent','Outer','Cued','Other','No Pref.'};
+        [~,i] = sort(y,'descend');
+        y = y(i);
+        l = l(i);
+
+        b = bar(x,y,0.9,'k');
+        b.FaceColor = 'flat';
+        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('White')];
+        b.CData = cols(i,:);
+
+        % additional axis settings
+        ax = gca;
+        ax.XLim = [0.5 6.5];
+        ax.XTickLabel = l;
+        ylabel('Experiments')
+        box off
+
+        yp = y ./ sum(y,'all','omitmissing') .* 100;
+        for ii = 1:length(yp)
+            text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
+        end
+% keyboard
+%%%%%%%%%%%%%%%% Adjacent path preference
+    % xnow = ax2c.Position(1)+ax2c.Position(3)+50;
+    xnow = ax2c.Position(1);
+    ybuff = 80;
+    ysiz = 140;
+    ynow = ynow-(ysiz+ybuff+20);
+    ax3c = axes('Units','pixels','Position',[xnow-20 ynow 200 ysiz]);
+        ah = add_panel_title('e',sprintf('Shortcut preference'),'yoffset',10,'xoffset',10,'width',400,'fontsize',fs);
+
+        y = ( choice_nums(:,1) - choice_nums(:,6) ) ./ choice_nums(:,7);
+        x = 1:size(choice_nums,1);
+
+        c = inferno(max(col_idx,[],"all",'omitmissing'));       
+        b = bar(x,y,0.8,'k','EdgeColor','none');
+        b.FaceColor = 'flat';
+        for kk = 1:size(b.CData,1)
+            b.CData(kk,:) = c(col_idx(kk),:);
+        end
+
+        % axis settings
+        box off
+        ax3c.YLim = ax2b.CLim+[0 1];
+
+        xlabel('Experiment')
+        ylabel('Shortcut (z)')
+        ax3c.YTick = unique([min(ax3c.YLim) ax3c.YTick]);
+        line(ax3c.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
+        ax3c.XLim = [min(x)-1 max(x)+1];
+        ax3c.XTick = unique([1 ax3c.XTick(ax3c.XTick>0) max(x)]);
+
+        idx1 = find(ismember(eidx,'Tolman et al. (1946)'),1,'first');
+        text(idx1,ax3c.YLim(2),sprintf('Tolman et al. (1946)'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        line([idx1 idx1],[y(idx1) ax3c.YLim(2)],'Color','k');
+
+        idx2 = find(ismember(eidx,'Young et al. (1967)'));
+        idx2 = idx2(4);
+        text(idx2,ax3c.YLim(2)-4,sprintf('Young et al. (1967)\nBlind rats'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        line([idx2 idx2],[y(idx2) ax3c.YLim(2)-4],'Color','k');
+
+        idx4 = find(ismember(eidx,'Harley (1979)'));
+        idx4 = idx4(1);
+        text(idx4,ax3c.YLim(2)-3,sprintf('Harley (1979)\nSham rats'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        line([idx4 idx4],[y(idx4) ax3c.YLim(2)-3],'Color','k');
+
+        idx3 = find(ismember(eidx,'Doner et al. (2023)')); 
+        idx3 = idx3(4);
+        text(idx3,ax3c.YLim(2),sprintf('Doner et al. (2023)\nHumans, stable light'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        line([idx3 idx3],[y(idx3) ax3c.YLim(2)],'Color','k');
+
 %%%%%%%%%%%%%%%% Outer path preference
-    xnow = ax3c.Position(1)+ax3c.Position(3)+60;
-    ynow = ynow;
-    ax4c = axes('Units','pixels','Position',[xnow ynow 100 120]);
+    % xnow = ax3c.Position(1)+ax3c.Position(3)+60;
+    xnow = ax2c.Position(1);
+    ynow = ynow-(ysiz+ybuff)+10;
+    ax4c = axes('Units','pixels','Position',[xnow ynow 180 120]);
         ah = add_panel_title('g',sprintf('Outer preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
        
         [eh,ph,ds,gs] = datadotplot(ax4c,out_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
@@ -675,6 +679,7 @@ function TOL_fig_stats1(config,params,dat)
             text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
+        % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

@@ -96,14 +96,16 @@ function TOL_main
     plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
 
     % supplementary figures
-    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
-    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S8 Harley (1979)
-    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S5 Wilson and Wilson (2018) & Doner et al. (2023)
-    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S7 Young et al. (1967)
-    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S3 Ritchie (1948)
-    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S6 Kendler et al. (1947; 1948)
-    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S4 Gentry et al. (1948) 
-    plot_opts.plot_muir2004         = 1; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
+    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S1 Gentry et al. (1947) & Birch and Korn (1958)
+    plot_opts.plot_dawson1972       = 0; % TOL_fig_dawson1972   % Fig S2 Dawson (1972)    
+    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S3 Harley (1979)
+    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S5 Young et al. (1967)
+    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S6 Ritchie (1948)
+    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S7 Kendler et al. (1947; 1948)
+    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S8 Gentry et al. (1948) 
+    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
+    plot_opts.plot_tryon1929        = 1; % TOL_fig_tryon1929    % Fig S10 Tolman, Tryon and Jeffress (1929)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
@@ -147,33 +149,52 @@ function TOL_main
         TOL_fig_gentry1947(config,params,dat);
     end
 
-%%%%%%%%%%%%%%%% Ritchie (1948)
-% Ritchie, B. F. (1948). Studies in spatial learning; place orientation and direction orientation. Journal of experimental psychology, 38(6), 659–669.
-% Figure showing results from the Ritchie (1948) study, maze
-% schematic from png file, final choice graph, total entries graph
-    if plot_opts.plot_ritchie1948
-        config.fig_name = 'Fig S5.png';
-        TOL_fig_ritchie1948(config,params,dat);
+%%%%%%%%%%%%%%%% Dawson (1972)
+% Dawson, J. L. (1972). Effects of sex hormones on cognitive style in rats and men. Behavior Genetics, 2(1), 21-42.
+% Figure showing results from the Dawson (1972) study, maze
+% schematic from png file, final choice graph
+    if plot_opts.plot_dawson1972
+        config.fig_name = 'Fig S2.png';
+        TOL_fig_dawson1972(config,params,dat);
     end
 
-%%%%%%%%%%%%%%%% Gentry et al. (1948) 
-% Gentry, G., Brown, W. L., & Lee, H. (1948). Spatial location in the learning of a multiple-t maze. Journal of comparative and physiological psychology, 41(5), 312–318.
-% Figure showing results from the Gentry et al. (1948) study, maze
-% schematic from png file, final choice graph
-    if plot_opts.plot_gentry1948
-        config.fig_name = 'Fig S7.png';
-        TOL_fig_gentry1948(config,params,dat);
+%%%%%%%%%%%%%%%% Harley (1979)
+% Harley, C. W. (1979). Arm choices in a sunburst maze: effects of hippocampectomy in the rat. Physiology & Behavior, 23(2), 283–290.
+% Figure showing results from the Harley (1979) study, maze
+% schematic from png file, final choice graph for acquisition and retention
+% groups
+    if plot_opts.plot_harley1979
+        config.fig_name = 'Fig S3.png';
+        TOL_fig_harley1979(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Wilson and Wilson (2018) & Doner et al. (2023)
-% Wilson, S. P., & Wilson, P. N. (2018). Failure to demonstrate short-cutting in a replication and extension of Tolman et al.’s spatial learning experiment with humans. Plos One, 13(12), e0208794.
+% Wilson, S. P., & Wilson, P. N. (2018). Failure to demonstrate short-cutting in a replication and extension of Tolman et al.'s spatial learning experiment with humans. Plos One, 13(12), e0208794.
 % Doner, S., Zheng, J., McAvan, A. S., Starrett, M. J., Campbell, H., Sanders, D., & Ekstrom, A. (2023). Evidence for flexible navigation strategies during spatial learning involving path choices. Spatial Cognition & Computation, 23(3), 233–262.
 % Figure showing results from the Wilson and Wilson (2018) & Doner et al. (2023)
 % human studies, schematic from png file, Wilson and Wilson final choice graph,
 % Doner et al. Experiment 1-3 final choice graphs
     if plot_opts.plot_wilson2018
-        config.fig_name = 'Fig S3.png';
+        config.fig_name = 'Fig S4.png';
         TOL_fig_wilson2018(config,params,dat);
+    end    
+
+%%%%%%%%%%%%%%%% Young et al. (1967)
+% Young, H. F., Greenberg, E. R., Paton, W., & Jane, J. A. (1967). A reinvestigation of cognitive maps. Psychonomic science, 9(11), 589–590.
+% Figure showing results from the Young et al. (1967) study, maze
+% schematic from png file, final choice graph for groups 1/2/4, 3 and 5/6
+    if plot_opts.plot_young1967
+        config.fig_name = 'Fig S5.png';
+        TOL_fig_young1967(config,params,dat);
+    end
+
+%%%%%%%%%%%%%%%% Ritchie (1948)
+% Ritchie, B. F. (1948). Studies in spatial learning; place orientation and direction orientation. Journal of experimental psychology, 38(6), 659–669.
+% Figure showing results from the Ritchie (1948) study, maze
+% schematic from png file, final choice graph, total entries graph
+    if plot_opts.plot_ritchie1948
+        config.fig_name = 'Fig S6.png';
+        TOL_fig_ritchie1948(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Kendler et al. (1947; 1948)
@@ -183,27 +204,17 @@ function TOL_main
 % (1947) studies, maze schematic from png file, Kendler and Gasser final choice
 % graph, additional test trials final choice graph, same for Kendler and Mencher
     if plot_opts.plot_kendler1947
-        config.fig_name = 'Fig S6.png';
+        config.fig_name = 'Fig S7.png';
         TOL_fig_kendler1947(config,params,dat);
     end
 
-%%%%%%%%%%%%%%%% Young et al. (1967)
-% Young, H. F., Greenberg, E. R., Paton, W., & Jane, J. A. (1967). A reinvestigation of cognitive maps. Psychonomic science, 9(11), 589–590.
-% Figure showing results from the Young et al. (1967) study, maze
-% schematic from png file, final choice graph for groups 1/2/4, 3 and 5/6
-    if plot_opts.plot_young1967
-        config.fig_name = 'Fig S4.png';
-        TOL_fig_young1967(config,params,dat);
-    end
-
-%%%%%%%%%%%%%%%% Harley (1979)
-% Harley, C. W. (1979). Arm choices in a sunburst maze: effects of hippocampectomy in the rat. Physiology & Behavior, 23(2), 283–290.
-% Figure showing results from the Harley (1979) study, maze
-% schematic from png file, final choice graph for acquisition and retention
-% groups
-    if plot_opts.plot_harley1979
-        config.fig_name = 'Fig S2.png';
-        TOL_fig_harley1979(config,params,dat);
+%%%%%%%%%%%%%%%% Gentry et al. (1948) 
+% Gentry, G., Brown, W. L., & Lee, H. (1948). Spatial location in the learning of a multiple-t maze. Journal of comparative and physiological psychology, 41(5), 312–318.
+% Figure showing results from the Gentry et al. (1948) study, maze
+% schematic from png file, final choice graph
+    if plot_opts.plot_gentry1948
+        config.fig_name = 'Fig S8.png';
+        TOL_fig_gentry1948(config,params,dat);
     end
 
 %%%%%%%%%%%%%%%% Muir and Taube (2004)
@@ -214,6 +225,15 @@ function TOL_main
 % See function for information sent by Gary Muir about the configuration
 % identification
     if plot_opts.plot_muir2004
-        config.fig_name = 'Fig S8.png';
+        config.fig_name = 'Fig S9.png';
         TOL_fig_muir2004(config,params,dat);
     end
+
+%%%%%%%%%%%%%%%% Muir and Taube (2004)
+% Tolman, E. C., Tryon, R. C., & Jeffress, L. A. A self-recording maze with an automatic delivery table. University of California Press.% Figure showing results from the Muir and Taube (2004) study, maze
+% schematic from png file
+    if plot_opts.plot_tryon1929
+        config.fig_name = 'Fig S10.png';
+        TOL_fig_tryon1929(config,params,dat);
+    end
+

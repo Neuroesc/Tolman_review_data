@@ -108,9 +108,9 @@ function TOL_fig_tolman1946(config,params,dat)
     ax = axes('Units','pixels','Position',[xnow ynow 170 130]);
         ah = add_panel_title('e',sprintf('Citations per article'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
-        y = [4284, 191, 16, 11, 4, 6, 0, 5, 3, 58, 29, 8]; % citation counts from Scopus.com
+        y = [4284, 191, 16, 11, 4, 6, 0, 5, 3, 58, 29, 8, 70]; % citation counts from Scopus.com
         x = 1:length(y);
-        nmes = {'Tolman (1948)','Tolman et al. (1946)','Gentry et al. (1947)','Gentry et al. (1948)','Birch & Korn (1958)','Kendler & Gasser (1948)','Kendler & Mencher (1949)','Wilson & Wilson (2018)','Doner et al. (2023)','Harley (1979)','Muir & Taube (2004)','Ritchie (1948)'};
+        nmes = {'Tolman (1948)','Tolman et al. (1946)','Gentry et al. (1947)','Gentry et al. (1948)','Birch & Korn (1958)','Kendler & Gasser (1948)','Kendler & Mencher (1949)','Wilson & Wilson (2018)','Doner et al. (2023)','Harley (1979)','Muir & Taube (2004)','Ritchie (1948)','Dawson (1972)'};
         [~,idx] = sort(y,'descend');
         y = y(idx);
         nmes = nmes(idx);
@@ -127,7 +127,7 @@ function TOL_fig_tolman1946(config,params,dat)
 
         y2 = y;
         y2(y==0) = 1;
-        text(x-0.4,y2,string(y),'HorizontalAlignment','left','VerticalAlignment','bottom');
+        text(x-0.4,y2,string(y),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',8);
 
     ax = axes('Units','pixels','Position',[xnow+100 ynow+60 70 70]);
         b = bar(x,y,0.8,'k');
