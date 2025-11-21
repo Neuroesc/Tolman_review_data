@@ -114,7 +114,7 @@ function TOL_fig_muir2004(config,params,dat)
         box off
         ax3.XLim = [0.5 length(gs)+0.5];
         ax3.YLim = ax2.YLim;
-
+% return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

@@ -131,6 +131,7 @@ function TOL_fig_young1967(config,params,dat)
             end
         end 
 
+return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

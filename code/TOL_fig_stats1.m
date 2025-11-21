@@ -583,7 +583,7 @@ function TOL_fig_stats1(config,params,dat)
 
         b = bar(x,y,0.9,'k');
         b.FaceColor = 'flat';
-        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('White')];
+        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('DimGray')];
         b.CData = cols(i,:);
 
         % additional axis settings
@@ -598,6 +598,7 @@ function TOL_fig_stats1(config,params,dat)
             text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 % keyboard
+
 %%%%%%%%%%%%%%%% Adjacent path preference
     % xnow = ax2c.Position(1)+ax2c.Position(3)+50;
     xnow = ax2c.Position(1);
