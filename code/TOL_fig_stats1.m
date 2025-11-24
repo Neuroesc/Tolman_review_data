@@ -54,16 +54,24 @@ function TOL_fig_stats1(config,params,dat)
     choice_nums = NaN(size(dat,1),7);        
     choice_z = NaN(size(dat,1),5);
     yop = NaN(size(dat,1),1);
+    spc = NaN(size(dat,1),1); 
     eidx = dat.display_experiment;
     for ii = 1:size(dat,1)
         % if any(ismember(dat.experiment{ii},{'Harley_1979'}))
         %     continue
         % end
+        % if any(ismember(dat.experiment{ii},{'Chamberlain_1947'}))
+        %     continue
+        % end
+        if ~any(dat.main(ii))
+            continue
+        end
         if isempty(dat.pchoice{ii})
             c = dat.mean{ii};
         else
             c = dat.pchoice{ii};
         end
+        
         s_idx = [];
         if ~any(isnan(dat.short(ii,:)))
             s_idx = dat.short(ii,:);
@@ -124,16 +132,19 @@ function TOL_fig_stats1(config,params,dat)
     
         choice_z(ii,:) = ( choice_nums(ii,1:5) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2);
         yop(ii) = dat.year(ii);
+        spc(ii) = strcmp(dat.species{ii},'human'); % 1 = human, 0 = animal
     end
     rindx = all(isnan(choice_nums),2);
     choice_nums(rindx,:) = [];
     yop(rindx) = [];
+    spc(rindx) = [];    
     choice_z(rindx,:) = [];
     eidx(rindx,:) = [];
 
     [~,i] = sort(yop,1,"ascend","MissingPlacement",'last');
     choice_nums = choice_nums(i,:);
     yop = yop(i);
+    spc = spc(i);
     choice_z = choice_z(i,:);
     eidx = eidx(i,:);
 
@@ -161,6 +172,7 @@ function TOL_fig_stats1(config,params,dat)
         ax.TickLength = [0 0];
 
         [m,mifo] = max(choice_z,[],2,'omitmissing');
+% keyboard
 
     ax1b = axes('Units','pixels','Position',[ax1.Position(1)-20 ax1.Position(2) 15 ax1.Position(4)]);
         [u,j,i] = unique(eidx,'stable');
@@ -171,9 +183,9 @@ function TOL_fig_stats1(config,params,dat)
 
         for ii = 1:length(u)
             centroid = mean(find(i==ii),"all");
-            if ii==10
-                centroid = centroid+1;
-            end
+            % if ii==10
+            %     centroid = centroid+1;
+            % end
             text(-0.1,centroid,sprintf('%s',u{ii}),'HorizontalAlignment','right','Interpreter','none','Rotation',0,'FontSize',7);
         end
 
@@ -403,11 +415,11 @@ function TOL_fig_stats1(config,params,dat)
         % ax2.YTick = [min(ax2.YLim) ax2.YTick];
 
         idx1 = find(ismember(eidx,'Tolman et al. (1946)'),1,'first');
-        text(choice_z(idx1,1),choice_z(idx1,2)-0.5,sprintf('Tolman et al.\n(1946)'),'HorizontalAlignment','center','VerticalAlignment','top','FontSize',6)
+        text(choice_z(idx1,1),choice_z(idx1,2)+0.5,sprintf('Tolman et al.\n(1946)'),'HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',6)
 
         idx3 = find(ismember(eidx,'Doner et al. (2023)')); 
         idx3 = idx3(4);
-        text(choice_z(idx3,1),choice_z(idx3,2)-0.5,sprintf('Doner et al.\n(2023)'),'HorizontalAlignment','center','VerticalAlignment','top','FontSize',6)
+        text(choice_z(idx3,1),choice_z(idx3,2)+0.5,sprintf('Doner et al.\n(2023)'),'HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',6)
 % keyboard
         % add covariance ellipses
         data = [choice_z(:,1),choice_z(:,2)];
@@ -481,18 +493,27 @@ function TOL_fig_stats1(config,params,dat)
 %%%%%%%%%%%%%%%% Shortcut proportion of use
     % xnow = xnow;
     ynow = ynow-210;
-    ax2 = axes('Units','pixels','Position',[xnow ynow 180 120]);
+    ax2i = axes('Units','pixels','Position',[xnow ynow 90 120]);
         ah = add_panel_title('f',sprintf('Adjacent preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
-        adj_nums = NaN(size(dat,1),2);        
-        adj_z = NaN(size(dat,1),2);
-        out_nums = NaN(size(dat,1),2);        
-        out_z = NaN(size(dat,1),2);
+        adji_nums = NaN(size(dat,1),2); % adjacent paths [intercept-training-route, alternative]     
+        adji_z = NaN(size(dat,1),2);
+        adjt_nums = NaN(size(dat,1),2); % adjacent paths [matches-initial-training, alternative]   
+        adjt_z = NaN(size(dat,1),2);
+
+        outt_nums = NaN(size(dat,1),2);        
+        outt_z = NaN(size(dat,1),2);
+        outr_nums = NaN(size(dat,1),2);        
+        outr_z = NaN(size(dat,1),2);
+
         % eidx = dat.display_experiment;
         for ii = 1:size(dat,1)
             % if any(ismember(dat.experiment{ii},{'Harley_1979'}))
             %     continue
             % end
+            if ~any(dat.main(ii))
+                continue
+            end
             if isempty(dat.pchoice{ii})
                 c = dat.mean{ii};
             else
@@ -503,41 +524,58 @@ function TOL_fig_stats1(config,params,dat)
             if ~any(isnan(dat.short(ii,:)))
                 s_idx = dat.short(ii,:);
 
-                if ~any(isnan(dat.adjacent(ii,:)))
-                    a_idx = dat.adjacent(ii,:);
-                    [B,I] = sort(a_idx-s_idx,2,"ascend",'MissingPlacement','last');
-                    vals = c(a_idx);
-                    vals_ordered = vals(I);
-                    adj_nums(ii,:) = vals_ordered;
+                % if ~any(isnan(dat.adjacent(ii,:)))
+                %     a_idx = dat.adjacent(ii,:);
+                %     [B,I] = sort(a_idx-s_idx,2,"ascend",'MissingPlacement','last');
+                %     vals = c(a_idx);
+                %     vals_ordered = vals(I);
+                %     adj_nums(ii,:) = vals_ordered;
+                % end
+
+                adji_nums(ii,:) = c(dat.adjacent_intercept(ii,:)); % adjacent paths [intercept-training-route, alternative]
+                adjt_nums(ii,:) = c(dat.adjacent_initial(ii,:)); % adjacent paths [matches-initial-training, alternative]
+
+                if ~all(isnan(dat.outer_initial(ii,:)))
+                    outt_nums(ii,:) = c(dat.outer_initial(ii,:)); % outer paths [matches-initial-training, alternative]
+                end
+                if ~all(isnan(dat.outer_reward(ii,:)))
+                    outr_nums(ii,:) = c(dat.outer_reward(ii,:)); % outer paths [faces-reward, alternative]
                 end
 
-                if ~any(isnan(dat.outer(ii,:)))
-                    o_idx = dat.outer(ii,:);
-                    [B,I] = sort(o_idx-s_idx,2,"ascend",'MissingPlacement','last');
-                    vals = c(o_idx);
-                    vals_ordered = vals(I);
-                    out_nums(ii,:) = vals_ordered;
-                end
             end
 
-            adj_z(ii,:) = ( adj_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2);
-            out_z(ii,:) = ( out_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2);            
-        end
-        rindx = all(isnan(adj_nums),2);
-        adj_nums(rindx,:) = [];
-        adj_z(rindx,:) = [];
-        rindx = all(isnan(out_nums),2);
-        out_nums(rindx,:) = [];
-        out_z(rindx,:) = [];
+            adji_z(ii,:) = ( adji_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2);
+            adjt_z(ii,:) = ( adjt_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2); 
 
-        adj_z_sig = adj_z(any(adj_z>1.96,2),:);
-        out_z_sig = out_z(any(out_z>1.96,2),:);
+            outt_z(ii,:) = ( outt_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2);
+            outr_z(ii,:) = ( outr_nums(ii,1:2) - dat.chance_dist(ii,1) ) ./ dat.chance_dist(ii,2); 
+
+        end
+        rindx = all(isnan(adji_nums),2);
+        adji_nums(rindx,:) = [];
+        adji_z(rindx,:) = [];
+
+        rindx = all(isnan(adjt_nums),2);
+        adjt_nums(rindx,:) = [];
+        adjt_z(rindx,:) = [];
+
+        rindx = all(isnan(adji_nums),2);
+        outt_nums(rindx,:) = [];
+        outt_z(rindx,:) = [];
+
+        rindx = all(isnan(adjt_nums),2);
+        outr_nums(rindx,:) = [];
+        outr_z(rindx,:) = [];
+
+        adji_z_sig = adji_z(any(adji_z>1.96,2),:);
+        adjt_z_sig = adjt_z(any(adjt_z>1.96,2),:); 
+        outt_z_sig = outt_z(any(outt_z>1.96,2),:);
+        outr_z_sig = outr_z(any(outr_z>1.96,2),:); 
         % mean(choice_z_sig,1,'omitmissing')
         % std(choice_z_sig,[],1,'omitmissing')
         % [h,p,ci,stats] = ttest(choice_z_sig(:,1),choice_z_sig(:,2),'Tail','both')
         
-        [eh,ph,ds,gs] = datadotplot(ax2,adj_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
-        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+        [eh,ph,ds,gs] = datadotplot(ax2i,adji_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
 
         for jj = 1:length(ph)
             ph{jj}.MarkerFaceColor = [.5 .5 .5];
@@ -547,8 +585,9 @@ function TOL_fig_stats1(config,params,dat)
         ax = gca;
         ax.XTick = [1 2];
         ax.XTickLabel = {'Intersect','Alternative'};
-        ax.XLim = [0.5 size(adj_z_sig,2)+0.5];
+        ax.XLim = [0.5 size(adji_z_sig,2)+0.5];
         ax.YLim = [-5 15];
+        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2i.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
 
         box off
         ylabel('Relative to chance (z)')
@@ -556,8 +595,8 @@ function TOL_fig_stats1(config,params,dat)
         ax = gca;
         line(ax.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
 
-        for ii = 1:size(adj_z_sig,2)
-            p = sum(adj_z_sig(:,ii)>2.576) ./ sum(~isnan(adj_z_sig(:,ii))) .* 100;
+        for ii = 1:size(adji_z_sig,2)
+            p = sum(adji_z_sig(:,ii)>2.576) ./ sum(~isnan(adji_z_sig(:,ii))) .* 100;
             text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
@@ -572,19 +611,29 @@ function TOL_fig_stats1(config,params,dat)
         [m,mifo] = max(choice_z_thresh,[],2,'omitmissing');
         mifo(isnan(m)) = 6;
 
-        coef = [sum(mifo(:)==1),sum(mifo(:)==2),sum(mifo(:)==3),sum(mifo(:)==4),sum(mifo(:)==5),sum(mifo(:)==6)];
-        x = 1:length(coef);
-        y = coef;
+        spc = logical(spc);
+        coef_animal = [sum(mifo(~spc)==1),sum(mifo(~spc)==2),sum(mifo(~spc)==3),sum(mifo(~spc)==4),sum(mifo(~spc)==5),sum(mifo(~spc)==6)];
+        coef_human = [sum(mifo(spc)==1),sum(mifo(spc)==2),sum(mifo(spc)==3),sum(mifo(spc)==4),sum(mifo(spc)==5),sum(mifo(spc)==6)];
+        y = coef_animal+coef_human;
+        x = 1:length(y);
 
         l = {'Shortcut','Adjacent','Outer','Cued','Other','No Pref.'};
         [~,i] = sort(y,'descend');
         y = y(i);
         l = l(i);
+        coef_animal = coef_animal(i);
+        coef_human = coef_human(i);
 
-        b = bar(x,y,0.9,'k');
-        b.FaceColor = 'flat';
+        b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked');
+
+        b(1).FaceColor = 'flat';
+        b(2).FaceColor = 'flat';
         cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('DimGray')];
-        b.CData = cols(i,:);
+        b(1).CData = cols(i,:);
+        b(2).CData = cols(i,:);
+        b(1).FaceAlpha = 1.0;
+        b(2).FaceAlpha = 0.5;
+        hatchfill2(b(2),'single');
 
         % additional axis settings
         ax = gca;
@@ -592,12 +641,26 @@ function TOL_fig_stats1(config,params,dat)
         ax.XTickLabel = l;
         ylabel('Experiments')
         box off
+        ax.YLim = [0 15];
 
         yp = y ./ sum(y,'all','omitmissing') .* 100;
         for ii = 1:length(yp)
             text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
-% keyboard
+
+        uy = range(ax.YLim)/100;
+        ux = range(ax.XLim)/100;
+        f = 10;
+        fx = ux*f;
+        fy = uy*f;
+        bx = ux*47;
+        by = -uy*0;
+        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none');
+        hatchfill2(px,'single');
+        text(0.55,1.0,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+
+% return
+keyboard
 
 %%%%%%%%%%%%%%%% Adjacent path preference
     % xnow = ax2c.Position(1)+ax2c.Position(3)+50;
@@ -629,34 +692,74 @@ function TOL_fig_stats1(config,params,dat)
         ax3c.XLim = [min(x)-1 max(x)+1];
         ax3c.XTick = unique([1 ax3c.XTick(ax3c.XTick>0) max(x)]);
 
+        hold on;
+        ybuffn = 0.8;
         idx1 = find(ismember(eidx,'Tolman et al. (1946)'),1,'first');
-        text(idx1,ax3c.YLim(2),sprintf('Tolman et al. (1946)'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx1 idx1],[y(idx1) ax3c.YLim(2)],'Color','k');
+        text(idx1,y(idx1)+0.5+ybuffn,sprintf('Tolman et al. (1946)'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        % line([idx1 idx1],[y(idx1) ax3c.YLim(2)],'Color','k');
+        plot(idx1,y(idx1)+ybuffn,'kv','LineStyle','none','MarkerFaceColor','k');
 
         idx2 = find(ismember(eidx,'Young et al. (1967)'));
         idx2 = idx2(4);
-        text(idx2,ax3c.YLim(2)-4,sprintf('Young et al. (1967)\nBlind rats'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx2 idx2],[y(idx2) ax3c.YLim(2)-4],'Color','k');
+        text(idx2,y(idx2)+0.5+ybuffn,sprintf('Young et al. (1967)\nBlind rats'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        % line([idx2 idx2],[y(idx2) ax3c.YLim(2)-4],'Color','k');
+        plot(idx2,y(idx2)+ybuffn,'kv','LineStyle','none','MarkerFaceColor','k');
 
         idx4 = find(ismember(eidx,'Harley (1979)'));
         idx4 = idx4(1);
-        text(idx4,ax3c.YLim(2)-3,sprintf('Harley (1979)\nSham rats'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx4 idx4],[y(idx4) ax3c.YLim(2)-3],'Color','k');
+        text(idx4-2,y(idx4)+0.5+ybuffn,sprintf('Harley (1979)\nSham rats'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        % line([idx4 idx4],[y(idx4) ax3c.YLim(2)-3],'Color','k');
+        plot(idx4,y(idx4)+ybuffn,'kv','LineStyle','none','MarkerFaceColor','k');
 
         idx3 = find(ismember(eidx,'Doner et al. (2023)')); 
         idx3 = idx3(4);
-        text(idx3,ax3c.YLim(2),sprintf('Doner et al. (2023)\nHumans, stable light'),'HorizontalAlignment','right','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
-        line([idx3 idx3],[y(idx3) ax3c.YLim(2)],'Color','k');
+        text(idx3,y(idx3)+0.5+ybuffn,sprintf('Doner et al. (2023)\nHumans, stable light'),'HorizontalAlignment','left','VerticalAlignment','bottom','FontSize',6,'Rotation',0)
+        % line([idx3 idx3],[y(idx3) ax3c.YLim(2)],'Color','k');
+        plot(idx3,y(idx3)+ybuffn,'kv','LineStyle','none','MarkerFaceColor','k');
+
+        % return
+%%%%%%%%%%%%%%%% Adjacent initial path preference
+    % xnow = ax3c.Position(1)+ax3c.Position(3)+60;
+    xnow = ax2i.Position(1)+ax2i.Position(3)+10;
+    ynow = ynow-(ysiz+ybuff)+10;
+    ax2t = axes('Units','pixels','Position',[xnow ynow 90 120]);
+        % ah = add_panel_title('g',sprintf('Outer preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+       
+        [eh,ph,ds,gs] = datadotplot(ax2t,adjt_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
+
+        for jj = 1:length(ph)
+            ph{jj}.MarkerFaceColor = [.5 .5 .5];
+        end
+
+        % axis settings
+        ax = gca;
+        ax.XTick = [1 2];
+        ax.XTickLabel = {'Training','Alternative'};
+        ax.XLim = [0.5 size(adjt_z_sig,2)+0.5];
+        ax.YLim = ax2i.YLim;
+        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2t.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+        ax.YColor = 'none';
+        ax.YTick = [];
+
+        box off
+        % ylabel('Relative to chance (z)')
+        ytickformat(ax,'%.f')
+        ax = gca;
+        line(ax.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
+
+        for ii = 1:size(adjt_z_sig,2)
+            p = sum(adjt_z_sig(:,ii)>2.576) ./ sum(~isnan(adjt_z_sig(:,ii))) .* 100;
+            text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
+        end
 
 %%%%%%%%%%%%%%%% Outer path preference
     % xnow = ax3c.Position(1)+ax3c.Position(3)+60;
-    xnow = ax2c.Position(1);
-    ynow = ynow-(ysiz+ybuff)+10;
-    ax4c = axes('Units','pixels','Position',[xnow ynow 180 120]);
+    xnow = ax2t.Position(1)+ax2t.Position(3)+45;
+    ynow = ynow;
+    ax2o = axes('Units','pixels','Position',[xnow ynow 90 120]);
         ah = add_panel_title('g',sprintf('Outer preference'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
        
-        [eh,ph,ds,gs] = datadotplot(ax4c,out_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
-        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax3c.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+        [eh,ph,ds,gs] = datadotplot(ax2o,outr_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
 
         for jj = 1:length(ph)
             ph{jj}.MarkerFaceColor = [.5 .5 .5];
@@ -666,8 +769,41 @@ function TOL_fig_stats1(config,params,dat)
         ax = gca;
         ax.XTick = [1 2];
         ax.XTickLabel = {'Reward','Alternative'};
-        ax.XLim = [0.5 size(out_z_sig,2)+0.5];
-        ax.YLim = [-5 15];
+        ax.XLim = [0.5 size(outr_z_sig,2)+0.5];
+        ax.YLim = ax2i.YLim;
+        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2o.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+
+        box off
+        % ylabel('Relative to chance (z)')
+        ytickformat(ax,'%.f')
+        ax = gca;
+        line(ax.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
+
+        for ii = 1:size(outr_z_sig,2)
+            p = sum(outr_z_sig(:,ii)>2.576) ./ sum(~isnan(outr_z_sig(:,ii))) .* 100;
+            text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
+        end
+
+%%%%%%%%%%%%%%%% Outer path preference
+    % xnow = ax3c.Position(1)+ax3c.Position(3)+60;
+    xnow = ax2o.Position(1)+ax2o.Position(3)+10;
+    ynow = ynow;
+    ax2r = axes('Units','pixels','Position',[xnow ynow 90 120]);
+        [eh,ph,ds,gs] = datadotplot(ax2r,outt_z_sig,'gcolors',[.5 .5 .5],'etype',2,'msize',4);
+
+        for jj = 1:length(ph)
+            ph{jj}.MarkerFaceColor = [.5 .5 .5];
+        end
+
+        % axis settings
+        ax = gca;
+        ax.XTick = [1 2];
+        ax.XTickLabel = {'Training','Alternative'};
+        ax.XLim = [0.5 size(outt_z_sig,2)+0.5];
+        ax.YLim = ax2i.YLim;
+        [result1,result2,to] = plotsigbrackets(ds,gs,'bracket_y_base',ax2r.YLim(2),'bracket_y_gap_coeff',15,'plot_omnibus',1);
+        ax.YColor = 'none';
+        ax.YTick = [];
 
         box off
         ylabel('Relative to chance (z)')
@@ -675,12 +811,13 @@ function TOL_fig_stats1(config,params,dat)
         ax = gca;
         line(ax.XLim,[1.96 1.96],'Color',[.5 .5 .5]);
 
-        for ii = 1:size(out_z_sig,2)
-            p = sum(out_z_sig(:,ii)>2.576) ./ sum(~isnan(out_z_sig(:,ii))) .* 100;
+        for ii = 1:size(outt_z_sig,2)
+            p = sum(outt_z_sig(:,ii)>2.576) ./ sum(~isnan(outt_z_sig(:,ii))) .* 100;
             text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
-        % return
+% return
+% keyboard
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

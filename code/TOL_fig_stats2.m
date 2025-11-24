@@ -232,10 +232,38 @@ function TOL_fig_stats2(config,params,dat)
         ylabel('Shortcut use (%)')
         box off;
         ax3.XLim = [0.5 3.5];
+        ax3.YLim = [0 80];
 
-        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
-        text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
-        text(0.5,1,'Lesion pre-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
+        px = NaN(1,3);
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);
+        px(1) = res.p;
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d3,"all"), p3s);
+        px(2) = res.p;
+        res = compute2propXtest(sum(d2,"all"), p2s, sum(d3,"all"), p3s);
+        px(3) = res.p;
+        
+        [~,I] = sort(px,'ascend');
+        px = px .* ( numel(px)./I );
+        
+        xs = [1 2;1 3;2 3];
+        ys = [75 78 81];
+        ybuff = 5;
+        for ii = 1:3
+            if px(ii)<.05
+                line([xs(ii,1) xs(ii,2)],[ys(ii) ys(ii)],'Color','k','Clipping','off');
+                if px(ii)<.05
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'*','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                elseif px(ii)<.01
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'**','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                elseif px(ii)<.001
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'***','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                end
+            end
+        end
+
+        % res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
+        % text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
+        % text(0.5,1,'Lesion pre-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
 
     ax3r = axes('Units','pixels','Position',[xnow+ax3.Position(3)+hbuff ax3.Position(2:4)]);
         % ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
@@ -276,9 +304,36 @@ function TOL_fig_stats2(config,params,dat)
         ax3r.XLim = [0.5 3.5];
         ax3r.YLim = ax3.YLim;
 
-        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
-        text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
-        text(0.5,1,'Lesion post-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
+        px = NaN(1,3);
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);
+        px(1) = res.p;
+        res = compute2propXtest(sum(d1,"all"), p1s, sum(d3,"all"), p3s);
+        px(2) = res.p;
+        res = compute2propXtest(sum(d2,"all"), p2s, sum(d3,"all"), p3s);
+        px(3) = res.p;
+        
+        [~,I] = sort(px,'ascend');
+        px = px .* ( numel(px)./I );
+        
+        xs = [1 2;1 3;2 3];
+        ys = [75 78 81];
+        ybuff = 5;
+        for ii = 1:3
+            if px(ii)<.05
+                line([xs(ii,1) xs(ii,2)],[ys(ii) ys(ii)],'Color','k','Clipping','off');
+                if px(ii)<.05
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'*','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                elseif px(ii)<.01
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'**','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                elseif px(ii)<.001
+                    text(mean(xs(ii,:)),ys(ii)-ybuff,'***','HorizontalAlignment','center','VerticalAlignment','bottom','FontSize',15)
+                end
+            end
+        end
+
+        % res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
+        % text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
+        % text(0.5,1,'Lesion post-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
 
 %%%%%%%%%%%%%%%% Muir and Taube
     xnow = 50;

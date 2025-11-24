@@ -50,6 +50,11 @@ function dat = TOL_data
     dat.replication(idx,:) = NaN; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1946; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Kendler and Gasser (1947)
     % Group 0, that did not receive reward/training
@@ -77,6 +82,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -104,6 +114,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 5, that received 5 training trials
     % 12 male albino rats of the Wistar strain  
@@ -130,6 +145,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -157,6 +177,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 20, that received 20 training trials
     % 12 male albino rats of the Wistar strain  
@@ -183,6 +208,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -210,6 +240,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 100, that received 100 training trials
     % 12 male albino rats of the Wistar strain  
@@ -236,6 +271,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 2, pp 183
     % Only group means and standard deviation are given
@@ -263,6 +303,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Kendler and Menchen (1948)
     % Group 6-6
@@ -294,6 +339,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -321,6 +371,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 6-21
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -351,6 +406,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -378,6 +438,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 21-6
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -408,6 +473,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -435,6 +505,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % Group 21-21
     % The first number of the numerical identification refers  to the number of hours of food 
@@ -465,6 +540,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
     % values taken from Table 1, pp 496
     % Only group means and standard deviation are given
@@ -492,51 +572,62 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3.5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 6]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 6]; % outer paths [faces-reward, alternative]
 
-%%%%%%%%%%%%%%%% Chamberlain (1947)
-    % Group 6-21
-    % The first number of the numerical identification refers  to the number of hours of food 
-    % deprivation prevailing prior to the daily experimental runs  during the training series. 
-    % The number following the hyphen refers to the motivation, based  upon food deprivation, 
-    % existing during the test trials.
-    % 6 male albino rats of the Wistar strain  
-    % values taken from Table 5, pp 46  
-    idx = size(dat,1)+1;
-    dat.experiment(idx) = {'Chamberlain_1947'}; % experiment label
-    dat.group(idx) = {'group_6-21'}; % experiment group
-    dat.test(idx) = {'test1'};       
-    dat.notes(idx) = {'6 hours deprivation before training, 21 hours deprivation before testing'}; % notes about experiment group    
-    dat.n(idx) = 6; % total number of subjects
-    dat.species(idx) = {'rat'}; % species of subjects    
-    dat.nchoices(idx) = 6; % total number of choices (i.e. subjects not excluded)
-    dat.sex(idx) = 1; % sex of subjects, 0 = female, 1 = male, otherwise = NaN
-    dat.pigment(idx) = 0; % pigmented rats = 1, albino = 0, otherwise = NaN
-    dat.strain(idx) = {'wistar'}; % strain of rats, otherwise = NaN    
-    dat.paths(idx,:) = {1:6}; % the paths as they are numbered in the paper
-    dat.choice(idx,:) = {[1 0 0 0 2 3]}; % frequency choice of each path
-    dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
-    dat.adjacent(idx,:) = [3 4]; % which paths were adjacent to the training route
-    dat.short(idx,:) = 2; % which path was the shortcut route
-    dat.training(idx,:) = 3.5; % which path corresponds to the training route (likely between two values)    
-    dat.chance(idx,:) = 1/6*100; % chance level for this experiment
-    dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
-    dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
-    dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
-    dat.year(idx,:) = 1947; % year of publication
-
-    % Group 21-21
-    % 9 male albino rats of the Wistar strain  
-    % values taken from Table 5, pp 46     
-    idx = size(dat,1)+1;
-    dat(idx,:) = dat(idx-1,:);
-    dat.group(idx) = {'group_21-21'}; % experiment group
-    dat.notes(idx) = {'21 hours deprivation before training, 21 hours deprivation before testing'}; % notes about experiment group    
-    dat.n(idx) = 6; % total number of subjects
-    dat.choice(idx,:) = {[1 1 1 1 1 4]}; % frequency choice of each path
-    dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
-    dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
-    dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
-    dat.year(idx,:) = 1947; % year of publication
+% %%%%%%%%%%%%%%%% Chamberlain (1947)
+%     % Group 6-21
+%     % The first number of the numerical identification refers  to the number of hours of food 
+%     % deprivation prevailing prior to the daily experimental runs  during the training series. 
+%     % The number following the hyphen refers to the motivation, based  upon food deprivation, 
+%     % existing during the test trials.
+%     % 6 male albino rats of the Wistar strain  
+%     % values taken from Table 5, pp 46  
+%     idx = size(dat,1)+1;
+%     dat.experiment(idx) = {'Chamberlain_1947'}; % experiment label
+%     dat.group(idx) = {'group_6-21'}; % experiment group
+%     dat.test(idx) = {'test1'};       
+%     dat.notes(idx) = {'6 hours deprivation before training, 21 hours deprivation before testing'}; % notes about experiment group    
+%     dat.n(idx) = 6; % total number of subjects
+%     dat.species(idx) = {'rat'}; % species of subjects    
+%     dat.nchoices(idx) = 6; % total number of choices (i.e. subjects not excluded)
+%     dat.sex(idx) = 1; % sex of subjects, 0 = female, 1 = male, otherwise = NaN
+%     dat.pigment(idx) = 0; % pigmented rats = 1, albino = 0, otherwise = NaN
+%     dat.strain(idx) = {'wistar'}; % strain of rats, otherwise = NaN    
+%     dat.paths(idx,:) = {1:6}; % the paths as they are numbered in the paper
+%     dat.choice(idx,:) = {[1 0 0 0 2 3]}; % frequency choice of each path
+%     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+%     dat.adjacent(idx,:) = [3 4]; % which paths were adjacent to the training route
+%     dat.short(idx,:) = 2; % which path was the shortcut route
+%     dat.training(idx,:) = 3.5; % which path corresponds to the training route (likely between two values)    
+%     dat.chance(idx,:) = 1/6*100; % chance level for this experiment
+%     dat.outer(idx,:) = [min(dat.paths{idx},[],"all","omitmissing") max(dat.paths{idx},[],"all","omitmissing")]; % which path corresponds to the outermost paths   
+%     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
+%     dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
+%     dat.year(idx,:) = 1947; % year of publication
+%     dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+%     dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+%     dat.adjacent_reward(idx,:) = [3 4]; % adjacent paths [reward-facing, alternative]
+% 
+%     % Group 21-21
+%     % 9 male albino rats of the Wistar strain  
+%     % values taken from Table 5, pp 46     
+%     idx = size(dat,1)+1;
+%     dat(idx,:) = dat(idx-1,:);
+%     dat.group(idx) = {'group_21-21'}; % experiment group     
+%     dat.notes(idx) = {'21 hours deprivation before training, 21 hours deprivation before testing'}; % notes about experiment group    
+%     dat.n(idx) = 6; % total number of subjects
+%     dat.choice(idx,:) = {[1 1 1 1 1 4]}; % frequency choice of each path
+%     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
+%     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+%     dat.light(idx,:) = [2 NaN]; % which path headed most closely towards the light (NaN if no light)
+%     dat.year(idx,:) = 1947; % year of publication
+%     dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+%     dat.adjacent_intercept(idx,:) = [3 4]; % adjacent paths [intercept-training-route, alternative]
+%     dat.adjacent_reward(idx,:) = [3 4]; % adjacent paths [reward-facing, alternative]
 
 %%%%%%%%%%%%%%%% Young, Greenberg, Paton and Jane (1967)
     % Group 1
@@ -567,6 +658,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
     % Group 2
     % 5 normal albino rats, 
@@ -596,6 +692,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
     % Group 3
     % 5 normal albino  rats
@@ -625,6 +726,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
     % Group 4
     % 4-four  blind albino rats
@@ -654,6 +760,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
     % Group 5
     % 9 normal albino rats
@@ -683,6 +794,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
     % Group 6
     % 5 squirrel monkeys (Saimiri sciureus)
@@ -712,6 +828,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1967; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 7]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [7 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [12 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 12]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Harley (1979) 
     %% Acquisition group
@@ -741,6 +862,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -751,6 +877,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Hippocampal rats
     % Sunburst test 1
@@ -778,6 +909,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -788,6 +924,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Cortical rats
     % Sunburst test 1
@@ -815,6 +956,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Sunburst test 2
     idx = size(dat,1)+1;
@@ -825,6 +971,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     %% Retention group
     % Control rats
@@ -853,6 +1004,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 1
     idx = size(dat,1)+1;
@@ -863,6 +1019,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 2
     idx = size(dat,1)+1;
@@ -873,6 +1034,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 3
     idx = size(dat,1)+1;
@@ -883,6 +1049,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Hippocampal rats
     % Preop sunburst test
@@ -910,6 +1081,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 1
     idx = size(dat,1)+1;
@@ -920,6 +1096,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 2
     idx = size(dat,1)+1;
@@ -930,6 +1111,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % postop test 3
     idx = size(dat,1)+1;
@@ -940,6 +1126,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
     % Cortical rats
     % Preop sunburst test
@@ -967,6 +1158,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 % postop test 1
     idx = size(dat,1)+1;
@@ -977,6 +1173,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 % postop test 2
     idx = size(dat,1)+1;
@@ -987,6 +1188,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 % postop test 3
     idx = size(dat,1)+1;
@@ -997,6 +1203,40 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
+
+%% Retention groups combined (pre-op choices) to make one control group
+    idx = size(dat,1)+1;
+    dat.experiment(idx) = {'Harley_1979'}; % experiment label
+    dat.group(idx) = {'retention_combined'}; % experiment group    
+    dat.test(idx) = {'preop'}; % experiment test of this group
+    dat.notes(idx) = {'preop sunburst test, all rats'}; % notes about experiment group    
+    dat.n(idx) = 13+11+11; % total number of subjects
+    dat.species(idx) = {'rat'}; % species of subjects
+    dat.sex(idx) = 1; % sex of subjects, 0 = female, 1 = male, otherwise = NaN
+    dat.pigment(idx) = 0; % pigmented rats = 1, albino = 0, otherwise = NaN
+    dat.strain(idx) = {'sprague-dawley'}; % strain of rats, otherwise = NaN    
+    dat.paths(idx,:) = {1:6}; % the paths as they are numbered in the paper
+    dat.choice(idx,:) = {[0 0 5 6 1 1]+[0 0 8 3 0 0]+[0 0 6 6 0 0]}; % frequency choice of each path
+    dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
+    dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
+    dat.adjacent(idx,:) = [3 4]; % which paths were adjacent to the training route
+    dat.short(idx,:) = 4; % which path was the shortcut route
+    dat.training(idx,:) = 3.5; % which path corresponds to the training route (likely between two values)    
+    dat.chance(idx,:) = 1/6*100; % chance level for this experiment
+    dat.outer(idx,:) = [NaN NaN]; % which path corresponds to the outermost paths   
+    dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
+    dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
+    dat.year(idx,:) = 1979; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 3]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [3 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Birch and Korn (1958)
     % Experiment 1, light at right group
@@ -1025,6 +1265,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1035,6 +1280,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1045,6 +1295,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1058,6 +1313,11 @@ function dat = TOL_data
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1068,6 +1328,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1078,6 +1343,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % Experiment 1, light at left group
     % 12 rats, Female, Sherman strain albino rats
@@ -1105,6 +1375,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1115,6 +1390,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1125,6 +1405,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1138,6 +1423,11 @@ function dat = TOL_data
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1148,6 +1438,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1158,6 +1453,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % Experiment 1, light at both sides group
     % 12 rats, Female, Sherman strain albino rats
@@ -1185,6 +1485,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 14]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1195,6 +1500,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1205,6 +1515,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % Experiment 2: after 10 days additional training
     % values from Fig 4, pp 31
@@ -1218,6 +1533,11 @@ function dat = TOL_data
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % initial entries
     idx = size(dat,1)+1;
@@ -1228,6 +1548,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % final choices
     idx = size(dat,1)+1;
@@ -1238,6 +1563,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1958; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Ritchie (1948)
     % F1 or light at right group
@@ -1266,6 +1596,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [8 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [5 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 10]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [10 1]; % outer paths [faces-reward, alternative]
 
     % all entries
     % values from Fig 9, pp 666
@@ -1277,6 +1612,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [5 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 10]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [10 1]; % outer paths [faces-reward, alternative]
 
     % F2 or light at left group
     % 27 pigmented male rats approximately three months old
@@ -1305,6 +1645,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [3 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [5 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 10]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [10 1]; % outer paths [faces-reward, alternative]
 
     % all entries
     % values from Fig 10, pp 666
@@ -1316,6 +1661,11 @@ function dat = TOL_data
     dat.nchoices(idx) = sum(dat.choice{idx}); % total number of choices (i.e. subjects not excluded)
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [6 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [5 6]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 10]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [10 1]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Gentry, Brown and Kaplan (1947)
     % H1 or light at right group (Group A)
@@ -1344,6 +1694,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % H2 or light at left group (Group C)
     % 22 rats approximately 120 days old and had had  no previous maze experience
@@ -1371,6 +1726,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % 9 days of training group
     % 22 rats approximately 120 days old and had had  no previous maze experience
@@ -1398,6 +1758,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % training alley CD removed during test
     % 27 rats approximately 120 days old and had had  no previous maze experience
@@ -1425,6 +1790,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % increase length of alley DE during training
     % 18 rats approximately 120 days old and had had  no previous maze experience
@@ -1453,6 +1823,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % experiment 5, no training, group A, alley CD in place during test
     % 60 rats approximately 120 days old and had had  no previous maze experience
@@ -1481,6 +1856,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % experiment 5, no training, group B, alley CD removed during test
     % 43 rats approximately 120 days old and had had  no previous maze experience
@@ -1509,6 +1889,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1947; % year of publication
+    dat.main(idx,:) = 0; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Gentry, Brown and Lee (1948)
     % 80 animals were used in the present study
@@ -1539,6 +1924,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [8 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 1948; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [3 2]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [NaN NaN]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [NaN NaN]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Wilson and Wilson (2018)
     % light-light group, stable light during testing and training
@@ -1568,6 +1958,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2018; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % ambient-light group, no directional light during testing and training
     % 20 humans (ten males and ten females in each condition)
@@ -1596,6 +1991,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2018; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % shifted-light group, light moved 90 degrees between testing and training
     % 20 humans (ten males and ten females in each condition)
@@ -1624,6 +2024,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2018; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Doner, Zheng, McAvan, Starrett, Campbell, Sanders and Ekstrom (2023)
     %% Experiment 1
@@ -1655,6 +2060,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 1; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % ambient light group, ambient light during testing and training
     % 43  Participants
@@ -1683,6 +2093,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light big move group, light moved to opposite side for the test
     % 38  Participants
@@ -1712,6 +2127,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 40  Participants
@@ -1741,6 +2161,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 40  Participants
@@ -1770,6 +2195,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [6 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     %% Experiment 2
     % visible light big move group, distal cues, light moved 90 degrees for the test
@@ -1801,6 +2231,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light, stable group, distal cues, stable light during testing and training
     % 43 participants
@@ -1831,6 +2266,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % ambient light group, ambient light during testing and training
     % 40 participants
@@ -1861,6 +2301,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 45 participants
@@ -1891,6 +2336,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     %% Experiment 3
     % visible light, stable group, treadmill VR, stable light during testing and training
@@ -1922,6 +2372,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [5 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % ambient light group, ambient light during testing and training
     % 18  participants 
@@ -1952,6 +2407,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light big move group, distal cues, light moved 90 degrees for the test
     % 18  participants 
@@ -1982,6 +2442,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [14 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light small move CW, light moved 10 degrees to the right or CW for the test
     % 18  participants 
@@ -2012,6 +2477,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [6 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
     % visible light small move CCW, light moved 10 degrees to the left or CCW for the test
     % 18  participants 
@@ -2042,6 +2512,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [4 NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2023; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [9 10]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [10 9]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [18 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 18]; % outer paths [faces-reward, alternative]
 
 %%%%%%%%%%%%%%%% Muir and Taube
     % Email from Gary Muir 29/04/2025
@@ -2081,6 +2556,11 @@ function dat = TOL_data
     dat.replication(idx,:) = 0; % direct/close replication = 1, otherwise = 0
     dat.light(idx,:) = [NaN NaN]; % which path headed most closely towards the light (NaN if no light)
     dat.year(idx,:) = 2004; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [4 5]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 8]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 8]; % outer paths [faces-reward, alternative]
 
     % Maze configuration B or 2 or II
     % values from Table 1, pp 250
@@ -2094,6 +2574,11 @@ function dat = TOL_data
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.short(idx,:) = 6; % which path was the shortcut route
     dat.year(idx,:) = 2004; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [5 4]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [4 5]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [1 8]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [8 1]; % outer paths [faces-reward, alternative]
 
     % Maze configuration C or 3 or III
     % values from Table 1, pp 250
@@ -2107,6 +2592,11 @@ function dat = TOL_data
     dat.pchoice(idx,:) = {dat.choice{idx}./sum(dat.choice{idx},"all","omitmissing").*100}; % percentage choice of each path
     dat.short(idx,:) = 1; % which path was the shortcut route
     dat.year(idx,:) = 2004; % year of publication
+    dat.main(idx,:) = 1; % is this a main result that should be included in overall analysis?
+    dat.adjacent_intercept(idx,:) = [4 5]; % adjacent paths [intercept-training-route, alternative]
+    dat.adjacent_initial(idx,:) = [5 4]; % adjacent paths [matches-initial-training, alternative]
+    dat.outer_initial(idx,:) = [8 1]; % outer paths [matches-initial-training, alternative]
+    dat.outer_reward(idx,:) = [1 8]; % outer paths [faces-reward, alternative]
 
 %% add display name column
     dat.display_experiment = dat.experiment;

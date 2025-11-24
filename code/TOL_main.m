@@ -92,14 +92,14 @@ function TOL_main
     % main figures
     plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
                                                                 % Fig 2 in Inkscape
-    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
+    plot_opts.plot_overall_stats1   = 1; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
     plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
 
     % supplementary figures
     plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S1 Gentry et al. (1947) & Birch and Korn (1958)
     plot_opts.plot_dawson1972       = 0; % TOL_fig_dawson1972   % Fig S2 Dawson (1972)    
     plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S3 Harley (1979)
-    plot_opts.plot_wilson2018       = 1; % TOL_fig_wilson2018   % Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
     plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S5 Young et al. (1967)
     plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S6 Ritchie (1948)
     plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S7 Kendler et al. (1947; 1948)
