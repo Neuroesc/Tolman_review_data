@@ -173,7 +173,7 @@ function TOL_fig_wilson2018(config,params,dat)
             end
         end 
 
-        return
+        % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 

@@ -83,10 +83,43 @@ function TOL_fig_harley1979(config,params,dat)
         px(1).FaceColor = 'none';
         px(2).FaceColor = 'none';
 % keyboard
+
 %%%%%%%%%%%%%%%% Harley 1979
     xnow = 50+ax2.Position(3)+hbuff+10;
     ax3 = axes('Units','pixels','Position',[xnow ynow 250 130]);
-        ah = add_panel_title('c',sprintf('Harley (1979)\nRetention'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Harley (1979)\nRetention (pre-op)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+
+        x = [3.5 4.5];
+        y = [0 100];
+        vs = 15;
+        v = linspace(y(1),y(2),vs);
+        for vv = 1:length(v)-1
+            p3 = patch(gca,[x(1),x(1),x(2),x(2)],[v(vv),v(vv+1),v(vv+1),v(vv)],'k','FaceColor',params.adjacent_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;            
+            if rem(vv,2)==0
+                p3.FaceColor = params.short_color;
+            end
+        end
+        x = [2.5 3.5];
+        p3 = patch(gca,[x(1),x(1),x(2),x(2)],[0,100,100,0],'k','FaceColor',params.adjacent_color,'EdgeColor','none','FaceAlpha',params.shading_alpha); hold on;            
+
+        % get index of data we want to plot in this axis
+        idx = [find( ismember(dat.experiment,'Harley_1979') & ismember(dat.group,'retention_combined') & ismember(dat.test,'preop') )];
+
+        % use TOL_plotter to plot the data, chance level, shaded regions etc
+        ax = gca;
+        [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params);
+
+        % additional axis settings
+        % ax.XDir = 'reverse';
+        ax3.YLim = ax2.YLim;
+        px(1).FaceAlpha = 0;
+        px(2).FaceAlpha = 0;
+
+%%%%%%%%%%%%%%%% Harley 1979
+    xnow = ax3.Position(1);
+    ynow = ynow-220;
+    ax4 = axes('Units','pixels','Position',[xnow ynow 250 130]);
+        ah = add_panel_title('d',sprintf('Harley (1979)\nRetention (post-op)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         x = [3.5 4.5];
         y = [0 100];
@@ -112,7 +145,7 @@ function TOL_fig_harley1979(config,params,dat)
 
         % additional axis settings
         % ax.XDir = 'reverse';
-        ax3.YLim = ax2.YLim;
+        ax4.YLim = ax2.YLim;
         px(1).FaceAlpha = 0;
         px(2).FaceAlpha = 0;
 
@@ -121,7 +154,7 @@ function TOL_fig_harley1979(config,params,dat)
             'Hippocampal lesion',...
             'Cortical lesion',...
             'Shortcut path','Adjacent paths','chance','p < .05','p < .01'};        
-        [~,lh] = legendflex([hx,px,lx],gstring,'anchor',{'e','e'},'nrow',3,'box','off','buffer',[-210 -130],'xscale',.5,'fontsize',9,'ref',ax,'padding',[20 1 1]); 
+        [~,lh] = legendflex([hx,px,lx],gstring,'anchor',{'e','e'},'ncol',1,'box','off','buffer',[-350 10],'xscale',1,'fontsize',9,'ref',ax4); 
         p = {params.short_color(1,:), params.shading_alpha; params.adjacent_color(1,:), params.shading_alpha};   
         i = 1;
         for jj = 1:length(lh)

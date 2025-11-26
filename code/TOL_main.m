@@ -92,7 +92,7 @@ function TOL_main
     % main figures
     plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
                                                                 % Fig 2 in Inkscape
-    plot_opts.plot_overall_stats1   = 1; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
+    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
     plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
 
     % supplementary figures
@@ -106,6 +106,7 @@ function TOL_main
     plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S8 Gentry et al. (1948) 
     plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
     plot_opts.plot_tryon1929        = 0; % TOL_fig_tryon1929    % Fig S10 Tolman, Tryon and Jeffress (1929)
+    plot_opts.plot_ga               = 1; % TOL_fig_ga           % Graphical Abstract
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 
@@ -235,5 +236,12 @@ function TOL_main
     if plot_opts.plot_tryon1929
         config.fig_name = 'Fig S10.png';
         TOL_fig_tryon1929(config,params,dat);
+    end
+
+%%%%%%%%%%%%%%%% Graphical abstract
+% schematic from png file
+    if plot_opts.plot_ga
+        config.fig_name = 'GA.png';
+        TOL_fig_ga(config,params,dat);
     end
 

@@ -660,7 +660,7 @@ function TOL_fig_stats1(config,params,dat)
         text(0.55,1.0,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
 
 % return
-keyboard
+% keyboard
 
 %%%%%%%%%%%%%%%% Adjacent path preference
     % xnow = ax2c.Position(1)+ax2c.Position(3)+50;
