@@ -24,7 +24,7 @@ function TOL_fig_stats2(config,params,dat)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
     % Create figure
-    fig_now = figure('Units','pixels','Position',[50 50 210.*3 297.*3],'visible','on');
+    fig_now = figure('Units','pixels','Position',[50 50 210.*4 297.*3],'visible','on');
     set(gcf,'InvertHardCopy','off'); % gives the figure a grey background but means it will save white lines as white    
     set(gcf,'color','w'); % makes the background colour white
     fs = [14 10];
@@ -139,7 +139,7 @@ function TOL_fig_stats2(config,params,dat)
 
     xnow = 200;
     ax3 = axes('Units','pixels','Position',[ax2.Position(1)-49.5 ynow 50 150]);
-        ah = add_panel_title('c',sprintf('Wilson and Wilson (2018)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('c',sprintf('Wilson and Wilson\n(2018)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         % p1 = stem(1:3,d(:,2),"filled",'Color','r');
         p2 = bar(1:3,d(:,2),0.7,'r');
@@ -172,10 +172,10 @@ function TOL_fig_stats2(config,params,dat)
 % a “place” or “kinesthetic response” strategy indicated no significant difference in 
 % the means t(31) = −1.0, p = .33. Note that due to our small sample size, we could not 
 % further divide by gender for the T-Test analysis.
-    xnow = 50;
-    ynow = ynow-240;
+    xnow = xnow+ax2.Position(3)+hbuff+230;
+    ynow = ynow;
     ax3 = axes('Units','pixels','Position',[xnow ynow 110 150]);
-        ah = add_panel_title('d',sprintf('Doner et al. (2023)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('d',sprintf('Doner et al.\n(2023)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         x = 1:2;
         y = [3.2 3.7];
@@ -190,13 +190,13 @@ function TOL_fig_stats2(config,params,dat)
         box off;
         ax3.XLim = [0.5 2.5];
         ax3.YLim(1) = 0;
-        text(0,1,sprintf('t(%d) = %.1f, {\\itp} = %s',31,-1,strrep(num2str(0.33,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
+        text(0,0,sprintf('t(%d) = %.1f, {\\itp} = %s',31,-1,strrep(num2str(0.33,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','left','Units','normalized','FontSize',9)
 
 %%%%%%%%%%%%%%%% Harley
-    xnow = xnow+ax3.Position(3)+hbuff+20;
-    ynow = ynow;
-    ax3 = axes('Units','pixels','Position',[xnow ynow 100 150]);
-        ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
+    xnow = 50;
+    ynow = ynow-240;
+    ax3 = axes('Units','pixels','Position',[xnow ynow 90 140]);
+        ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',10,'xoffset',0,'width',400,'fontsize',fs);
 
         idx1 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'control'}) & ismember(dat.test,{'test1'});
         idx2 = ismember(dat.experiment,{'Harley_1979'}) & ismember(dat.group,{'hippocampal'}) & ismember(dat.test,{'test1'});
@@ -263,7 +263,7 @@ function TOL_fig_stats2(config,params,dat)
 
         % res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
         % text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
-        % text(0.5,1,'Lesion pre-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
+        text(0.5,1.07,'Acquisition','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
 
     ax3r = axes('Units','pixels','Position',[xnow+ax3.Position(3)+hbuff ax3.Position(2:4)]);
         % ah = add_panel_title('e',sprintf('Harley (1979)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
@@ -334,10 +334,11 @@ function TOL_fig_stats2(config,params,dat)
         % res = compute2propXtest(sum(d1,"all"), p1s, sum(d2,"all"), p2s);        
         % text(0,1,res.text_result,'VerticalAlignment','top','HorizontalAlignment','left','Units','normalized','FontSize',8)
         % text(0.5,1,'Lesion post-training','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
+        text(0.5,1.07,'Retention','VerticalAlignment','bottom','HorizontalAlignment','center','Units','normalized','FontSize',9)
 
 %%%%%%%%%%%%%%%% Muir and Taube
-    xnow = 50;
-    ynow = ynow-250;
+    xnow = ax3.Position(1)+280;
+    ynow = ynow;
     ax4 = axes('Units','pixels','Position',[xnow ynow 130 150]);
         ah = add_panel_title('f',sprintf('Muir and Taube (2004)'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
@@ -374,7 +375,7 @@ function TOL_fig_stats2(config,params,dat)
 
 %%%%%%%%%%%%%%%% Brights vs Dulls
     xnow = xnow+ax4.Position(3)+hbuff+10;
-    ax5 = axes('Units','pixels','Position',[xnow ynow 110 150]);
+    ax5 = axes('Units','pixels','Position',[xnow ynow 50 150]);
         ah = add_panel_title('g',sprintf('Effect of distal cues'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         idx = [find( ismember(dat.experiment,'doner_et_al_2023') & ismember(dat.group,'stable_light') )...
@@ -490,7 +491,7 @@ function TOL_fig_stats2(config,params,dat)
                 imwrite(raster, raster_map, fname); % fig_file is the path to the image
             end            
         else
-            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',350);  
+            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',params.res);  
         end
         close(gcf);   
     end

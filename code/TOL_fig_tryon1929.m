@@ -63,7 +63,7 @@ function TOL_fig_tryon1929(config,params,dat)
                 imwrite(raster, raster_map, fname); % fig_file is the path to the image
             end            
         else
-            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',350);  
+            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',params.res);  
         end
         close(gcf);   
     end

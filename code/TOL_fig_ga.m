@@ -159,8 +159,10 @@ function TOL_fig_ga(config,params,dat)
         y = y0./sum(y0,"all",'omitmissing').*100;
         
         b = bar(x,y,0.9,'w','stacked');
+        % hatchfill2(b,'single','HatchAngle',45,'HatchColor',[.5 .5 .5]);
         b.FaceColor = 'flat';
-        b.CData = ones(size(b.CData));
+        
+        b.CData = ones(size(b.CData)) .* params.other_color;
         b.CData(6,:) = params.short_color;
         b.CData(9,:) = params.adjacent_color;
         b.CData(10,:) = params.adjacent_color;
@@ -216,20 +218,20 @@ function TOL_fig_ga(config,params,dat)
         coef_animal = coef_animal(i);
         coef_human = coef_human(i);
 
-        b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked');
+        b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked','EdgeColor','none');
 
         b(1).FaceColor = 'flat';
         b(2).FaceColor = 'flat';
-        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('DimGray')];
+        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;params.other_color;params.nopref_color];
         b(1).CData = cols(i,:);
         b(2).CData = cols(i,:);
         b(1).FaceAlpha = 1.0;
-        b(2).FaceAlpha = 0.5;
-        hatchfill2(b(2),'single');
+        b(2).FaceAlpha = 1;
+        hatchfill2(b(2),'single','Clipping','off','HatchColor','w');
 
         % additional axis settings
         ax = gca;
-        ax.XLim = [0.5 6.5];
+        ax.XLim = [0.45 6.5];
         ax.XTickLabel = l;
         ylabel('% Experiments')
         box off
@@ -246,10 +248,34 @@ function TOL_fig_ga(config,params,dat)
         fx = ux*f;
         fy = uy*f;
         bx = ux*47;
-        by = -uy*0;
-        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none');
-        hatchfill2(px,'single');
-        text(0.55,1.0,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+        by = -uy*10;
+        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','k','Clipping','off');
+        h = hatchfill2(px,'single','Clipping','off','HatchColor','w');
+        set(h,'Clipping','off');
+        % set(h,"Color",'w')
+        text(0.55,1.1,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+
+        %% add label for tolman
+        hold on;
+        perce = 1/47*100;
+        pp = patch([2.55 2.55 3.45 3.45],[0 perce perce 0],'k','FaceColor','none');
+        % h = hatchfill2(pp,'single','HatchAngle',-45,'HatchColor',[.5 .5 .5]);
+        % set(h,'Color',[.5 .5 .5]);
+
+        f = 10;
+        fx = ux*f;
+        fy = uy*f;
+        bx = ux*47;
+        by = -uy*-10;
+        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none','Clipping','off');
+        % h = hatchfill2(px,'single','HatchAngle',-45,'HatchColor',[.5 .5 .5]);
+        % set(h,'Color',[.5 .5 .5]);
+        text(0.55,0.9,'= Tolman et al. (1946)','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+
+
+
+
+
 
 % return
 % keyboard
@@ -269,7 +295,7 @@ function TOL_fig_ga(config,params,dat)
                 imwrite(raster, raster_map, fname); % fig_file is the path to the image
             end            
         else
-            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',350);  
+            exportgraphics(gcf,fname,'BackgroundColor',[1 1 1],'Colorspace','rgb','Resolution',params.res);  
         end
         close(gcf);   
     end

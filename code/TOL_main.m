@@ -63,9 +63,11 @@ function TOL_main
     params.choice_marker = 'd'; % marker to use showing % choices (m1-m6 is used below instead)  
     params.linestyle = '-'; % linestyle when plotting choice %   
     params.adjacent_color = params.cols(60,:); % adjacent path color in plots
-    params.light_color = rgb('SlateBlue');
+    params.light_color = rgb('Fuchsia');
     params.outer_color = rgb('SeaGreen');
-    
+    params.other_color = rgb('SlateBlue');
+    params.nopref_color = rgb('DimGray');
+
     params.chance_color = [.5 .5 .5; .5 .5 .5]; % chance line color
     params.shading_alpha = 0.2; % transparency of adjacent/shortcut shaded areas
     params.c1 = rgb('Black'); % color 1
@@ -81,6 +83,7 @@ function TOL_main
     params.m5 = 'p'; % marker 5
     params.m6 = 'v'; % marker 6
     params.style_offset = 0; % used to offset color/style used
+    params.res = 350;
 
     % params.short_color = rgb('Blue'); % shortcut path color in plots
     % params.adjacent_color = rgb('Gold'); % adjacent path color in plots
@@ -100,7 +103,7 @@ function TOL_main
     plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
     plot_opts.plot_dawson1972       = 0; % TOL_fig_dawson1972   % Fig S3 Dawson (1972)    
     plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S4 Harley (1979)
-    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S5 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_wilson2018       = 1; % TOL_fig_wilson2018   % Fig S5 Wilson and Wilson (2018) & Doner et al. (2023)
     plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S6 Young et al. (1967)
     plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S7 Ritchie (1948)
     plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S8 Kendler et al. (1947; 1948)
