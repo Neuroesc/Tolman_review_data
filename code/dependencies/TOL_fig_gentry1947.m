@@ -30,7 +30,6 @@ function TOL_fig_gentry1947(config,params,dat)
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
 % Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
@@ -53,7 +52,7 @@ function TOL_fig_gentry1947(config,params,dat)
     ynow = 620;
     ax1 = axes('Units','pixels','Position',[xnow ynow 560 250]);
         ah = add_panel_title('a',sprintf('Gentry et al. (1947) and Birch and Korn (1958) maze configurations'),'yoffset',-20,'xoffset',20,'width',400,'fontsize',fs);
-        fname = [config.schematic_dir 'Gentry et al 1947.png'];
+        fname = fullfile(config.schematic_dir, 'Gentry et al 1947.png');
         im = imread(fname,"png");
         image(im);
         axis off;
@@ -244,7 +243,7 @@ function TOL_fig_gentry1947(config,params,dat)
         % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
-        fname = [config.fig_dir '\' config.fig_name]; 
+        fname = fullfile(config.fig_dir, config.fig_name); 
         if config.fast_figs
             frame = getframe(gcf); % fig is the figure handle to save
             [raster, raster_map] = frame2im(frame); % raster is the rasterized image, raster_map is the colormap
