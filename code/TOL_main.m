@@ -12,6 +12,7 @@ function TOL_main
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
 % version 2.0.0, Release 13/12/25 Publication release
+% version 2.1.0, Release 14/12/25 Publication release for all OSes
 %
 % NOTES
 %
@@ -49,7 +50,7 @@ function TOL_main
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
+% eMail: roddy.grieves atglasgow.ac.uk, eleonore.duvelle atglasgow.ac.uk
 % Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
@@ -58,11 +59,36 @@ function TOL_main
 
     % configuration settings
     config = struct;
-    config.dat_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\data\'; % where the data files are/will be saved
-    config.fig_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\main figures\'; % where the main figures will be saved
-    config.schematic_dir = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data\schematics\'; % where schematics can be found
+    % Note: need to run this from the code folder, if not, ask the user to do so
+    config.main_path = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data';    
+    if ~exist(config.main_path,'dir')
+        warning('config.main_path does not exist. Define config.main_path in TOL_main as the location of Tolman_review_data directory to avoid directory selection in future.')
+        config.main_path = uigetdir(pwd,'Select Tolman_review_data directory');
+    end
+    config.dat_dir = fullfile(config.main_path, 'data'); % where the data files are/will be saved
+    config.fig_dir = fullfile(config.main_path, 'main figures'); % where the main figures will be saved
+    config.schematic_dir = fullfile(config.main_path, 'schematics');% where schematics can be found
     config.fast_figs = false; % save figures faster but at a lower quality
-    config.save_fig = true; % 1 = save figures, 0 = do not save
+    config.save_fig = 1; % 1 = save figures, 0 = do not save
+
+    % main figures
+    plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
+                                                                % Fig 2 was created entirely in Inkscape
+    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
+    plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
+
+    % supplementary figures
+    plot_opts.plot_tryon1929        = 0; % TOL_fig_tryon1929    % Fig S1 Tolman, Tryon and Jeffress (1929)    
+    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
+    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S3 Harley (1979)
+    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
+    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S5 Young et al. (1967)
+    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S6 Ritchie (1948)
+    plot_opts.plot_kendler1947      = 0; % TOL_fig_kendler1947  % Fig S7 Kendler et al. (1947; 1948)
+    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S8 Gentry et al. (1948) 
+    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
+    plot_opts.plot_dawson1972       = 0; % TOL_fig_dawson1972   % Fig S10 Dawson (1972)    
+    plot_opts.plot_ga               = 0; % TOL_fig_ga           % Graphical Abstract
 
     % parameters for plots
     params = struct;
@@ -94,24 +120,13 @@ function TOL_main
     params.style_offset = 0; % used to offset color/style used
     params.res = 350; % resolution at which to save figures
 
-    % main figures
-    plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
-                                                                % Fig 2 was created entirely in Inkscape
-    plot_opts.plot_overall_stats1   = 0; % TOL_fig_stats1       % Fig 3, Tolman's results stand out
-    plot_opts.plot_overall_stats2   = 0; % TOL_fig_stats2       % Fig 4, What does the task measure?
-
-    % supplementary figures
-    plot_opts.plot_tryon1929        = 0; % TOL_fig_tryon1929    % Fig S1 Tolman, Tryon and Jeffress (1929)    
-    plot_opts.plot_gentry1947       = 0; % TOL_fig_gentry1947   % Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
-    plot_opts.plot_harley1979       = 0; % TOL_fig_harley1979   % Fig S3 Harley (1979)
-    plot_opts.plot_wilson2018       = 0; % TOL_fig_wilson2018   % Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
-    plot_opts.plot_young1967        = 0; % TOL_fig_young1967    % Fig S5 Young et al. (1967)
-    plot_opts.plot_ritchie1948      = 0; % TOL_fig_ritchie1948  % Fig S6 Ritchie (1948)
-    plot_opts.plot_kendler1947      = 1; % TOL_fig_kendler1947  % Fig S7 Kendler et al. (1947; 1948)
-    plot_opts.plot_gentry1948       = 0; % TOL_fig_gentry1948   % Fig S8 Gentry et al. (1948) 
-    plot_opts.plot_muir2004         = 0; % TOL_fig_muir2004     % Fig S9 Muir and Taube (2004)
-    plot_opts.plot_dawson1972       = 0; % TOL_fig_dawson1972   % Fig S10 Dawson (1972)    
-    plot_opts.plot_ga               = 0; % TOL_fig_ga           % Graphical Abstract
+    %% Create the figure output folder if it doesn't exist
+    if config.save_fig
+        if ~isfolder(config.fig_dir)
+            mkdir(config.fig_dir);
+            disp(['Created figure output folder at ' config.fig_dir])
+        end
+    end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MAIN FIGURES
 %%%%%%%%%%%%%%%% Tolman et al. (1946) 

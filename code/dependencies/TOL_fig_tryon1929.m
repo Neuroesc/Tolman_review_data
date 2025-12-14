@@ -25,7 +25,6 @@ function TOL_fig_tryon1929(config,params,dat)
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
 % Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
@@ -48,7 +47,7 @@ function TOL_fig_tryon1929(config,params,dat)
     ynow = 600;
     ax1 = axes('Units','pixels','Position',[xnow ynow 560 250]);
         ah = add_panel_title('a',sprintf('Tolman, Tryon and Jeffress (1929) maze configuration'),'yoffset',-10,'xoffset',20,'width',400,'fontsize',fs);
-        fname = [config.schematic_dir 'Tolman, Tryon, Jeffress (1929).png'];
+        fname = fullfile(config.schematic_dir, 'Tolman, Tryon, Jeffress (1929).png');
         im = imread(fname,"png");
         image(im);
         axis off;
@@ -56,7 +55,7 @@ function TOL_fig_tryon1929(config,params,dat)
 
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
-        fname = [config.fig_dir '\' config.fig_name]; 
+        fname = fullfile(config.fig_dir, config.fig_name); 
         if config.fast_figs
             frame = getframe(gcf); % fig is the figure handle to save
             [raster, raster_map] = frame2im(frame); % raster is the rasterized image, raster_map is the colormap

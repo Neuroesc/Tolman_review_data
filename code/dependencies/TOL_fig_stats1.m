@@ -23,7 +23,6 @@ function TOL_fig_stats1(config,params,dat)
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
-% eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
 % Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%% ARGUMENT CHECK
@@ -45,7 +44,7 @@ function TOL_fig_stats1(config,params,dat)
     ynow = 680;
     ax1 = axes('Units','pixels','Position',[xnow ynow 560 190],'Color','none');
         ah = add_panel_title('a',sprintf(''),'yoffset',-40,'xoffset',50,'width',400,'fontsize',fs);
-        fname = [config.schematic_dir 'choices.png'];
+        fname = fullfile(config.schematic_dir, 'choices.png');
         im = imread(fname,"png");
         image(im);
         axis off;
@@ -824,7 +823,7 @@ function TOL_fig_stats1(config,params,dat)
 % keyboard
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
-        fname = [config.fig_dir '\' config.fig_name]; 
+        fname = fullfile(config.fig_dir, config.fig_name); 
         if config.fast_figs
             frame = getframe(gcf); % fig is the figure handle to save
             [raster, raster_map] = frame2im(frame); % raster is the rasterized image, raster_map is the colormap
