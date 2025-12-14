@@ -6,8 +6,13 @@ function dat = TOL_data
 % Most data were digitized from hand drawn figures using WebPlotDigitizer tool 
 % (v5.2, automeris.io). Data for Wilson and Wilson (2018) and Doner et al.
 % (2023) were downloaded from online repositories and copies are provided in
-% this repository. % See individual sections for details about where the data
+% this repository. 
+% See individual sections for details about where the data
 % were collected.
+% A copy of each replication experiment cited in the main text can be found in 
+% the GitHub repo, as well as in this Zotero group library: 
+% https://www.zotero.org/groups/6348142/tolmanrevisited_duvellegrieves2025
+% along with a number of other publications which may not be easy to acquire.
 % 
 % USAGE
 %
