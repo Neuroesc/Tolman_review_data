@@ -49,7 +49,7 @@ The main figures, in .png format.
 > These files are provided free to use, feel free to modify or reproduce them in accordance with the license associated with this repository.
 
 ## Papers
-A copy of each replication experiment cited in the main text can be found here as well as a number of other publications which may not be easy to acquire.
+A copy of each replication experiment cited in the main text can be found in this repo, as well as in [this Zotero group library](https://www.zotero.org/groups/6348142/tolmanrevisited_duvellegrieves2025), along with a number of other publications which may not be easy to acquire.
 > [!IMPORTANT]
 > These files are provided for reference only.
 
