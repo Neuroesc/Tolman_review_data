@@ -59,8 +59,7 @@ function TOL_main
 
     % configuration settings
     config = struct;
-    % Note: need to run this from the code folder, if not, ask the user to
-    % do so
+    % Note: need to run this from the code folder, if not, ask the user to do so
     config.main_path = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data';    
     if ~exist(config.main_path,'dir')
         warning('config.main_path does not exist. Define config.main_path in TOL_main as the location of Tolman_review_data directory to avoid directory selection in future.')
