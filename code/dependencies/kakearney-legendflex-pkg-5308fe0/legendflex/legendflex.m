@@ -228,7 +228,7 @@ function varargout = legendflex(varargin)
 % Copyright 2011-2014 Kelly Kearney
 
 % Detemine whether HG2 is in use
-
+warning('off','MATLAB:legend:DeprecationCompatibleLegend')
 hg2flag = ~verLessThan('matlab', '8.4.0');
 r2016aflag = ~verLessThan('matlab', '9.0.0');
 r2013bflag = ~verLessThan('matlab', '8.2.0');
@@ -265,11 +265,7 @@ if handlepassed
 else
     legin = varargin(1);
     if ~iscell(legin{1}) || ~all(iscellstr(legin{1}))
-        if isnumeric(legin{1})
-            error('Unable to parse input 1; check that handle(s) exist');
-        else
-            error('Legend labels must be a cell array of strings');
-        end
+        error('Unable to parse input 1; check that handle(s) exist');
     end
     pv = varargin(2:end);
 end
@@ -347,9 +343,6 @@ if r2016aflag
     wtmp = warning('off', 'MATLAB:handle_graphics:exceptions:SceneNode'); % silence Latex interpreter thing
     [h.leg, h.obj, h.labeledobj, h.textstr] = legend(legin{:}, extra{:}, 'location', 'northeast');
     warning(wtmp);
-    if isempty(h.obj)
-        error('The legacy output option for legend.m (on which legendflex.m relies) is starting to fail when applied to some types of objects.  This is one of those cases.  Sorry');
-    end
     nobj = length(h.labeledobj);
     for it = 1:length(textProps)
         set(h.obj(1:nobj), textProps{it}, tprop{it});
@@ -467,11 +460,9 @@ currax = get(figh, 'currentaxes');
 
 legpospx = getpos(h.leg, 'px');
 
-% After some error-and-trial, it seems the v(ertical)marginPx that MATLAB applied is 
-% 3.5px in total. This margin should be a fixed number, because the vertical margin 
-% appears not change with the zoom-in scale of the figure.
-vmarginNm = 3.5/legpospx(4);
-vmarginPx = 3.5;
+% rowHeight = legpospx(4)/nobj;
+vmarginNm =  0.275/nobj;
+vmarginPx = legpospx(4) * vmarginNm;
 
 rowHeightNm = (1 - vmarginNm)/nobj;
 rowHeight = rowHeightNm .* legpospx(4);
@@ -529,13 +520,13 @@ xsymbnew = xsymbnew(1:nobj);
 ysymbnew = ysymbnew(1:nobj);
 
 xtext = xsymbnew + Opt.padding(2) + symbolWidthPx;
-ytext = ysymbnew - vmarginPx*0.5;
+ytext = ysymbnew;% + 1;
 
 xsymbold = zeros(nobj,1);
 ysymbold = 1 - (1/nobj)*(1:nobj);
 
 wnewleg = sum(colWidth);
-hnewleg = rowHeight*Opt.nrow + vmarginPx*2;
+hnewleg = rowHeight*Opt.nrow + vmarginPx;
 
 if addtitle
     xttl = wnewleg/2;
@@ -565,11 +556,6 @@ hnew.leg = axes('units', 'pixels', ...
                'box', 'on', ...
                'parent', figh);
 
-if ~verLessThan('MATLAB', '9.5') % R2018b or later
-    hnew.leg.Toolbar.Visible = 'off';
-    disableDefaultInteractivity(hnew.leg)
-end
-
 % Copy the text strings to the new legend
            
 textProps = {'FontAngle','FontName','FontSize','FontUnits','FontWeight','Interpreter','HorizontalAlignment','VerticalAlignment'};
@@ -598,6 +584,8 @@ for ii = 1:nsymbol
         tag = get(h.obj(nobj+ii),'Tag');
         if ~isempty(tag)
             [blah, idx] = ismember(tag,h.textstr);
+        else
+            idx = ii;
         end
         
         chld = findall(h.obj(nobj+ii), 'type', 'line', '-or', 'type', 'patch');       
@@ -608,8 +596,7 @@ for ii = 1:nsymbol
             ynorm = (xy{2}- (1-idx*rowHeightNm))./rowHeightNm;
 
             xnew = xnorm * symbolWidthPx + xsymbnew(idx);
-            % ynew = ynorm * rowHeight     + ysymbnew(idx);
-            ynew = ynorm * rowHeight     + ysymbnew(idx) + vmarginPx*0.5;
+            ynew = ynorm * rowHeight     + ysymbnew(idx);
             
             set(chld(ic), 'xdata', xnew, 'ydata', ynew);
         end
@@ -621,9 +608,9 @@ for ii = 1:nsymbol
         hnew.obj(nobj+ii) = copyobj(h.obj(nobj+ii), hnew.leg);
         
         tag = get(h.obj(nobj+ii),'Tag');
-        if ~isempty(tag) % assumes empty tags indicate repetition of previous tag (true pre-2014b)
+%         if ~isempty(tag) % assumes empty tags indicate repetition of previous tag (true pre-2014b)
             [blah, idx] = ismember(tag,h.textstr);
-        end
+%         end
         
         xy = get(h.obj(nobj+ii), {'xdata', 'ydata'});
 
@@ -631,8 +618,7 @@ for ii = 1:nsymbol
         ynorm = (xy{2}- (1-idx*rowHeightNm))./rowHeightNm;
 
         xnew = xnorm * symbolWidthPx + xsymbnew(idx);
-        % ynew = ynorm * rowHeight     + ysymbnew(idx);
-        ynew = ynorm * rowHeight     + ysymbnew(idx) + vmarginPx*0.5;
+        ynew = ynorm * rowHeight     + ysymbnew(idx);
 
         set(hnew.obj(nobj+ii), 'xdata', xnew, 'ydata', ynew);
  
@@ -676,23 +662,23 @@ drawnow; % Not sure why this is necessary for the currentaxes to take effect, bu
 %
 % Thanks to S�ren Enemark for this suggestion.
 
-% if ~addtitle
-%     try % TODO: Crashing on some edge cases
-%         textobj = hnew.obj(1:nobj);
-%         yheight = get(hnew.leg, 'ylim');
-%         yheight = yheight(2);
-% 
-%         ylo = get(textobj(Opt.nrow), 'extent');
-%         ylo = ylo(2);
-%         yhi = get(textobj(1), 'extent');
-%         yhi = sum(yhi([2 4]));
-%         dy = yheight/2 - 0.5*(ylo + yhi);
-%         for ii = 1:length(textobj)
-%             pos = get(textobj(ii), 'position');
-%             set(textobj(ii), 'position', pos + [0 dy 0]);
-%         end
-%     end
-% end
+if ~addtitle
+    try % TODO: Crashing on some edge cases
+        textobj = hnew.obj(1:nobj);
+        yheight = get(hnew.leg, 'ylim');
+        yheight = yheight(2);
+
+        ylo = get(textobj(Opt.nrow), 'extent');
+        ylo = ylo(2);
+        yhi = get(textobj(1), 'extent');
+        yhi = sum(yhi([2 4]));
+        dy = yheight/2 - 0.5*(ylo + yhi);
+        for ii = 1:length(textobj)
+            pos = get(textobj(ii), 'position');
+            set(textobj(ii), 'position', pos + [0 dy 0]);
+        end
+    end
+end
 
 %-------------------
 % Callbacks and 
@@ -716,7 +702,7 @@ setappdata(hnew.leg, 'legflex', Lf);
 % Resize listeners
 
 addlistener(hnew.leg, 'Position', 'PostSet', @(src,evt) updatelegappdata(src,evt,hnew.leg));
-if hg2flag && strcmp(get(Lf.ref, 'Type'), 'figure')
+if hg2flag && strcmp(Lf.ref.Type, 'figure')
     addlistener(Lf.ref, 'SizeChanged', @(src,evt) updatelegpos(src,evt,hnew.leg));
 else
     addlistener(Lf.ref, 'Position', 'PostSet', @(src,evt) updatelegpos(src,evt,hnew.leg));
@@ -916,6 +902,344 @@ for ii = 1:length(fcnList)
 end
 
 
+
+function [pos,unit]=getpos(h,fmt,href,opt)
+    % GETPOS Get graphics object position in a flexible way.
+    %   GETPOS(H,FMT) gets the position property of graphics object 
+    %   with handle H, according to FMT that can be expressed using different
+    %   units. H must have a "Position" property.
+    %
+    %   FMT is a char array containing four "%2c" strings separated by colon or
+    %   space. The two characters specify the unit as :
+    %
+    %           px  for Pixels
+    %           nz  for Normalized
+    %           in  for Inches
+    %           cm  for Centimeters
+    %           pt  for Points
+    %           ch  for Characters
+    %
+    %   If FMT is only one format string from the above list, all returned values are
+    %   expressed using this unit.
+    %
+    %   Any string value of FMT can be replaced by a single '#' to not retrieve the
+    %   corresponding value. The returned value is NaN except if the optional last 
+    %   argument OPT is set to "compact" in GETPOS(H,FMT,[HREF],OPT).
+    %
+    %   Note that GETPOS(H) works as get(H,'Position') and return the position 
+    %   vector in the current unit of the graphics object H.
+    %
+    %   GETPOS(H,FMT,HREF,['compact']) gets the position of the graphics object H according 
+    %   to FMT, but using the position of the graphics object HREF as reference instead 
+    %   of the parent of H. HREF must be a valid handle and must have a "Position" 
+    %   property (except for the Root object). Returned values may be negative or 0.
+    %
+    %   [POS,UNIT]=GETPOS(H,...) returns an additional output argument UNIT that 
+    %   contained the unit list of the output vector position POS. It may be safer 
+    %   when different units are used.
+    % 
+    %   See also SETPOS, SET, GET.
+    %   Author: J�r�me Briot, Matlab 6.1.0.450 (R12.1)
+    %   Contact: dutmatlab@yahoo.fr
+    %   Revision: 1.0 (12-Feb-2007)
+    %             1.1 (14-Feb-2007) Third input argument HREF added.
+    %                               Minor corrections in the help section.
+    %             1.2 (21-Feb-2007) Bug fixed if HREF is the Root object
+    %                               Examples removed from the help section
+    %   Comments:
+    %
+    % Check the number of input arguments
+    narginchk(1,4);
+    % Check if H is a graphics object handle
+    if ~ishandle(h)
+        error('First argument must be a graphic object handle');
+    end
+    % Store the current unit of the graphics object H
+    current_unit=get(h,'units');
+    % Init variables
+    unit={current_unit current_unit current_unit current_unit};
+    pos=[nan nan nan nan];
+    % If FMT input argument is not specified, works as GET(H,'Position')
+    if nargin==1
+        pos=get(h,'position');
+        return
+    end
+    % Check if FMT is a char string
+    if ~ischar(fmt)
+	    error('Second argument must be a string in GETPOS(H,FMT)')
+    end  
+    if nargin==2 % GETPOS(H,FMT)
+        
+        href=get(h,'parent');
+        opt='full';
+        
+    elseif nargin==3
+        
+        if ishandle(href) % GETPOS(H,FMT,HREF)
+            
+            opt='full';
+            
+        elseif strcmpi(href,'compact') % GETPOS(H,FMT,"compact")
+            
+            href=get(h,'parent');
+            opt='compact';
+            
+        else % GETPOS(H,FMT,???)
+            error('Wrong third argument in GETPOS(H,FMT,???). Must be a valid handle or "compact"');
+            
+        end
+        
+    elseif nargin==4 % GETPOS(H,FMT,HREF,OPT)
+        
+        if ~ishandle(href) 
+            error('Third argument must be a valid handle in GETPOS(H,FMT,HREF,OPT)');
+        end
+            
+        if ~strcmpi(opt,'compact') 
+            error('Last argument must be "compact" in GETPOS(H,FMT,HREF,OPT)'); 
+        end
+        
+    end
+    flag_href=0;
+    % Don't use HREF position if it is the parent of H        
+    if href~=get(h,'parent')
+        href=h;
+        flag_href=1;
+    end
+    % Store the current unit of the reference object HREF
+    current_ref_unit=get(href,'units');
+    % Extract 4 char strings from FMT
+    M=strread(fmt,'%s','delimiter',' ,');
+    % Only one FMT requested for output
+    if numel(M)==1
+        [M{2:4}]=deal(M{1});    
+    end
+    % List available units
+    available_units={'inches' 'centimeters' 'normalized' 'points' 'pixels' 'characters'};
+    % Decode elements of FMT
+    for n=1:numel(M) 
+        
+        % If FMT(n) is not a "#"
+        if ~strcmp(M{n},'#')
+            
+            % Check if the units paramter is valid
+            idx=strcmpi(M{n},{'in' 'cm' 'nz' 'pt' 'px' 'ch'});
+            
+            if ~any(idx)
+                error('Units must be one of "in", "cm", "nz", "pt", "px" or "ch"')
+            end
+            
+            unit{n}=available_units{idx}; % Set the units to one from the list 
+                
+        end
+        
+    end
+    % Get position of H using decoded FMT 
+    for n=1:numel(M)    
+        % If FMT(n) is not a "#" => get the value
+        if ~strcmp(M{n},'#')
+           
+            % Modify the "Units" property of H 
+            set(h,'units',unit{n});
+            % Modify the "Units" property of HREF
+            set(href,'units',unit{n});
+            % Get the current "Position" vector of H
+            temp=get(h,'position');
+            % Get the current "Position" vector of HREF
+            if strcmp(get(href, 'type'), 'root') % HREF is the Root object (no 'Position' property)
+                temp_href=get(href,'screensize'); %%% Should be safe here !
+            else temp_href=get(href,'position');
+            end
+            % Get and store the specified field from the "Position" vector
+            % If HREF is specified and is not the parent of H, flag_href=1 else flag_href=0
+            pos(n)=temp(n)-temp_href(n)*flag_href;
+            
+        end
+        
+    end
+    % Check for compact output format 
+    if strcmpi(opt,'compact')
+        pos(isnan(pos))=[];
+    end
+    % Restore the unit of the graphics object H
+    set(h,'units',current_unit);
+    % Restore the unit of the reference object HREF
+    set(href,'units',current_ref_unit);
+
+
+
+function setpos(h,fmt,href)
+    % SETPOS Set graphics object position in a flexible way.
+    %   SETPOS(H,FMT) sets the position property of graphics object 
+    %   with handle H, according to FMT that can be expressed using different
+    %   units. H must have a "Position' property.
+    %
+    %   FMT is a char array containing 4 strings separated by colon or space.
+    %   The format of each string is one of "%1c%f%2c" or "%1c%d%2c" where the 
+    %   first optional argument is "+" or "-", the second one is a number and 
+    %   the last one is two characters that specify the unit as :
+    %
+    %           px          for Pixels
+    %           nz          for Normalized
+    %           in          for Inches
+    %           cm          for Centimeters
+    %           pt          for Points
+    %           ch          for Characters
+    %           [] (empty)  for Current units [See get(H,'units')]
+    %
+    %   For better rendering, SETPOS can be included into the "Createfcn" or 
+    %   "Resizefcn" properties of the graphical object H.
+    %
+    %   Any string value of FMT can be replaced by a single '#' to keep the current 
+    %   value of the corresponding parameter.
+    %
+    %   The first optional argument of FMT is used to increase ('+') or 
+    %   decrease ('-') the corresponding value.
+    %
+    %   Note that SETPOS(H,FMT) works as set(H,'Position',FMT) when FMT is 
+    %   a 4 double values vector.
+    %
+    %   SETPOS(H,FMT,HREF) sets the position of the graphics object H according to 
+    %   FMT, but using the position of the graphics object HREF as reference instead 
+    %   of the parent of H. HREF must be a valid handle and must have a "Position" 
+    %   property (except for the Root object). Note that this should only affect 
+    %   Left&Bottom (1st&2nd) element of the "Position" vector of H.
+    %
+    %   See also GETPOS, SET, GET.
+    %   Author: J�r�me Briot, Matlab 6.1.0.450 (R12.1)
+    %   Contact: dutmatlab@yahoo.fr
+    %   Revision: 1.0 (12-Feb-2007)
+    %             1.1 (14-Feb-2007) Third input argument HREF added.
+    %                               Minor corrections in the help section.
+    %             1.2 (21-Feb-2007) Bug fixed if HREF is the Root object
+    %                               Examples removed from the help section
+    %   Comments:
+    %
+    % Check the number of input arguments
+    narginchk(2,3);
+    % Check if H is a graphics object handle
+    if ~ishandle(h)
+        error('First argument must be a graphic object handle in SETPOS(H,FMT)');
+    end
+    % If FMT is a 4x1 double vector then SETPOS works as SET(H,'Position',FMT)
+    if isnumeric(fmt) & numel(fmt(:))==4
+        
+        set(h,'position',fmt)
+        return
+    % If FMT is not a double vector, check if it's a char string
+    elseif ~ischar(fmt)
+        error('FMT argument must be a string or a 4 elements vector in SETPOS(H,FMT)');
+        
+    end
+    if nargin==2 % SETPOS(H,FMT)
+        
+        %HREF = parent of H
+        href=get(h,'parent');
+        
+    elseif nargin==3 % SETPOS(H,FMT,HREF)
+        
+        if ~ishandle(href) % Check if HREF is a valid handle
+            error('HREF must be a valid handle of a graphics object in SETPOS(H,FMT,HREF)')
+        end
+        
+    end
+    flag_href=0;
+    % Don't use HREF position if it is the parent of H        
+    if href~=get(h,'parent') 
+        flag_href=1;
+    end
+    % Extract 4 char strings from FMT
+    M=strread(fmt,'%s','delimiter',' ,','emptyvalue',0);
+    % Store the current unit of the graphics object H
+    current_unit=get(h,'units');
+    % Store the current unit of the reference object HREF
+    current_ref_unit=get(href,'units');
+    % List available units
+    available_units={'inches' 'centimeters' 'normalized' 'points' 'pixels' 'characters'};
+    flag=zeros(1,4);
+    % Decode elements of FMT
+    for n=1:numel(M)    
+        
+        % If FMT(n) is not a "#"
+        if ~strcmp(M{n},'#')
+            
+            % Check if FMT(n) is +%... or -%...
+            if strncmp(M{n},'+',1)
+                flag(n)=1;
+                M{n}(1)=[]; % Remove '+' char     
+            elseif strncmp(M{n},'-',1)
+                flag(n)=-1;
+                M{n}(1)=[]; % Remove '-' char  
+            end
+            
+            % Separate value and unit from FMT(n)
+            [val(n),temp_unit]=strread(M{n},'%f%s');
+            
+            % If the unit is not specified in FMT(n)
+		    if isempty(temp_unit)
+                
+                unit{n}=current_unit; % Set the units to the current one
+                
+            % Else check if the units paramter is valid
+ 		    else idx=strcmpi(temp_unit,{'in' 'cm' 'nz' 'pt' 'px' 'ch'});
+                
+                if ~any(idx)
+                    error('Units must be one of "in", "cm", "nz", "pt", "px" or "ch"')
+                end
+                
+                unit{n}=available_units{idx}; % Set the units to one from the list
+                    
+		    end
+            
+        end           
+                    
+    end
+    % Set position of H using decoded FMT 
+    for n=1:numel(M)
+        
+        % If FMT(n) is not a "#" => value to modify
+        if ~strcmp(M{n},'#')
+            
+            % Modify the "Units" property of H 
+            set(h,'units',unit{n});
+            % Modify the "Units" property of HREF
+            set(href,'units',unit{n});
+            % Get the current "Position" vector of H
+            position_in_unit=get(h,'position');
+            % Get the current "Position" vector of HREF
+            if (isnumeric(href) && ~href) || (isgraphics(href) && isequal(href, groot)) % HREF is the Root object (no 'Position' property)
+                position_ref_unit=get(href,'screensize'); %%% Should be safe here !
+            else position_ref_unit=get(href,'position');
+            end
+            if ~flag % No "+" or "-"
+                
+                if any(n==[1 2])
+                    % If HREF is specified and is not the parent of H, flag_href=1 else flag_href=0
+                    position_in_unit(n)=val(n)+position_ref_unit(n)*flag_href;
+                else position_in_unit(n)=val(n);
+                end
+                
+            elseif any(n==[3 4]) % "+" or "-" and FMT(n) is width or height
+            
+                position_in_unit(n)=position_in_unit(n)+val(n)*flag(n);
+                
+            else % "+" or "-" and FMT(n) is left or bottom
+                
+                position_in_unit(n)=position_in_unit(n)+val(n)*flag(n);
+                position_in_unit(n+2)=position_in_unit(n+2)-val(n)*flag(n);
+                
+            end
+            
+            % Modify the "Position" property of H
+            set(h,'position',position_in_unit)
+            
+        end
+            
+    end
+    % Restore the unit of the graphics object H
+    set(h,'units',current_unit);
+    % Restore the unit of the reference object HREF
+    set(href,'units',current_ref_unit);
 
 
 

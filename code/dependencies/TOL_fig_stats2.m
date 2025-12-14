@@ -118,7 +118,7 @@ function TOL_fig_stats2(config,params,dat)
     xnow = xnow+ax2.Position(3)+hbuff+60;
     ynow = ynow;
     ax2 = axes('Units','pixels','Position',[xnow ynow 50 150]);
-        rdat = table2array(readtable(fullfile(config.dat_dir, 'wilson_wilson_2018_data.csv'))); % num, age, group, gender, path, pointing, drawing
+        rdat = table2array(readtable(fullfile(config.dat_dir, 'wilson_wilson_2018_data.csv'),'ReadVariableNames',0)); % num, age, group, gender, path, pointing, drawing
 
         rdat(:,5) = abs( rdat(:,5)-6 ); % path chosen, shortcut = 0
         rdat(:,6) = abs( rdat(:,6) ); % pointing error         

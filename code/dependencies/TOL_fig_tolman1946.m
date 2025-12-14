@@ -140,7 +140,7 @@ function TOL_fig_tolman1946(config,params,dat)
         % return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
-        fullfile(config.fig_dir, config.fig_name);
+        fname = fullfile(config.fig_dir, config.fig_name);
         if config.fast_figs
             frame = getframe(gcf); % fig is the figure handle to save
             [raster, raster_map] = frame2im(frame); % raster is the rasterized image, raster_map is the colormap
