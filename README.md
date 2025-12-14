@@ -17,16 +17,24 @@ All code is in Matlab format and was prepared using Matlab 2024a.
 - TOL_fig_stats2: Fig 4, many results suggest that subjects do not use a map to solve the task
 
 - TOL_fig_tryon1929: Fig S1 Tolman, Tryon and Jeffress (1929)
-- TOL_fig_gentry1947: Fig S1 Gentry et al. (1947) & Birch and Korn (1958)
-- TOL_fig_dawson1972: Fig S3 Dawson (1972)
-- TOL_fig_harley1979: Fig S4 Harley (1979)
-- TOL_fig_wilson2018: Fig S5 Wilson and Wilson (2018) & Doner et al. (2023)
-- TOL_fig_young1967: Fig S6 Young et al. (1967)
-- TOL_fig_ritchie1948: Fig S7 Ritchie (1948)
-- TOL_fig_kendler1947: Fig S8 Kendler et al. (1947; 1948)
-- TOL_fig_gentry1948: Fig S9 Gentry et al. (1948)
-- TOL_fig_muir2004: Fig S10 Muir and Taube (2004)
+- TOL_fig_gentry1947: Fig S2 Gentry et al. (1947) & Birch and Korn (1958)
+- TOL_fig_harley1979: Fig S3 Harley (1979)
+- TOL_fig_wilson2018: Fig S4 Wilson and Wilson (2018) & Doner et al. (2023)
+- TOL_fig_young1967: Fig S5 Young et al. (1967)
+- TOL_fig_ritchie1948: Fig S6 Ritchie (1948)
+- TOL_fig_kendler1947: Fig S7 Kendler et al. (1947; 1948)
+- TOL_fig_gentry1948: Fig S8 Gentry et al. (1948)
+- TOL_fig_muir2004: Fig S9 Muir and Taube (2004)
+- TOL_fig_dawson1972: Fig S10 Dawson (1972)
 - TOL_fig_ga: Graphical Abstract
+
+## Dependencies
+Dependencies are included alongside the code but include:
+- [cmocean perceptually-uniform colormaps](https://uk.mathworks.com/matlabcentral/fileexchange/57773-cmocean-perceptually-uniform-colormaps?s_tid=srchtitle)
+- [legendflex.m: a more flexible, customizable legend](https://uk.mathworks.com/matlabcentral/fileexchange/31092-legendflex-m-a-more-flexible-customizable-legend?s_tid=srchtitle)
+- [hatchfill2](https://uk.mathworks.com/matlabcentral/fileexchange/53593-hatchfill2?s_tid=srchtitle)
+- [RGB triple of color name, version 2](https://uk.mathworks.com/matlabcentral/fileexchange/24497-rgb-triple-of-color-name-version-2?s_tid=srchtitle)
+- [Perceptually uniform colormaps](https://uk.mathworks.com/matlabcentral/fileexchange/51986-perceptually-uniform-colormaps/)
 
 ## Data
 Data files.
