@@ -61,9 +61,10 @@ function TOL_main
     config = struct;
     % Note: need to run this from the code folder, if not, ask the user to
     % do so
-    config.main_path = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data';
+    config.main_path = 'C:\Users\roddyg\Documents\GitHub\neuroesc\Tolman_review_data';    
     if ~exist(config.main_path,'dir')
-        error('Main path does not exist. Define config.main_path in TOL_main as the location of Tolman_review_data directory')
+        warning('config.main_path does not exist. Define config.main_path in TOL_main as the location of Tolman_review_data directory to avoid directory selection in future.')
+        config.main_path = uigetdir(pwd,'Select Tolman_review_data directory');
     end
     config.dat_dir = fullfile(config.main_path, 'data'); % where the data files are/will be saved
     config.fig_dir = fullfile(config.main_path, 'main figures'); % where the main figures will be saved
