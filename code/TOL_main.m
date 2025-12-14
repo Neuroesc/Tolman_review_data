@@ -69,7 +69,7 @@ function TOL_main
     config.fig_dir = fullfile(config.main_path, 'main figures'); % where the main figures will be saved
     config.schematic_dir = fullfile(config.main_path, 'schematics');% where schematics can be found
     config.fast_figs = false; % save figures faster but at a lower quality
-    config.save_fig = 1; % 1 = save figures, 0 = do not save
+    config.save_fig = 0; % 1 = save figures, 0 = do not save
 
     % main figures
     plot_opts.plot_tolman1946       = 0; % TOL_fig_tolman1946   % Fig 1 Tolman et al. (1946)
