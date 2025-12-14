@@ -1,8 +1,8 @@
 function TOL_fig_stats2(config,params,dat)
-% TOL_fig_stats1
-% Figure 10
-% Overall stats results figure for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
+% TOL_fig_stats2, comparisons testing what the sunburst maze actually measures
+% Figure 4 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
 % See TOL_data for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
@@ -11,16 +11,26 @@ function TOL_fig_stats2(config,params,dat)
 %
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments
 %
 % NOTES
-% Panel d is loaded as an image file, .svg and .png provided in this repository
+%
+% Panel a data from Tolman et al. (1946) p. 19
+% Panel b data from Young et al. (1967) Fig 2
+% Panel c data from Wilson and Wilson (2018) p. 8-9
+% Panel d data from Doner et al. (2023) p. 252
+% Panel e data from Harley (1979) Table 1 and 3
+% Panel f data from Muir and Taube (2004) Table 1
+% Panel g data from Doner et al. (2023) Fig. 3&5, Young et al. (1967) Fig 2, Gentry et al. (1947) Fig 3&4
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
     % Create figure
@@ -438,7 +448,7 @@ function TOL_fig_stats2(config,params,dat)
         se = sqrt(varD);
         z = ( (obs1 - obs2) - muD ) / se;
         p = 2*(1 - normcdf(abs(z)));
-        text(0.5,1,sprintf('z = %.1f, {\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8,'Units','normalized')
+        text(0.5,1.1,sprintf('z = %.1f,\n{\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','top','HorizontalAlignment','center','FontSize',8,'Units','normalized')
         % text(1.5,y(1),sprintf('Doner et al. (2023)'),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8)
 
     ax6 = axes('Units','pixels','Position',ax5.Position+[ax5.Position(3)+10 0 0 0]);
@@ -472,7 +482,7 @@ function TOL_fig_stats2(config,params,dat)
         se = sqrt(varD);
         z = ( (obs1 - obs2) - muD ) / se;
         p = 2*(1 - normcdf(abs(z)));
-        text(0.5,1,sprintf('z = %.1f, {\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','bottom','HorizontalAlignment','center','FontSize',8,'Units','normalized')
+        text(0.5,1.1,sprintf('z = %.1f,\n{\\itp} = %s',z,strrep(num2str(p,2),'0.','.')),'VerticalAlignment','top','HorizontalAlignment','center','FontSize',8,'Units','normalized')
 
         % text(0.5,y(3),sprintf('Young et al. (1967)'),'VerticalAlignment','bottom','HorizontalAlignment','left','FontSize',8)
         % text(2.5,y(4),sprintf('Gentry et al. (1947)'),'VerticalAlignment','top','HorizontalAlignment','right','FontSize',8)

@@ -1,8 +1,8 @@
 function TOL_fig_muir2004(config,params,dat)
-% TOL_fig_harley1979
-% Figure 9
-% Muir and Taube (2004) results figure for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
+% TOL_fig_muir2004, figure of Muir and Taube's (2004) apparatus and design
+% Figure S9 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
 % See TOL_data for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
@@ -11,6 +11,8 @@ function TOL_fig_muir2004(config,params,dat)
 %
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments
 %
 % NOTES
 % Panel a is loaded as an image file, .svg and .png provided in this repository
@@ -19,11 +21,12 @@ function TOL_fig_muir2004(config,params,dat)
 % A-C in their table 1, and I-III in our figure.
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% ARGUMENT CHECK

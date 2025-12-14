@@ -1,9 +1,8 @@
 function TOL_fig_ga(config,params,dat)
-% TOL_fig_stats1
-% Figure 10
-% Overall stats results figure for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
-% See TOL_data for details about where the data were collected or defined
+% TOL_fig_ga, graphical abstract for Duvelle and Grieves (2025)
+% Graphical abstract for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
 
@@ -11,16 +10,17 @@ function TOL_fig_ga(config,params,dat)
 %
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
 %
 % NOTES
-% Panel d is loaded as an image file, .svg and .png provided in this repository
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%% ARGUMENT CHECK
 

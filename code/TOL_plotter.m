@@ -1,24 +1,112 @@
 function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
-% TOL_plotter
-% Main code to plot figures for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
-% See individual figure function comments for details about where the data were collected or defined
+% TOL_plotter, plots data figures for Duvelle and Grieves (2025)
+% Main code to plot figures for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% Highlights shortcuts, cued paths and plots the proportion of choices to each
+% path. Data are stored in TOL_data and accessed directly from the table
+% provided by that code.
 % 
-% SEE ALSO TOL_main, TOL_plotter
+% USAGE
+%
+% [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
+%
+% INPUT
+%
+% 'ax' - Axis handle, where to produce plot
+%
+% 'dat' - Table, produced by TOL_data
+%
+% 'idx' - Row index into dat, specifies which experiment TOL_plotter should plot
+%       the results from
+%
+% 'params' - Optional, structure containing plotting settings, produced by TOL_main,
+%       specifies which colours to use for shortcut shading etc
+%
+% OUTPUT
+%
+% 'hx' - Handle(s) to plotted data lines, 1xN handles
+%
+% 'px' - Handles to shading patches [shortcut, adjacent]
+%
+% 'lx' - Handles to lines showing chance lines [chance, p<.05, p<.01]
+%
+% 'c' - 1x2, mean and standard deviation of chance shuffle
+%
+% NOTES
+% 1. The experiments of Dawson (1972) are not plotted using this function
+%
+% 2. Some experiments, such as Kendler et al. (1948,1949) report follow up stats
+% of 20 combined trials, these provide only mean and standard deviations,
+% TOL_plotter will detect  and handle these exceptions.
+%
+% 3. For plots in Duvelle and Grieves (2025), where multiple experiments (groups
+% etc) were shown in some figures, the chance shuffle of the first group plotted
+% was retained and any further chance shuffles were not shown. This is based on
+% the idea that groups were often of similar sizes and so chance should be
+% similar across groups. This was done only for visualisation.
+%
+% EXAMPLE
+%
+% % To plot Tolman et al.'s (1946) results:
+% dat = TOL_data; % get data
+% idx = find( ismember(dat.experiment,'Tolman_et_al_1946') ); % find row index for Tolman et al. 1946
+% figure % create figure
+% ax = gca; % get axis handle
+% [hx,px,lx,c] = TOL_plotter(ax,dat,idx,[]); % use TOL_plotter to plot the data, chance level, shaded regions etc
+% 
+% SEE ALSO TOL_main, TOL_data
 
 % HISTORY
 %
 % version 1.0.0, Release 06/05/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments
+%
+% NOTES
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FUNCTION BODY
+    if ~exist('params','var') || isempty(params)
+        % default parameters for plots
+        params = struct;
+        params.cols = inferno(128); % general color scheme
+        params.short_color = params.cols(90,:); % shortcut path color in plots
+        params.choice_color = params.cols(1,:); % choice color in plots (c1-c6 is used below instead)
+        params.choice_marker = 'd'; % marker to use showing % choices (m1-m6 is used below instead)  
+        params.linestyle = '-'; % linestyle when plotting choice %   
+        params.adjacent_color = params.cols(60,:); % adjacent path color in plots
+        params.light_color = rgb('Fuchsia'); % cued path color in plots
+        params.outer_color = rgb('SeaGreen'); % outer path color in plots
+        params.other_color = rgb('SlateBlue'); % 'other' path color in plots
+        params.nopref_color = rgb('DimGray'); % 'no pref' color for plotting
+    
+        params.chance_color = [.5 .5 .5; .5 .5 .5]; % chance line color
+        params.shading_alpha = 0.2; % transparency of adjacent/shortcut shaded areas
+        params.c1 = rgb('Black'); % color 1
+        params.c2 = rgb('Crimson'); % color 2
+        params.c3 = rgb('ForestGreen'); % color 3
+        params.c4 = rgb('SlateBlue'); % color 4
+        params.c5 = rgb('Fuchsia'); % color 5
+        params.c6 = rgb('Navy'); % color 6
+        params.m1 = 'o'; % marker 1
+        params.m2 = '^'; % marker 2
+        params.m3 = 's'; % marker 3
+        params.m4 = 'd'; % marker 4
+        params.m5 = 'p'; % marker 5
+        params.m6 = 'v'; % marker 6
+        params.style_offset = 0; % used to offset color/style used
+        params.res = 350; % resolution at which to save figures
+    end
+
 %%%%%%%%%%%%%%%% Chance line and shading
     if isempty(dat.mean{idx(1)}) % we want to plot percentage chosen not count
         n = sum(dat.choice{idx(1)},"all","omitmissing");

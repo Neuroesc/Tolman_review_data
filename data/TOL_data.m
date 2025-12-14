@@ -1,15 +1,58 @@
 function dat = TOL_data
-% TOL_data
-% Store for the data from all Tolman sunburst replication experiments for:
-% Duvelle and Grieves (2025) Rethinking the Sun-burst Maze: A Critical Review of a Classic Spatial Learning Task
-% See individual sections for details about where the data were collected
+% TOL_data, digitized data storage for Duvelle and Grieves (2025)
+% Main code to store data for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% Most data were digitized from hand drawn figures using WebPlotDigitizer tool 
+% (v5.2, automeris.io). Data for Wilson and Wilson (2018) and Doner et al.
+% (2023) were downloaded from online repositories and copies are provided in
+% this repository. % See individual sections for details about where the data
+% were collected.
 % 
-% SEE ALSO TOL_main
+% USAGE
+%
+% dat = TOL_data % process with default settings
+%
+% OUTPUT
+%
+% 'dat' - Table, each row corresponds to an experiment, columns provide
+% different data corresponding to this experiment, such as the species, number
+% of animals, position of the shortcut, number of choices of each path, etc:
+%       - dat.experiment            % string, experiment label
+%       - dat.group                 % string, experiment group
+%       - dat.test                  % string, experiment test of this group
+%       - dat.notes                 % string, notes about experiment group
+%       - dat.n                     % scalar, total number of subjects
+%       - dat.species               % string, species of subjects    
+%       - dat.nchoices              % scalar, total number of choices (i.e. subjects not excluded)
+%       - dat.sex                   % scalar, sex of subjects, 0 = female, 1 = male, otherwise = NaN
+%       - dat.pigment               % scalar, pigmented rats = 1, albino = 0, otherwise = NaN
+%       - dat.strain                % string, strain of rats, otherwise = NaN
+%       - dat.paths                 % 1xN, numeric, the paths as they are numbered in the paper
+%       - dat.choice                % 1xN, numeric, frequency choice of each path
+%       - dat.pchoice               % 1xN, numeric, percentage choice of each path
+%       - dat.adjacent              % 1x2, numeric, which paths were adjacent to the training route
+%       - dat.short                 % scalar, which path was the shortcut route
+%       - dat.training              % scalar, which path corresponds to the training route (likely between two values)    
+%       - dat.chance                % scalar, chance level for this experiment
+%       - dat.outer                 % 1x2, numeric, which path(s) corresponds to the outermost paths   
+%       - dat.replication           % scalar, direct/close replication = 1, otherwise = 0
+%       - dat.light                 % scalar, which path headed most closely towards the light (NaN if no light)
+%       - dat.year                  % scalar, year of publication
+%       - dat.main                  % scalar, is this a main result that should be included in overall analysis?
+%       - dat.adjacent_intercept    % 1x2, numeric, adjacent paths [intercept-training-route, alternative]
+%       - dat.adjacent_initial      % 1x2, numeric, adjacent paths [matches-initial-training, alternative]
+%       - dat.outer_initial         % 1x2, numeric, outer paths [matches-initial-training, alternative]
+%       - dat.outer_reward          % 1x2, numeric, outer paths [faces-reward, alternative]
+%
+% SEE ALSO TOL_main, TOL_plotter
 
 % HISTORY
 %
 % version 1.0.0, Release 30/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments, added default params
 %
 % AUTHOR 
 % Roddy Grieves

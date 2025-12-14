@@ -1,8 +1,8 @@
 function TOL_fig_ritchie1948(config,params,dat)
-% TOL_fig_ritchie1948 
-% Figure 3
-% Ritchie (1948) results figure for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
+% TOL_fig_ritchie1948, figure of Ritchie's (1948) apparatus and design
+% Figure S6 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
 % See TOL_data for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
@@ -11,18 +11,22 @@ function TOL_fig_ritchie1948(config,params,dat)
 %
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments
 %
 % NOTES
+%
 % Panel a is loaded as an image file, .svg and .png provided in this repository
 % Panel b values taken from Ritchie (1948) Fig 6 and 7
 % Panel c values taken from Ritchie (1948) Fig 9 and 10
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% ARGUMENT CHECK

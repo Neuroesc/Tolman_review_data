@@ -1,8 +1,8 @@
 function TOL_fig_kendler1947(config,params,dat)
-% TOL_fig_kendler1947
-% Figure 6
-% Kendler et al (1947; 1948) results figure for:
-% Duvelle and Grieves (2025) Rethinking Tolman's Sunburst Maze: A Critical Review of a Classic Spatial Inference Task
+% TOL_fig_kendler1947, figure of Kendler et al.'s (1948; 1949) apparatus and design
+% Figure S7 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% years on: A meta-analysis reveals poor replicability and little evidence for 
+% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
 % See TOL_data for details about where the data were collected or defined
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
@@ -11,6 +11,8 @@ function TOL_fig_kendler1947(config,params,dat)
 %
 % version 1.0.0, Release 15/04/25 Initial release
 % version 1.1.0, Release 20/04/25 GitHub release
+% version 2.0.0, Release 13/12/25 Publication release
+% version 2.0.1, Release 14/12/25 Improved comments
 %
 % NOTES
 % Panel a is loaded as an image file, .svg and .png provided in this repository
@@ -18,11 +20,12 @@ function TOL_fig_kendler1947(config,params,dat)
 % Panel d-e values taken from Kendler and Mencher (1948) table 1 and 2
 %
 % AUTHOR 
+%
 % Roddy Grieves
 % University of Glasgow, Sir James Black Building
 % Neuroethology and Spatial Cognition Lab
 % eMail: roddy.grieves@glasgow.ac.uk, eleonore.duvelle@glasgow.ac.uk
-% Copyright 2025 Roddy Grieves & Eleonore Duvelle
+% Copyright 2025 Roddy Grieves
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INPUTS
 %%%%%%%%%%%%%%%% ARGUMENT CHECK
@@ -170,7 +173,7 @@ function TOL_fig_kendler1947(config,params,dat)
         scatter(light_positions,y,150,"yellow","filled",'s','MarkerEdgeColor','k','Clipping','off');        
         text(light_positions,y,lnames,'HorizontalAlignment','center','VerticalAlignment','middle','FontSize',8,'Rotation',0,'Clipping','off');
 
-return
+% return
 %% >>>>>>>>>> Save the overall figure
     if config.save_fig
         fname = [config.fig_dir '\' config.fig_name]; 
