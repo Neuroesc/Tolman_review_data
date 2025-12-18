@@ -603,11 +603,73 @@ function TOL_fig_stats1(config,params,dat)
             text(ii,ax.YLim(1),sprintf('%.f%%',p),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
+% %%%%%%%%%%%%%%%% Main effect
+%     xnow = 600;
+%     ynow = 720;
+%     ax2c = axes('Units','pixels','Position',[xnow ynow 180 120]);
+%         ah = add_panel_title('b',sprintf('Experiment results'),'yoffset',-10,'xoffset',0,'width',400,'fontsize',fs);
+% 
+%         choice_z_thresh = choice_z;
+%         choice_z_thresh(choice_z_thresh < 1.96) = NaN;
+%         [m,mifo] = max(choice_z_thresh,[],2,'omitmissing');
+%         mifo(isnan(m)) = 6;
+% 
+%         spc = logical(spc);
+%         coef_animal = [sum(mifo(~spc)==1),sum(mifo(~spc)==2),sum(mifo(~spc)==3),sum(mifo(~spc)==4),sum(mifo(~spc)==5),sum(mifo(~spc)==6)];
+%         coef_human = [sum(mifo(spc)==1),sum(mifo(spc)==2),sum(mifo(spc)==3),sum(mifo(spc)==4),sum(mifo(spc)==5),sum(mifo(spc)==6)];
+%         y = coef_animal+coef_human;
+%         x = 1:length(y);
+% 
+%         l = {'Shortcut','Adjacent','Outer','Cued','Other','No Pref.'};
+%         [~,i] = sort(y,'descend');
+%         y = y(i);
+%         l = l(i);
+%         coef_animal = coef_animal(i);
+%         coef_human = coef_human(i);
+% 
+%         b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked');
+% 
+%         b(1).FaceColor = 'flat';
+%         b(2).FaceColor = 'flat';
+%         cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;params.other_color;params.nopref_color];
+%         b(1).CData = cols(i,:);
+%         b(2).CData = cols(i,:);
+%         b(1).FaceAlpha = 1.0;
+%         b(2).FaceAlpha = 0.5;
+%         hatchfill2(b(2),'single');
+% 
+%         % additional axis settings
+%         ax = gca;
+%         ax.XLim = [0.5 6.5];
+%         ax.XTickLabel = l;
+%         ylabel('Experiments')
+%         box off
+%         ax.YLim = [0 15];
+% 
+%         yp = y ./ sum(y,'all','omitmissing') .* 100;
+%         for ii = 1:length(yp)
+%             text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
+%         end
+% 
+%         uy = range(ax.YLim)/100;
+%         ux = range(ax.XLim)/100;
+%         f = 10;
+%         fx = ux*f;
+%         fy = uy*f;
+%         bx = ux*47;
+%         by = -uy*0;
+%         px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none');
+%         hatchfill2(px,'single');
+%         text(0.55,1.0,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+% 
+% % return
+% % keyboard
+
 %%%%%%%%%%%%%%%% Main effect
     xnow = 600;
     ynow = 720;
     ax2c = axes('Units','pixels','Position',[xnow ynow 180 120]);
-        ah = add_panel_title('b',sprintf('Experiment results'),'yoffset',-10,'xoffset',0,'width',400,'fontsize',fs);
+        ah = add_panel_title('',sprintf('All study results'),'yoffset',0,'xoffset',0,'width',400,'fontsize',fs);
 
         choice_z_thresh = choice_z;
         choice_z_thresh(choice_z_thresh < 1.96) = NaN;
@@ -615,9 +677,13 @@ function TOL_fig_stats1(config,params,dat)
         mifo(isnan(m)) = 6;
 
         spc = logical(spc);
-        coef_animal = [sum(mifo(~spc)==1),sum(mifo(~spc)==2),sum(mifo(~spc)==3),sum(mifo(~spc)==4),sum(mifo(~spc)==5),sum(mifo(~spc)==6)];
-        coef_human = [sum(mifo(spc)==1),sum(mifo(spc)==2),sum(mifo(spc)==3),sum(mifo(spc)==4),sum(mifo(spc)==5),sum(mifo(spc)==6)];
-        y = coef_animal+coef_human;
+        coef_animal0 = [sum(mifo(~spc)==1),sum(mifo(~spc)==2),sum(mifo(~spc)==3),sum(mifo(~spc)==4),sum(mifo(~spc)==5),sum(mifo(~spc)==6)];
+        coef_human0 = [sum(mifo(spc)==1),sum(mifo(spc)==2),sum(mifo(spc)==3),sum(mifo(spc)==4),sum(mifo(spc)==5),sum(mifo(spc)==6)];
+
+        coef_animal = coef_animal0./sum([coef_animal0+coef_human0],"all",'omitmissing').*100;
+        coef_human = coef_human0./sum([coef_animal0+coef_human0],"all",'omitmissing').*100;
+
+        y = coef_animal0+coef_human0;
         x = 1:length(y);
 
         l = {'Shortcut','Adjacent','Outer','Cued','Other','No Pref.'};
@@ -627,28 +693,28 @@ function TOL_fig_stats1(config,params,dat)
         coef_animal = coef_animal(i);
         coef_human = coef_human(i);
 
-        b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked');
+        b = bar(x,[coef_animal(:) coef_human(:)],0.9,'k','stacked','EdgeColor','none');
 
         b(1).FaceColor = 'flat';
         b(2).FaceColor = 'flat';
-        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;rgb('White');rgb('DimGray')];
+        cols = [params.short_color;params.adjacent_color;params.outer_color;params.light_color;params.other_color;params.nopref_color];
         b(1).CData = cols(i,:);
         b(2).CData = cols(i,:);
         b(1).FaceAlpha = 1.0;
-        b(2).FaceAlpha = 0.5;
-        hatchfill2(b(2),'single');
+        b(2).FaceAlpha = 1;
+        hatchfill2(b(2),'single','Clipping','off','HatchColor','w');
 
         % additional axis settings
         ax = gca;
-        ax.XLim = [0.5 6.5];
+        ax.XLim = [0.45 6.5];
         ax.XTickLabel = l;
-        ylabel('Experiments')
+        ylabel('% Experiments')
         box off
-        ax.YLim = [0 15];
+        ax.YLim = [0 32];
 
         yp = y ./ sum(y,'all','omitmissing') .* 100;
         for ii = 1:length(yp)
-            text(ii,y(ii),sprintf('%.f%%',yp(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
+            text(ii,yp(ii),sprintf('%.f',y(ii)),'FontSize',8,'HorizontalAlignment','center','VerticalAlignment','bottom');
         end
 
         uy = range(ax.YLim)/100;
@@ -656,15 +722,32 @@ function TOL_fig_stats1(config,params,dat)
         f = 10;
         fx = ux*f;
         fy = uy*f;
-        bx = ux*47;
-        by = -uy*0;
-        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none');
-        hatchfill2(px,'single');
-        text(0.55,1.0,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+        bx = ux*52;
+        by = -uy*10;
+        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','k','Clipping','off');
+        h = hatchfill2(px,'single','Clipping','off','HatchColor','w');
+        set(h,'Clipping','off');
+        % set(h,"Color",'w')
+        text(0.51,1.1,'= Human studies','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
 
-% return
-% keyboard
+        %% add label for tolman
+        hold on;
+        perce = 1/47*100;
+        pp = patch([2.55 2.55 3.45 3.45],[0 perce perce 0],'k','FaceColor','none');
+        % h = hatchfill2(pp,'single','HatchAngle',-45,'HatchColor',[.5 .5 .5]);
+        % set(h,'Color',[.5 .5 .5]);
 
+        f = 10;
+        fx = ux*f;
+        fy = uy*f;
+        bx = ux*52;
+        by = -uy*-10;
+        px = patch([ax.XLim(2)-fx ax.XLim(2)-fx ax.XLim(2) ax.XLim(2)]-bx,[ax.YLim(2)-fy ax.YLim(2) ax.YLim(2) ax.YLim(2)-fy]-by,'k','FaceColor','none','Clipping','off');
+        % h = hatchfill2(px,'single','HatchAngle',-45,'HatchColor',[.5 .5 .5]);
+        % set(h,'Color',[.5 .5 .5]);
+        text(0.51,0.9,'= Tolman et al. (1946)','FontSize',8,'HorizontalAlignment','left','VerticalAlignment','top','Units','normalized');
+
+        % keyboard
 %%%%%%%%%%%%%%%% Adjacent path preference
     % xnow = ax2c.Position(1)+ax2c.Position(3)+50;
     xnow = ax2c.Position(1);
