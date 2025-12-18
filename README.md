@@ -1,3 +1,5 @@
+<img width="303" height="102" alt="neuroesc_long" src="https://github.com/user-attachments/assets/e185a933-e27d-4436-ab1f-52a4fe389e38" />
+
 # Tolman_review_data
 Data and analysis code for:  
 >Duvelle and Grieves (2025) Tolman’s Sunburst Maze 80 years on: A meta-analysis reveals poor replicability and little evidence for shortcutting
