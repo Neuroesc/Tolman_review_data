@@ -2,13 +2,13 @@
 
 # Tolman_review_data
 Data and analysis code for:  
->Duvelle and Grieves (2025) Tolman’s Sunburst Maze 80 years on: A meta-analysis reveals poor replicability and little evidence for shortcutting
+>[Duvelle and Grieves (2026) Tolman’s Sunburst Maze 80 years on: A meta-analysis reveals poor replicability and little evidence for shortcutting](https://doi.org/10.1111/ejn.70365)
 
 >Abstract  
 The Sunburst maze, first described 80 years ago by Tolman, Ritchie, and Kalish (1946) and popularized by Tolman (1948), is widely regarded as a classic demonstration of cognitive map use in rats. In this task, animals trained on a circuitous path to a reward were presented with new paths, including a shortcut, after the original route was blocked. A substantial proportion of rats selected the shortcut, which Tolman et al. (1946; 1948) interpreted as evidence that animals have an internal spatial representation, or ‘cognitive map’. Despite the influence of this study, attempts to replicate it have been largely unsuccessful. This review critically examines a dozen replications involving rats, squirrel monkeys, and humans, highlighting a range of alternative strategies, with only a fraction of experiments demonstrating shortcutting (17%). Instead, most studies found that animals either favoured paths adjacent to the original training route (32%), did not have a preference (26%), chose unremarkable paths (13%), or selected options consistent with previously rewarded responses (6%), suggesting a reliance on procedural or associative learning rather than demonstrating flexible spatial inference. Although the original experiment has been widely criticized for including a visual cue above the reward location, subsequent studies rarely found that this feature guided path choices (6%). Neurophysiological data from hippocampal lesion and head-direction cell studies further question the claim that shortcutting in the Sunburst maze depends on cognitive maps. We argue that this study, though historically significant, is a poor standalone demonstration of map-based navigation.
 
 ## Code
-All code is in Matlab format and was prepared using Matlab 2024a.
+All code is in Matlab format and was prepared using Matlab 2025a.
 - TOL_main: main analysis code, see this for comments and explanation of the below codes
 - TOL_plotter: code for generating the histogram plots used throughout the article based on the main data table
   
@@ -31,7 +31,7 @@ All code is in Matlab format and was prepared using Matlab 2024a.
 - TOL_fig_ga: Graphical Abstract
 
 ## Dependencies
-Dependencies are included alongside the code but include:
+Dependencies are included alongside the code and include:
 - [cmocean perceptually-uniform colormaps](https://uk.mathworks.com/matlabcentral/fileexchange/57773-cmocean-perceptually-uniform-colormaps?s_tid=srchtitle)
 - [legendflex.m: a more flexible, customizable legend](https://uk.mathworks.com/matlabcentral/fileexchange/31092-legendflex-m-a-more-flexible-customizable-legend?s_tid=srchtitle)
 - [hatchfill2](https://uk.mathworks.com/matlabcentral/fileexchange/53593-hatchfill2?s_tid=srchtitle)
