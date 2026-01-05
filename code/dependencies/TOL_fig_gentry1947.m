@@ -1,8 +1,9 @@
 function TOL_fig_gentry1947(config,params,dat)
 % TOL_fig_gentry1947, figure of Gentry et al. (1947), Birch and Korn (1958)
-% Figure S2 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% Figure S2 for: Duvelle and Grieves (2026) Tolman's Sunburst Maze 80 
 % years on: A meta-analysis reveals poor replicability and little evidence for 
-% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% shortcutting. European Journal of Neuroscience. DOI: 
+% https://doi.org/10.1111/ejn.70365
 % Shows results and apparatus used by: Gentry, G., Brown, W. L., & Kaplan, S. J. 
 % (1947). An experimental analysis of the spatial location hypothesis in
 % learning and Birch, H. G., & Korn, S. J. (1958). Place-learning, cognitive maps, 
@@ -17,6 +18,7 @@ function TOL_fig_gentry1947(config,params,dat)
 % version 1.1.0, Release 20/04/25 GitHub release
 % version 2.0.0, Release 13/12/25 Publication release
 % version 2.0.1, Release 14/12/25 Improved comments
+% version 2.0.2, Release 05/01/26 Updated comments, finalised for publication
 %
 % NOTES
 % Panel a is loaded as an image file, .svg and .png provided in this repository

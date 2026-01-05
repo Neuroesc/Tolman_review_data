@@ -1,8 +1,9 @@
 function TOL_fig_tryon1929(config,params,dat)
 % TOL_fig_tryon1929, figure of Tolman et al.'s (1929) apparatus and design
-% Figure S1 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% Figure S1 for: Duvelle and Grieves (2026) Tolman's Sunburst Maze 80 
 % years on: A meta-analysis reveals poor replicability and little evidence for 
-% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% shortcutting. European Journal of Neuroscience. DOI: 
+% https://doi.org/10.1111/ejn.70365
 % 
 % SEE ALSO TOL_main, TOL_data, TOL_plotter
 
@@ -12,6 +13,7 @@ function TOL_fig_tryon1929(config,params,dat)
 % version 1.1.0, Release 20/04/25 GitHub release
 % version 2.0.0, Release 13/12/25 Publication release
 % version 2.0.1, Release 14/12/25 Improved comments
+% version 2.0.2, Release 05/01/26 Updated comments, finalised for publication
 %
 % NOTES
 %

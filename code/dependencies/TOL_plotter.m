@@ -1,8 +1,9 @@
 function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
-% TOL_plotter, plots data figures for Duvelle and Grieves (2025)
-% Main code to plot figures for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% TOL_plotter, plots data figures for Duvelle and Grieves (2026)
+% Main code to plot figures for: Duvelle and Grieves (2026) Tolman's Sunburst Maze 80 
 % years on: A meta-analysis reveals poor replicability and little evidence for 
-% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% shortcutting. European Journal of Neuroscience. DOI: 
+% https://doi.org/10.1111/ejn.70365
 % Highlights shortcuts, cued paths and plots the proportion of choices to each
 % path. Data are stored in TOL_data and accessed directly from the table
 % provided by that code.
@@ -63,6 +64,7 @@ function [hx,px,lx,c] = TOL_plotter(ax,dat,idx,params)
 % version 1.1.0, Release 20/04/25 GitHub release
 % version 2.0.0, Release 13/12/25 Publication release
 % version 2.0.1, Release 14/12/25 Improved comments
+% version 2.0.2, Release 05/01/26 Updated comments, finalised for publication
 %
 % NOTES
 %
