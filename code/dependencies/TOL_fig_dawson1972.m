@@ -1,8 +1,9 @@
 function TOL_fig_dawson1972(config,params,dat)
 % TOL_fig_dawson1972, figure of Dawson (1972) results and apparatus 
-% Figure S10 for: Duvelle and Grieves (2025) Tolman's Sunburst Maze 80 
+% Figure S10 for: Duvelle and Grieves (2026) Tolman's Sunburst Maze 80 
 % years on: A meta-analysis reveals poor replicability and little evidence for 
-% shortcutting. European Journal of Neuroscience. DOI: 10.1111/ejn.70365
+% shortcutting. European Journal of Neuroscience. DOI:
+% https://doi.org/10.1111/ejn.70365
 % Shows results and apparatus used by: Dawson, J. L. (1972). Effects of sex 
 % hormones on cognitive style in rats and men. Behavior Genetics, 2(1), 21-42.
 % See TOL_data for details about where the data were collected or defined
@@ -15,6 +16,7 @@ function TOL_fig_dawson1972(config,params,dat)
 % version 1.1.0, Release 20/04/25 GitHub release
 % version 2.0.0, Release 13/12/25 Publication release
 % version 2.0.1, Release 14/12/25 Improved comments
+% version 2.0.2, Release 05/01/26 Updated comments, finalised for publication
 %
 % NOTES
 % Panel a is loaded as an image file, .svg and .png provided in this repository
