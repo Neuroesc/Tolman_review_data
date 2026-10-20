@@ -104,7 +104,8 @@ function [result1,result2,to] = plotsigbrackets(ds,gs,varargin)
     ds = double( config.ds );
     gs = double( config.gs );
     ngroups = length(unique(gs));
-    
+    [~,~,gidxd] = unique(gs);
+
     %% Run omnibus test and comparisons
     % If we want to plot the brackets we need to run the multiple
     % comparisons. Either the user can provide the omnibus and post-hoc
@@ -115,9 +116,9 @@ function [result1,result2,to] = plotsigbrackets(ds,gs,varargin)
     switch config.test
         case {'anova'}
             [omnip,a,sts] = anova1(ds,gs,'off');
-            mens = accumarray(gs,ds,[],@nanmean);
-            stds = accumarray(gs,ds,[],@nanstd);
-            sems = accumarray(gs,ds,[],@nansem);            
+            mens = accumarray(gidxd,ds,[],@nanmean);
+            stds = accumarray(gidxd,ds,[],@nanstd);
+            sems = accumarray(gidxd,ds,[],@nansem);            
             eta = a{2,2} ./ a{4,2}; % Eta-squared = SSbetween / SStotal
             result1 = [a{2,3} a{3,3} a{2,5} a{2,6} eta sts.means];
             
@@ -129,8 +130,8 @@ function [result1,result2,to] = plotsigbrackets(ds,gs,varargin)
             end                
         case {'kw'}
             [omnip,a,sts] = kruskalwallis(ds,gs,'off');
-            meds = accumarray(gs,ds,[],@nanmedian);
-            stds = accumarray(gs,ds,[],@(x) mad(x,1)); 
+            meds = accumarray(gidxd,ds,[],@nanmedian);
+            stds = accumarray(gidxd,ds,[],@(x) mad(x,1)); 
             epsilon = a{2,5} ./ ( (sum(~isnan(ds(:))).^2-1)/(sum(~isnan(ds(:)))+1) ); % epsilon squared
             result1 = [a{2,3} a{3,3} a{2,5} a{2,6} epsilon meds(:)'];  
 
@@ -145,8 +146,8 @@ function [result1,result2,to] = plotsigbrackets(ds,gs,varargin)
             ds2 = ds(gidx);
             ds3 = reshape(ds2,[],ngroups);
             [omnip,a,sts] = friedman(ds3,1,'off');
-            meds = accumarray(gs,ds,[],@nanmedian);      
-            stds = accumarray(gs,ds,[],@(x) mad(x,1));                
+            meds = accumarray(gidxd,ds,[],@nanmedian);      
+            stds = accumarray(gidxd,ds,[],@(x) mad(x,1));                
             result1 = [a{2,3} a{3,3} a{2,5} a{2,6} meds(:)'];   
             
             if config.display
@@ -160,9 +161,9 @@ function [result1,result2,to] = plotsigbrackets(ds,gs,varargin)
             ds2 = ds(gidx);
             ds3 = reshape(ds2,[],ngroups);
             [~,omnip,~,sts] = ttest(ds3(:,1),ds3(:,2));
-            meds = accumarray(gs,ds,[],@nanmean);      
-            stds = accumarray(gs,ds,[],@nanstd);  
-            sems = accumarray(gs,ds,[],@nansem);  
+            meds = accumarray(gidxd,ds,[],@nanmean);      
+            stds = accumarray(gidxd,ds,[],@nanstd);  
+            sems = accumarray(gidxd,ds,[],@nansem);  
             result1 = [sts.df sts.tstat omnip meds(:)'];      
             if config.display
                 disp(sprintf('\t\tPaired ttest: t(%d) = %.1f, p = %s\n\t\tgroup n: %s\n\t\tmeans: %s\n\t\tSD: %s\n\t\tSEM: %s',sts.df,sts.tstat,mat2str(omnip,3),mat2str([sum(~isnan(ds3(:,1))) sum(~isnan(ds3(:,2)))]),mat2str(meds(:)',3),mat2str(stds(:)',3),mat2str(sems(:)',3) ) )
